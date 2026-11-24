@@ -6,7 +6,7 @@
 <title>Beyond the Room · Therapy that travels with you</title>
 <meta name="description" content="Beyond the Room is a human-driven framework that helps therapists extend care into clients' everyday lives: tools they curate, in their own voice, on devices the client controls.">
 <meta property="og:title" content="Beyond the Room · Therapy that travels with you">
-<meta property="og:description" content="A human-driven framework that helps therapists extend care into clients' everyday lives, with tools they curate, in their own voice, on devices the client controls.">
+<meta property="og:description" content="A human-driven framework that helps therapists extend care into clients' everyday lives, with tools they use, adapt, or build, in their own voice, on devices the client controls.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0B1626">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -52,8 +52,9 @@ h2 em, h1 em { font-style: normal; color: inherit; }
 .nav ul { display: flex; gap: clamp(14px, 2.4vw, 28px); list-style: none; margin: 0; padding: 0; align-items: center; }
 .nav ul a { color: var(--ink-2); text-decoration: none; font-size: .9rem; font-weight: 500; white-space: nowrap; }
 .nav ul a:hover { color: var(--ink); }
+@media (max-width: 1360px) and (min-width: 1181px) { .nav ul { gap: 16px; } .nav ul a { font-size: .86rem; } }
 .nav .nav-cta { background: var(--ink); color: #fff !important; padding: 9px 16px; border-radius: 8px; }
-@media (max-width: 860px) {
+@media (max-width: 1180px) {
   .nav .wrap { flex-wrap: wrap; height: auto; padding-top: 12px; padding-bottom: 10px; gap: 8px; }
   .nav ul { width: 100%; overflow-x: auto; scrollbar-width: none; gap: 6px; padding-bottom: 2px; }
   .nav ul::-webkit-scrollbar { display: none; }
@@ -111,6 +112,28 @@ h2 em, h1 em { font-style: normal; color: inherit; }
 .pcard .ic svg { width: 22px; height: 22px; }
 .pcard h3 { font-size: 1.22rem; margin-bottom: 6px; }
 .pcard p { margin: 0; color: var(--ink-2); font-size: .95rem; }
+
+/* framework */
+.fw { display: grid; grid-template-columns: 1fr 56px .8fr 56px 1fr; align-items: center; gap: 0; }
+.fw-col { display: grid; gap: 12px; }
+.fw-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px; }
+.fw-card h3 { font-size: 1.12rem; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.fw-card p { margin: 0; color: var(--ink-2); font-size: .92rem; }
+.fw-card .k { font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
+.fw-core { background: var(--night); color: #fff; border-radius: var(--r); padding: 26px 22px; text-align: center; }
+.fw-core h3 { color: #fff; font-size: 1.35rem; margin-bottom: 6px; }
+.fw-core p { margin: 0; color: #AFBACA; font-size: .92rem; }
+.fw-core .wave { width: 64px; margin: 0 auto 12px; }
+.fw-arrow { display: grid; place-items: center; color: var(--terra); }
+.fw-arrow svg { width: 34px; height: 34px; }
+.fw-guards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 34px; padding-top: 26px; border-top: 1px solid var(--line); }
+.fw-guards h4 { font-family: var(--serif); font-size: 1.02rem; margin: 0 0 4px; color: var(--ink); }
+.fw-guards p { margin: 0; color: var(--ink-2); font-size: .9rem; }
+@media (max-width: 900px) {
+  .fw { grid-template-columns: 1fr; gap: 6px; }
+  .fw-arrow svg { transform: rotate(90deg); width: 28px; height: 28px; }
+  .fw-guards { grid-template-columns: 1fr; }
+}
 
 /* loop */
 .loop-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
@@ -263,6 +286,7 @@ footer a { color: var(--ink-2); }
     </a>
     <ul>
       <li><a href="#opportunity">Opportunity</a></li>
+      <li><a href="#framework">Framework</a></li>
       <li><a href="#how">How it works</a></li>
       <li><a href="#different">Why different</a></li>
       <li><a href="#scenarios">Scenarios</a></li>
@@ -282,7 +306,7 @@ footer a { color: var(--ink-2); }
     <div>
       <p class="eyebrow">A human-driven framework for therapy</p>
       <h1>Therapy that <em>travels</em> with you.</h1>
-      <p class="lede">Beyond the Room helps therapists extend care into their clients' everyday lives, with tools they choose and shape for each person, in their own voice, on devices the client controls. AI supports the therapist. It never replaces them.</p>
+      <p class="lede">Beyond the Room helps therapists extend care into their clients' everyday lives, with tools they use, adapt, or build for each person, in their own voice, on devices the client controls, and can share with other therapists. AI supports the therapist. It never replaces them.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#partner">Partner with us</a>
         <a class="btn btn-ghost" href="https://wooheekwak.me/#tools">Try the live tools ↗</a>
@@ -378,6 +402,7 @@ footer a { color: var(--ink-2); }
         <thead><tr><th scope="col"></th><th scope="col">AI companion apps</th><th scope="col">Practice-platform homework</th><th scope="col" class="us">Beyond the Room</th></tr></thead>
         <tbody>
           <tr><th scope="row">Who leads</th><td>The AI, often with no therapist involved</td><td>The therapist, picking from a library</td><td class="us"><b>The therapist</b>, designing for each client</td></tr>
+          <tr><th scope="row">Who makes the tools</th><td>The vendor</td><td>The vendor's template library</td><td class="us">Any therapist: <b>use, adapt, or build</b>, then share with peers</td></tr>
           <tr><th scope="row">Personalization</th><td>Generic, learned from the conversation</td><td>Templated worksheets and forms</td><td class="us">Curated tools in the therapist's words, culture, and <b>voice</b></td></tr>
           <tr><th scope="row">Where data lives</th><td>Vendor cloud</td><td>Vendor cloud</td><td class="us"><b>On the client's device</b>; shared only by choice</td></tr>
           <tr><th scope="row">Client experience</th><td>Open-ended chat</td><td>Forms and journaling</td><td class="us">Visual, guided, skill-building practice</td></tr>
@@ -404,6 +429,41 @@ footer a { color: var(--ink-2); }
     </div>
   </div>
 </section>
+
+<!-- FRAMEWORK -->
+<section class="block" id="framework">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">The framework</p>
+      <h2>Use it, adapt it, or <em>build</em> your own.</h2>
+      <p class="lede">Beyond the Room is not one-size-fits-all. It's a flexible framework: a therapist can start from an existing tool, make it their own, or create something new. Then they pair it with their clients, and if they choose, share it with other therapists.</p>
+    </div>
+    <div class="fw">
+      <div class="fw-col">
+        <div class="fw-card"><p class="k">Start</p><h3>Use <span class="live">Live today</span></h3><p>Pick a ready-made tool grounded in an established approach, like CBT, ACT, or family systems work.</p></div>
+        <div class="fw-card"><p class="k">Customize</p><h3>Adapt <span class="future">Next</span></h3><p>Change the wording, examples, steps, and cultural framing. Add guidance in your own voice.</p></div>
+        <div class="fw-card"><p class="k">Create</p><h3>Build <span class="future">Later</span></h3><p>Make a new tool from shared building blocks: prompts, visuals, practices, and a session summary.</p></div>
+      </div>
+      <div class="fw-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="fw-core">
+        <svg class="wave" viewBox="0 0 34 20" aria-hidden="true"><path d="M2 10 C 6 2, 10 18, 13 9 C 15 3, 8 4, 11 12 C 13 17, 17 10, 19 10 C 23 10, 25 6, 32 10" fill="none" stroke="#5FC4B8" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <h3>Your tool</h3>
+        <p>Carries your name, your approach, and your voice. A tool is a template, so it never contains client data.</p>
+      </div>
+      <div class="fw-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="fw-col">
+        <div class="fw-card"><p class="k">For your clients</p><h3>Pair <span class="live">Live today</span></h3><p>Send it to a specific client. Their practice stays on their device, and they choose what to bring back to session.</p></div>
+        <div class="fw-card"><p class="k">For your peers</p><h3>Share <span class="future">Later</span></h3><p>Publish it to a therapist library so colleagues can use it as is or adapt it for their own clients, with credit to you.</p></div>
+      </div>
+    </div>
+    <div class="fw-guards">
+      <div><h4>Credit and lineage</h4><p>Every shared tool shows who made it, what it's adapted from, and the approach behind it.</p></div>
+      <div><h4>Reviewed by therapists</h4><p>Tools are reviewed by clinicians before they're listed for others. Each therapist still decides what fits their client.</p></div>
+      <div><h4>No client data travels</h4><p>Sharing a tool shares the template only. A client's answers never leave their device unless they choose to share them.</p></div>
+    </div>
+  </div>
+</section>
+
 
 <!-- HOW IT WORKS -->
 <section class="block dark" id="how">
@@ -577,9 +637,9 @@ footer a { color: var(--ink-2); }
     </div>
     <div class="road">
       <div class="now"><span class="dot"></span><p class="ph">Now · live</p><h3>Free, private tools</h3><p>Visual tools and worksheets. Clients choose to email or print a summary for their therapist.</p></div>
-      <div><span class="dot"></span><p class="ph">Next</p><h3>The loop</h3><p>Short repeat practices, guidance in the therapist's own voice, and progress kept on the client's device.</p></div>
-      <div><span class="dot"></span><p class="ph">Later</p><h3>Paired co-pilot</h3><p>With consent and clinical oversight: secure device pairing and an on-device co-pilot for session planning.</p></div>
-      <div><span class="dot"></span><p class="ph">Horizon</p><h3>An open framework</h3><p>A playbook any therapist can use to build and curate their own tools and agents. Not a catalog.</p></div>
+      <div><span class="dot"></span><p class="ph">Next</p><h3>Make it yours</h3><p>Therapists adapt existing tools in their own words and voice, pair them with clients, and progress stays on the client's device.</p></div>
+      <div><span class="dot"></span><p class="ph">Later</p><h3>Build and share</h3><p>A builder for new tools and a therapist library with credit and peer review, so good tools travel between practices.</p></div>
+      <div><span class="dot"></span><p class="ph">Horizon</p><h3>Paired co-pilot</h3><p>With consent and clinical oversight: secure device pairing and an on-device co-pilot for session planning.</p></div>
     </div>
   </div>
 </section>
@@ -605,7 +665,7 @@ footer a { color: var(--ink-2); }
     <h2>Help take therapy <em style="color:#5FC4B8;font-style:normal">beyond the room</em>.</h2>
     <p class="lede">The tools are live and the framework is taking shape. The next stage is a clinical pilot and a paired, on-device prototype. I'm looking for partners who share the conviction that technology should strengthen the therapeutic relationship, not replace it.</p>
     <div class="partners">
-      <div class="ptn"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-5h6v5"/><path d="M12 8v4M10 10h4"/></svg></span><h3>Clinicians &amp; practices</h3><p>Try the tools with clients, shape new ones, and join an early pilot of the full loop.</p></div>
+      <div class="ptn"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-5h6v5"/><path d="M12 8v4M10 10h4"/></svg></span><h3>Clinicians &amp; practices</h3><p>Try the tools with clients, adapt them or build your own, and join an early pilot of the full loop.</p></div>
       <div class="ptn"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v5M15 3v5"/><path d="M6 8h12v3a6 6 0 0 1-12 0V8Z"/><path d="M12 17v4"/></svg></span><h3>Platform partners</h3><p>Practice-management, EHR, and telehealth teams interested in bringing therapist-led, privacy-first tools to their clinicians.</p></div>
       <div class="ptn"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3>Investors &amp; advisors</h3><p>Help move from a proven set of tools to a secure, paired, on-device product, with clinical and regulatory rigor.</p></div>
     </div>
