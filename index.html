@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beyond the Room · Therapy that travels with you</title>
+<meta name="description" content="Beyond the Room is a human-driven framework that helps therapists extend care into clients' everyday lives: tools they curate, in their own voice, on devices the client controls.">
+<meta property="og:title" content="Beyond the Room · Therapy that travels with you">
+<meta property="og:description" content="A human-driven framework that helps therapists extend care into clients' everyday lives, with tools they curate, in their own voice, on devices the client controls.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B1626">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- Privacy: this site collects nothing. No analytics, cookies, tracking, forms, or third-party requests. Fonts are self-hosted. -->
+<link rel="preload" href="fonts/bricolage-grotesque-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Bricolage Grotesque"; src: url("fonts/bricolage-grotesque-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Bricolage Grotesque"; src: url("fonts/bricolage-grotesque-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "DM Sans"; src: url("fonts/dm-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "DM Sans"; src: url("fonts/dm-sans-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "DM Sans"; src: url("fonts/dm-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+:root {
+  --cream: #FFFFFF; --sand: #F3F5F8; --ink: #0F1B2D; --ink-2: #3B4656; --muted: #657083; --line: #DFE3E9;
+  --terra: #0E7C72; --terra-ink: #0B6158; --terra-wash: #E3F2F0; --sage: #0E7C72; --sage-ink: #0B6158; --sage-wash: #E3F2F0;
+  --night: #0B1626; --serif: "Bricolage Grotesque", "DM Sans", -apple-system, sans-serif; --sans: "DM Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --r: 12px; --shadow: none;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+img, svg { max-width: 100%; height: auto; display: block; }
+a { color: var(--terra-ink); }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(18px, 5vw, 44px); }
+.skip { position: absolute; left: -9999px; } .skip:focus { left: 12px; top: 8px; background: var(--ink); color: #fff; padding: 8px 12px; z-index: 99; }
+section { scroll-margin-top: 84px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: .9rem; font-weight: 600; letter-spacing: 0; color: var(--sage-ink); margin: 0 0 14px; }
+.eyebrow::before { content: ""; width: 18px; height: 3px; border-radius: 2px; background: currentColor; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.1; letter-spacing: -.02em; margin: 0; }
+h2 { font-size: clamp(1.9rem, 3.8vw, 2.7rem); margin-bottom: 14px; }
+h2 em, h1 em { font-style: normal; color: inherit; }
+.lede { color: var(--ink-2); font-size: clamp(1.02rem, 1.6vw, 1.15rem); max-width: 62ch; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: inherit; font-weight: 500; font-size: .98rem; padding: 13px 22px; border-radius: 8px; text-decoration: none; border: 1.5px solid transparent; transition: transform .2s, background .2s, border-color .2s; }
+.btn-primary { background: var(--ink); color: #fff; } .btn-primary:hover { transform: translateY(-1px); background: #1B2C45; }
+.btn-ghost { border-color: var(--line); color: var(--ink); background: #fff; } .btn-ghost:hover { border-color: var(--ink); }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid transparent; }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 18px; height: 68px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-family: var(--serif); font-weight: 700; letter-spacing: -.02em; font-size: 1.2rem; white-space: nowrap; }
+.brand svg { width: 34px; height: 20px; }
+.nav ul { display: flex; gap: clamp(14px, 2.4vw, 28px); list-style: none; margin: 0; padding: 0; align-items: center; }
+.nav ul a { color: var(--ink-2); text-decoration: none; font-size: .9rem; font-weight: 500; white-space: nowrap; }
+.nav ul a:hover { color: var(--ink); }
+.nav .nav-cta { background: var(--ink); color: #fff !important; padding: 9px 16px; border-radius: 8px; }
+@media (max-width: 860px) {
+  .nav .wrap { flex-wrap: wrap; height: auto; padding-top: 12px; padding-bottom: 10px; gap: 8px; }
+  .nav ul { width: 100%; overflow-x: auto; scrollbar-width: none; gap: 6px; padding-bottom: 2px; }
+  .nav ul::-webkit-scrollbar { display: none; }
+  .nav ul li { flex: none; }
+  .nav ul a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; font-size: .82rem; }
+  .nav .nav-cta { border-color: var(--terra); padding: 0 16px; }
+  section { scroll-margin-top: 116px; }
+}
+
+/* hero */
+.hero { padding: clamp(48px, 8vw, 96px) 0 clamp(36px, 6vw, 64px); position: relative; overflow: hidden; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+@media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+.hero h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 700; letter-spacing: -.035em; line-height: 1.02; margin-bottom: 22px; }
+.hero h1 em { color: var(--sage); }
+.hero .lede { margin: 0 0 28px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-note { font-size: .86rem; color: var(--muted); margin: 18px 0 0; }
+.hero-art { background: #F3F5F8; border: 1px solid var(--line); border-radius: 12px; padding: 22px 18px 18px; box-shadow: var(--shadow); }
+.hero-art .cap { display: flex; justify-content: space-between; font-size: .8rem; color: var(--muted); margin: 4px 6px 0; }
+.hero-art .cap span:last-child { color: var(--sage-ink); }
+.draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 2.6s ease forwards; }
+.draw.d2 { animation-delay: 1.5s; animation-duration: 1.8s; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.fade { opacity: 0; animation: fade .8s ease forwards; }
+@keyframes fade { to { opacity: 1; } }
+
+/* blocks */
+.block { padding: clamp(56px, 8vw, 104px) 0; }
+.block.alt { background: var(--sand); }
+.block.dark { background: var(--night); color: #E6EBF2; }
+.block.dark h2 { color: #fff; } .block.dark .lede { color: #AFBACA; } .block.dark .eyebrow { color: #5FC4B8; }
+.head { max-width: 760px; margin-bottom: clamp(28px, 4vw, 44px); }
+
+/* the gap */
+.gap-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+@media (max-width: 860px) { .gap-grid { grid-template-columns: 1fr; } }
+.week { display: grid; grid-template-columns: repeat(24, 1fr); gap: 4px; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 18px; box-shadow: var(--shadow); }
+.week i { aspect-ratio: 1; border-radius: 3px; background: #E3E7ED; }
+.week i.on { background: var(--terra); box-shadow: 0 0 0 3px rgba(14,124,114,.22); }
+.week-legend { display: flex; justify-content: space-between; gap: 12px; font-size: .84rem; color: var(--muted); margin: 10px 4px 0; }
+.week-legend b { color: var(--terra-ink); font-weight: 600; }
+.pains { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.pains li { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+.pains b { display: block; font-weight: 600; margin-bottom: 2px; }
+.pains span { color: var(--ink-2); font-size: .95rem; }
+
+/* principles */
+.cards4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 960px) { .cards4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .cards4 { grid-template-columns: 1fr; } }
+.pcard { background: #fff; border: 1px solid var(--line); border-radius: var(--r); padding: 22px; box-shadow: var(--shadow); }
+.pcard .ic { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: var(--terra-wash); color: var(--terra-ink); margin-bottom: 14px; }
+.pcard:nth-child(even) .ic { background: var(--sage-wash); color: var(--sage-ink); }
+.pcard .ic svg { width: 22px; height: 22px; }
+.pcard h3 { font-size: 1.22rem; margin-bottom: 6px; }
+.pcard p { margin: 0; color: var(--ink-2); font-size: .95rem; }
+
+/* loop */
+.loop-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+@media (max-width: 860px) { .loop-grid { grid-template-columns: 1fr; } }
+.loop-svg { max-width: 460px; margin: 0 auto; }
+.steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: grid; gap: 12px; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start; }
+.steps li::before { content: counter(s); width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(95,196,184,.16); color: #7FD3C8; font-weight: 600; font-size: .9rem; }
+.steps b { color: #fff; font-weight: 600; display: block; }
+.steps span { color: #AFBACA; font-size: .95rem; }
+
+/* scenarios */
+.scen { display: grid; gap: 22px; }
+.sc { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: clamp(20px, 3vw, 30px); box-shadow: var(--shadow); }
+.sc-top { display: flex; gap: 14px; align-items: center; margin-bottom: 16px; }
+.sc-av { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; font-size: 24px; flex: none; }
+.sc h3 { font-size: 1.4rem; }
+.sc .who { margin: 2px 0 0; font-size: .9rem; color: var(--muted); }
+.tl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; position: relative; }
+@media (max-width: 760px) { .tl { grid-template-columns: 1fr; } }
+.tl > div { background: var(--cream); border: 1px solid var(--line); border-radius: 12px; padding: 16px; position: relative; }
+.tl .when { font-size: .74rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--sage-ink); margin: 0 0 6px; display: flex; align-items: center; gap: 8px; }
+.tl .when i { width: 8px; height: 8px; border-radius: 50%; background: var(--sage); display: inline-block; }
+.tl > div:nth-child(2) .when { color: var(--terra-ink); } .tl > div:nth-child(2) .when i { background: var(--terra); }
+.tl p { margin: 0; font-size: .95rem; color: var(--ink-2); }
+.tool-chip { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; font-size: .84rem; font-weight: 500; text-decoration: none; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 5px 10px; }
+.tool-chip:hover { border-color: var(--terra); }
+.sc-note { font-size: .84rem; color: var(--muted); margin: 14px 0 0; font-style: italic; }
+.future { display: inline-block; font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #3D4FB0; background: #E8ECFB; border-radius: 999px; padding: 2px 9px; margin-left: 6px; vertical-align: 2px; }
+
+/* tools */
+.tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 960px) { .tools { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .tools { grid-template-columns: 1fr; } }
+.tcard { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: var(--r); padding: 22px; text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform .2s, border-color .2s; }
+.tcard:hover { transform: translateY(-3px); border-color: var(--terra-wash); }
+.tcard .em { font-size: 28px; margin-bottom: 10px; }
+.tcard .tag { flex: none; font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--sage-ink); margin: 0 0 4px; }
+.tcard h3 { font-size: 1.25rem; margin-bottom: 6px; }
+.tcard p { margin: 0 0 14px; color: var(--ink-2); font-size: .94rem; flex: 1; }
+.tcard .go { font-size: .9rem; font-weight: 500; color: var(--terra-ink); }
+.tools-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; margin-top: 22px; }
+.tools-foot p { margin: 0; color: var(--ink-2); font-size: .95rem; }
+
+/* architecture */
+.arch { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 900px) { .arch { grid-template-columns: 1fr; } }
+.arch-card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 22px 20px 18px; box-shadow: var(--shadow); }
+.arch-card h3 { font-size: 1.3rem; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.arch-card > p { margin: 0 0 12px; color: var(--ink-2); font-size: .94rem; }
+.arch-card ul { margin: 12px 0 0; padding-left: 18px; color: var(--ink-2); font-size: .93rem; }
+.arch-card li { margin-bottom: 4px; }
+.live { display: inline-block; font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--sage-ink); background: var(--sage-wash); border-radius: 999px; padding: 2px 9px; }
+
+/* roadmap */
+.road { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; position: relative; }
+@media (max-width: 860px) { .road { grid-template-columns: 1fr; gap: 14px; } }
+.road > div { padding: 22px 20px 0 0; position: relative; }
+.road > div::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--line); }
+.road > div.now::before { background: var(--terra); }
+.road .dot { position: absolute; top: -6px; left: 0; width: 15px; height: 15px; border-radius: 50%; background: #fff; border: 3px solid var(--line); }
+.road .now .dot { border-color: var(--terra); background: var(--terra); box-shadow: 0 0 0 6px rgba(14,124,114,.2); }
+.road .ph { font-size: .74rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 6px 0 4px; }
+.road .now .ph { color: var(--terra-ink); }
+.road h3 { font-size: 1.2rem; margin-bottom: 6px; }
+.road p { margin: 0; color: var(--ink-2); font-size: .93rem; padding-right: 8px; }
+@media (max-width: 860px) { .road > div { padding: 18px 0 0 0; } }
+
+/* founder + cta */
+.founder { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: clamp(20px, 3vw, 32px); box-shadow: var(--shadow); }
+@media (max-width: 640px) { .founder { grid-template-columns: 1fr; } }
+.founder .mono { width: 76px; height: 76px; border-radius: 12px; font-weight: 700; background: var(--terra-wash); display: grid; place-items: center; font-family: var(--serif); font-size: 1.6rem; color: var(--terra-ink); }
+.founder h3 { font-size: 1.35rem; margin-bottom: 4px; }
+.founder p { margin: 0 0 10px; color: var(--ink-2); }
+.cta { text-align: center; }
+.cta .lede { margin: 0 auto 26px; }
+.cta .hero-actions { justify-content: center; }
+footer { border-top: 1px solid var(--line); padding: 30px 0 40px; font-size: .86rem; color: var(--muted); }
+footer p { margin: 0 0 8px; max-width: 80ch; }
+footer a { color: var(--ink-2); }
+
+/* stats */
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+@media (max-width: 860px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.stat { padding: 26px 22px 22px; border-left: 1px solid var(--line); }
+.stat:first-child { border-left: 0; }
+@media (max-width: 860px) { .stat:nth-child(3) { border-left: 0; } .stat:nth-child(n+3) { border-top: 1px solid var(--line); } }
+.stat .num { font-family: var(--serif); font-weight: 700; letter-spacing: -.03em; font-size: clamp(2.1rem, 4vw, 3rem); line-height: 1.05; color: var(--ink); margin: 0 0 8px; }
+.stat .num small { font-size: .5em; color: var(--muted); }
+.stat p { margin: 0; color: var(--ink-2); font-size: .93rem; }
+.stat .src { display: inline-block; margin-top: 8px; font-size: .76rem; color: var(--muted); }
+.opp-foot { margin: 22px 0 0; color: var(--ink-2); max-width: 70ch; }
+/* why now */
+.now3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 860px) { .now3 { grid-template-columns: 1fr; } }
+.nowc { border-top: 2px solid var(--terra); padding: 18px 4px 0; }
+.nowc:nth-child(2) { border-color: var(--sage); } .nowc:nth-child(3) { border-color: var(--ink); }
+.nowc .k { font-size: .74rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+.nowc h3 { font-size: 1.28rem; margin-bottom: 8px; }
+.nowc p { margin: 0; color: var(--ink-2); font-size: .95rem; }
+.nowc .src { display: inline-block; margin-top: 8px; font-size: .76rem; color: var(--muted); }
+/* comparison */
+.cmp-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: var(--shadow); }
+.cmp { width: 100%; border-collapse: collapse; min-width: 720px; font-size: .94rem; }
+.cmp th, .cmp td { text-align: left; padding: 16px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.cmp tr:last-child td { border-bottom: 0; }
+.cmp thead th { font-size: .76rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: var(--cream); }
+.cmp tbody th { font-weight: 600; color: var(--ink); width: 18%; }
+.cmp td { color: var(--ink-2); }
+.cmp .us { background: #F2F9F8; color: var(--ink); }
+.cmp thead .us { color: #fff; background: var(--sage-ink); }
+.cmp .us b { color: var(--sage-ink); }
+/* proof */
+.proof { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 860px) { .proof { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.pf { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+.pf .num { font-family: var(--serif); font-weight: 700; letter-spacing: -.03em; font-size: 2.1rem; line-height: 1; margin: 0 0 6px; color: var(--sage-ink); }
+.pf p { margin: 0; font-size: .92rem; color: var(--ink-2); }
+/* partner */
+.partners { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 0 0 30px; text-align: left; }
+@media (max-width: 860px) { .partners { grid-template-columns: 1fr; } }
+.ptn { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 22px; }
+.ptn .ic { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: rgba(95,196,184,.14); color: #7FD3C8; margin-bottom: 12px; }
+.ptn .ic svg { width: 20px; height: 20px; }
+.ptn h3 { color: #fff; font-size: 1.2rem; margin-bottom: 6px; }
+.ptn p { margin: 0; color: #AFBACA; font-size: .94rem; }
+.contact-line { margin: 16px 0 0; color: #AFBACA; font-size: .9rem; }
+.contact-line a { color: #7FD3C8; }
+/* icon badges replacing emoji */
+.ib { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; flex: none; }
+.ib svg { width: 22px; height: 22px; }
+.ib.t { background: var(--terra-wash); color: var(--terra-ink); } .ib.s { background: var(--sage-wash); color: var(--sage-ink); } .ib.i { background: #E9EDF3; color: var(--ink); }
+.tcard .ib { margin-bottom: 14px; }
+.tool-chip svg { width: 14px; height: 14px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .draw { animation: none; stroke-dashoffset: 0; } .fade { animation: none; opacity: 1; }
+  .moving { display: none; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Beyond the Room, home">
+      <svg viewBox="0 0 34 20" aria-hidden="true"><path d="M2 10 C 6 2, 10 18, 13 9 C 15 3, 8 4, 11 12 C 13 17, 17 10, 19 10 C 23 10, 25 6, 32 10" fill="none" stroke="#0E7C72" stroke-width="2.2" stroke-linecap="round"/></svg>
+      Beyond the Room
+    </a>
+    <ul>
+      <li><a href="#opportunity">Opportunity</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#different">Why different</a></li>
+      <li><a href="#scenarios">Scenarios</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#architecture">Design</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a class="nav-cta" href="#partner">Partner with us</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">A human-driven framework for therapy</p>
+      <h1>Therapy that <em>travels</em> with you.</h1>
+      <p class="lede">Beyond the Room helps therapists extend care into their clients' everyday lives, with tools they choose and shape for each person, in their own voice, on devices the client controls. AI supports the therapist. It never replaces them.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#partner">Partner with us</a>
+        <a class="btn btn-ghost" href="https://wooheekwak.me/#tools">Try the live tools ↗</a>
+      </div>
+      <p class="hero-note">13 interactive tools live today · Privacy-first: no client data collected · Built alongside clinical practice</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 540 250">
+        <defs><radialGradient id="glow"><stop offset="0" stop-color="#9FD8D0" stop-opacity=".9"/><stop offset="1" stop-color="#9FD8D0" stop-opacity="0"/></radialGradient></defs>
+        <!-- the room -->
+        <rect x="18" y="52" width="150" height="150" rx="20" fill="#fff" stroke="#DFE3E9" stroke-width="1.5"/>
+        <text x="93" y="44" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="12" letter-spacing="2" fill="#657083">THE ROOM</text>
+        <circle cx="72" cy="128" r="16" fill="#E3F2F0" stroke="#0E7C72" stroke-width="1.5"/><circle cx="116" cy="128" r="16" fill="#E9EDF3" stroke="#0F1B2D" stroke-width="1.5"/>
+        <text x="72" y="160" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="#657083">therapist</text><text x="116" y="160" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="#657083">client</text>
+        <!-- thread: tangled inside, loosening out into the week -->
+        <path class="draw" pathLength="1" d="M116 128 C 130 100, 150 150, 140 120 C 132 96, 168 108, 158 136 C 150 158, 188 148, 196 126" fill="none" stroke="#0F1B2D" stroke-width="2.6" stroke-linecap="round"/>
+        <path class="draw d2" pathLength="1" d="M196 126 C 236 100, 262 152, 302 126 S 372 100, 412 126 S 482 150, 522 122" fill="none" stroke="#0E7C72" stroke-width="2.6" stroke-linecap="round"/>
+        <!-- moments in the week -->
+        <g class="fade" style="animation-delay:2.2s" font-family="DM Sans, sans-serif" font-size="11" fill="#3B4656">
+          <circle cx="262" cy="134" r="22" fill="url(#glow)"/><circle cx="262" cy="134" r="7" fill="#fff" stroke="#0E7C72" stroke-width="2"/><text x="262" y="174" text-anchor="middle">Tue, 11pm</text><text x="262" y="188" text-anchor="middle" fill="#657083">rides the wave</text>
+          <circle cx="372" cy="112" r="22" fill="url(#glow)"/><circle cx="372" cy="112" r="7" fill="#fff" stroke="#0E7C72" stroke-width="2"/><text x="372" y="80" text-anchor="middle">Thu, lunch</text><text x="372" y="94" text-anchor="middle" fill="#657083">untangles a thought</text>
+          <circle cx="482" cy="140" r="22" fill="url(#glow)"/><circle cx="482" cy="140" r="7" fill="#fff" stroke="#0E7C72" stroke-width="2"/><text x="482" y="178" text-anchor="middle">Sun</text><text x="482" y="192" text-anchor="middle" fill="#657083">shares a summary</text>
+        </g>
+      </svg>
+      <div class="cap"><span>One hour in the room</span><span>The rest of the week, supported</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- THE GAP -->
+<section class="block alt" id="why">
+  <div class="wrap gap-grid">
+    <div>
+      <p class="eyebrow">Why</p>
+      <h2>1 hour in the room. <em>167</em> beyond it.</h2>
+      <p class="lede">Change happens in the rest of the week, yet most therapy still lives inside one hour. People leave sessions with real insight and little support for turning it into practice.</p>
+      <ul class="pains">
+        <li><b>Insight fades by midweek.</b><span>Between-session practice is linked to better outcomes, but it's often a worksheet and a hope.</span></li>
+        <li><b>Clients learn self-help alone.</b><span>Books, apps, and chatbots fill the gap, without a clinician to choose what fits.</span></li>
+        <li><b>Therapists carry it all in their heads.</b><span>History, plans, and patterns live in notes and memory, and preparation competes with presence.</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="week" role="img" aria-label="168 hours in a week, with one hour highlighted for the therapy session" id="week"></div>
+      <div class="week-legend"><span><b>■</b> 1 hour in session</span><span>167 hours of everyday life</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITY -->
+<section class="block" id="opportunity">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">The opportunity</p>
+      <h2>Demand is rising. The therapist's hour is <em>fixed</em>.</h2>
+      <p class="lede">Care can't scale by adding hours. It scales by making every hour count, and by supporting clients in the time between.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><p class="num">61.5M</p><p>U.S. adults experienced mental illness in 2024, more than 1 in 5.</p><a class="src" href="https://www.nami.org/mental-health-by-the-numbers/">NAMI ↗</a></div>
+      <div class="stat"><p class="num">52<small>%</small></p><p>of U.S. adults with mental illness received treatment in 2024.</p><a class="src" href="https://www.nami.org/mental-health-by-the-numbers/">NAMI ↗</a></div>
+      <div class="stat"><p class="num">120M+</p><p>people live in a designated Mental Health Professional Shortage Area.</p><a class="src" href="https://www.nami.org/mental-health-by-the-numbers/">NAMI ↗</a></div>
+      <div class="stat"><p class="num">483K</p><p>U.S. mental health and related counselors in 2024, projected to grow 17% by 2034.</p><a class="src" href="https://www.bls.gov/ooh/community-and-social-service/substance-abuse-behavioral-disorder-and-mental-health-counselors.htm">BLS ↗</a></div>
+    </div>
+    <p class="opp-foot">Every one of those counselors works between sessions with paper worksheets, generic apps, or nothing at all. Beyond the Room gives them a way to extend their own care, on their terms.</p>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section class="block alt" id="why-now">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Why now</p>
+      <h2>Three shifts make this <em>possible</em> now.</h2>
+    </div>
+    <div class="now3">
+      <div class="nowc"><p class="k">Technology</p><h3>AI runs on the device</h3><p>Small language and voice models now summarize, guide, and speak on everyday phones and laptops, so private, local experiences are practical.</p></div>
+      <div class="nowc"><p class="k">Behavior</p><h3>Clients already use AI</h3><p>More than three-quarters of U.S. psychologists say patients now discuss AI in therapy. Clients are looking for support between sessions, with or without their therapist.</p><a class="src" href="https://www.apa.org/news/press/releases/2026/06/patients-chatbots-mental-health">APA, 2026 ↗</a></div>
+      <div class="nowc"><p class="k">Policy</p><h3>AI may assist; humans treat</h3><p>New state laws bar AI from acting as a therapist while allowing supportive roles under a licensed professional. A therapist-led model fits where regulation is heading.</p><a class="src" href="https://acuity.news/blog/state-ai-mental-health-laws-compliance-2026/">State AI laws ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENT -->
+<section class="block" id="different">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Why different</p>
+      <h2>Built around the therapist, <em>not</em> instead of them.</h2>
+      <p class="lede">Most between-session products either replace the clinician with a chatbot or hand them a template library. Beyond the Room takes a third path.</p>
+    </div>
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <thead><tr><th scope="col"></th><th scope="col">AI companion apps</th><th scope="col">Practice-platform homework</th><th scope="col" class="us">Beyond the Room</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Who leads</th><td>The AI, often with no therapist involved</td><td>The therapist, picking from a library</td><td class="us"><b>The therapist</b>, designing for each client</td></tr>
+          <tr><th scope="row">Personalization</th><td>Generic, learned from the conversation</td><td>Templated worksheets and forms</td><td class="us">Curated tools in the therapist's words, culture, and <b>voice</b></td></tr>
+          <tr><th scope="row">Where data lives</th><td>Vendor cloud</td><td>Vendor cloud</td><td class="us"><b>On the client's device</b>; shared only by choice</td></tr>
+          <tr><th scope="row">Client experience</th><td>Open-ended chat</td><td>Forms and journaling</td><td class="us">Visual, guided, skill-building practice</td></tr>
+          <tr><th scope="row">Role of AI</th><td>Acts as the helper</td><td>Notes and admin</td><td class="us">Supports the therapist's planning; <b>never treats</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="block alt">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Principles</p>
+      <h2>Human-driven, <em>not</em> AI-driven.</h2>
+      <p class="lede">Not one big platform of templates. A framework each therapist makes their own, because personalization and clinical judgment are what keep clients safe.</p>
+    </div>
+    <div class="cards4">
+      <div class="pcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><circle cx="16.5" cy="9.5" r="2.5"/><path d="M3.5 19c.8-3.2 3-5 5.5-5s4.7 1.8 5.5 5"/><path d="M14.5 15.2c.6-.5 1.3-.7 2-.7 2 0 3.5 1.4 4 4.5"/></svg></div><h3>The relationship leads</h3><p>Tools and AI give the therapist more presence. They never stand in for the person in the room.</p></div>
+      <div class="pcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16l-1 4z"/><path d="M13.5 6.5l3 3"/></svg></div><h3>Curated, not templated</h3><p>Therapists choose, adapt, and sequence tools for each client, in their own words and cultural framing.</p></div>
+      <div class="pcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z"/></svg></div><h3>Teach, don't just treat</h3><p>Every tool explains the why, so clients build skills and agency they keep long after therapy ends.</p></div>
+      <div class="pcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg></div><h3>Private by design</h3><p>Nothing leaves the client's device unless they choose to share it, and they always see what is shared.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="block dark" id="how">
+  <div class="wrap loop-grid">
+    <div>
+      <svg class="loop-svg" viewBox="0 0 400 400" role="img" aria-label="A loop: session, practice, reflect, share, plan, and back to the session" font-family="DM Sans, sans-serif">
+        <circle cx="200" cy="200" r="138" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="22"/>
+        <circle cx="200" cy="200" r="138" fill="none" stroke="#5FC4B8" stroke-width="1.6" stroke-dasharray="3 7" opacity=".7"/>
+        <path id="loopPath" d="M200 62 A138 138 0 1 1 199.9 62" fill="none" stroke="none"/>
+        <circle class="moving" r="6" fill="#5FC4B8"><animateMotion dur="9s" repeatCount="indefinite"><mpath href="#loopPath"/></animateMotion></circle>
+        <g>
+          <circle cx="200" cy="62" r="38" fill="#14243A" stroke="#5FC4B8" stroke-width="1.5"/><text x="200" y="60" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-size="19" fill="#7FD3C8">1</text><text x="200" y="80" text-anchor="middle" font-size="11.5" fill="#fff">Session</text>
+          <circle cx="331" cy="157" r="38" fill="#14243A" stroke="#0E7C72" stroke-width="1.5"/><text x="331" y="155" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-size="19" fill="#7FD3C8">2</text><text x="331" y="175" text-anchor="middle" font-size="11.5" fill="#fff">Practice</text>
+          <circle cx="281" cy="312" r="38" fill="#14243A" stroke="#0E7C72" stroke-width="1.5"/><text x="281" y="310" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-size="19" fill="#7FD3C8">3</text><text x="281" y="330" text-anchor="middle" font-size="11.5" fill="#fff">Reflect</text>
+          <circle cx="119" cy="312" r="38" fill="#14243A" stroke="#0E7C72" stroke-width="1.5"/><text x="119" y="310" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-size="19" fill="#7FD3C8">4</text><text x="119" y="330" text-anchor="middle" font-size="11.5" fill="#fff">Share</text>
+          <circle cx="69" cy="157" r="38" fill="#14243A" stroke="#5FC4B8" stroke-width="1.5"/><text x="69" y="155" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-size="19" fill="#7FD3C8">5</text><text x="69" y="175" text-anchor="middle" font-size="11.5" fill="#fff">Plan</text>
+        </g>
+        <text x="200" y="196" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="15" fill="#E6EBF2">Each session</text>
+        <text x="200" y="216" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="15" fill="#E6EBF2">builds on the last</text>
+      </svg>
+    </div>
+    <div>
+      <p class="eyebrow">How it works</p>
+      <h2>One loop, carried by the therapist.</h2>
+      <p class="lede" style="margin-bottom:22px">The session stays the heart of the work. Beyond the Room adds the parts that usually go missing.</p>
+      <ol class="steps">
+        <li><div><b>Session</b><span>Therapist and client choose a practice that fits this client, this week.</span></div></li>
+        <li><div><b>Practice</b><span>Short, visual, guided tools in the client's pocket, in the therapist's voice.</span></div></li>
+        <li><div><b>Reflect</b><span>The client notices patterns and sees their own progress, saved only on their device.</span></div></li>
+        <li><div><b>Share, by choice</b><span>The client decides what to bring back: a summary, a map, a few ratings.</span></div></li>
+        <li><div><b>Plan</b><span>The therapist arrives prepared, and the next session starts where the week left off.</span></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- SCENARIOS -->
+<section class="block" id="scenarios">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Scenarios</p>
+      <h2>What it looks like <em>in real life</em>.</h2>
+      <p class="lede">Three illustrative stories, two from the client's side and one from the therapist's. Names and details are invented.</p>
+    </div>
+    <div class="scen">
+      <article class="sc">
+        <div class="sc-top"><span class="ib s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15c2.5 0 2.5-3 5-3s2.5 3 5 3 2.5-3 5-3 2.5 3 3 3"/><path d="M3 19c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2"/><path d="M7 10c0-3 2.5-5 5.5-5 2 0 3.5 1 4.5 2.5"/></svg></span><div><h3>A wave of panic on a Tuesday night</h3><p class="who">Mina, 29, working on panic and the urge to escape</p></div></div>
+        <div class="tl">
+          <div><p class="when"><i></i>In session</p><p>Mina and her therapist practice riding an urge together. They agree on a plan: ride it whenever it shows up this week, and rate how high it gets.</p><a class="tool-chip" href="https://wooheekwak.me/tools/ride-the-wave.html">Ride the Wave ↗</a></div>
+          <div><p class="when"><i></i>During the week</p><p>Tuesday, 11pm, the panic rises to 8 out of 10. Instead of leaving, she opens the tool, breathes with the wave, and watches it crest and fall in about four minutes.</p></div>
+          <div><p class="when"><i></i>Next session</p><p>She brings her ratings: peaks dropped from 8 to 5 over the week. They celebrate the evidence and pick the next small step together.</p></div>
+        </div>
+      </article>
+      <article class="sc">
+        <div class="sc-top"><span class="ib t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-7"/><path d="M12 14c-4 0-6-2.5-6-5.5S8.5 3 12 3s6 2.5 6 5.5-2 5.5-6 5.5Z"/><path d="M8 21h8"/></svg></span><div><h3>The messages we carry from home</h3><p class="who">Daniel, 34, a bicultural high achiever who can't stop pushing</p></div></div>
+        <div class="tl">
+          <div><p class="when"><i></i>In session</p><p>Perfectionism keeps coming up. His therapist sends a family map to explore where the pressure began, adapted with Korean family terms.</p><a class="tool-chip" href="https://wooheekwak.me/tools/roots-and-messages.html">Roots &amp; Messages ↗</a></div>
+          <div><p class="when"><i></i>During the week</p><p>He maps Appa, Halmeoni, and the uncle who mentored him. He notices "Make us proud" and rewrites it: "I can be proud of myself, and rest."</p></div>
+          <div><p class="when"><i></i>Next session</p><p>He emails his summary the night before. The session starts from his map, then turns to one thought holding him back.</p><a class="tool-chip" href="https://wooheekwak.me/tools/untangle-the-pattern.html">Untangle the Pattern ↗</a></div>
+        </div>
+      </article>
+      <article class="sc">
+        <div class="sc-top"><span class="ib i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span><div><h3>The therapist's Monday morning</h3><p class="who">A therapist preparing for a day of sessions</p></div></div>
+        <div class="tl">
+          <div><p class="when"><i></i>Today</p><p>She reads the summaries three clients chose to share, notes patterns, and adapts the next tool for each, in her own words.</p><a class="tool-chip" href="https://wooheekwak.me/therapists/">For therapists ↗</a></div>
+          <div><p class="when"><i></i>Next <span class="future">Exploring</span></p><p>A co-pilot on her own device keeps each client's history and drafts a session plan from what clients shared, for her to review and change.</p></div>
+          <div><p class="when"><i></i>In the room</p><p>She walks in prepared, and spends the hour attuned to the person in front of her instead of catching up.</p></div>
+        </div>
+        <p class="sc-note">AI drafts; the therapist decides. It never diagnoses, assesses risk, or talks to clients on its own.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="block alt" id="tools">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Live today</p>
+      <h2>Tools you can try <em>right now</em>.</h2>
+      <p class="lede">The first Beyond the Room tools are free on wooheekwak.me. Grounded in psychotherapy, visual, and mostly tapping. Nothing is saved, tracked, or sent anywhere unless the person chooses to share.</p>
+    </div>
+    <div class="proof" style="margin-bottom:22px">
+      <div class="pf"><p class="num">13</p><p>Interactive tools live, across CBT, ACT, IFS-informed, ERP, and family systems work</p></div>
+      <div class="pf"><p class="num">3</p><p>Printable expressive arts worksheets, each with a facilitator guide</p></div>
+      <div class="pf"><p class="num">0</p><p>Pieces of client data collected. Everything stays on the device.</p></div>
+      <div class="pf"><p class="num">12</p><p>Tools with a session-ready summary clients can bring to their therapist</p></div>
+    </div>
+    <div class="tools">
+      <a class="tcard" href="https://wooheekwak.me/tools/ride-the-wave.html"><span class="ib s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15c2.5 0 2.5-3 5-3s2.5 3 5 3 2.5-3 5-3 2.5 3 3 3"/><path d="M3 19c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 3 2"/><path d="M7 10c0-3 2.5-5 5.5-5 2 0 3.5 1 4.5 2.5"/></svg></span><p class="tag">ERP &amp; ACT</p><h3>Ride the Wave</h3><p>Let an urge or panic rise and fall without acting on it, with a calming wave and a breath to follow.</p><span class="go">Try it ↗</span></a>
+      <a class="tcard" href="https://wooheekwak.me/tools/untangle-the-pattern.html"><span class="ib t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12c3-6 7 6 10 0s-5-6-3 0 5 4 9 0"/></svg></span><p class="tag">CBT</p><h3>Untangle the Pattern</h3><p>See how a thought, feeling, and action loop together, weigh the evidence, and find a fairer thought.</p><span class="go">Try it ↗</span></a>
+      <a class="tcard" href="https://wooheekwak.me/tools/roots-and-messages.html"><span class="ib s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-7"/><path d="M12 14c-4 0-6-2.5-6-5.5S8.5 3 12 3s6 2.5 6 5.5-2 5.5-6 5.5Z"/><path d="M8 21h8"/></svg></span><p class="tag">Family &amp; culture</p><h3>Roots &amp; Messages</h3><p>Map your family and the messages passed down, then choose what to carry, rewrite, or leave.</p><span class="go">Try it ↗</span></a>
+      <a class="tcard" href="https://wooheekwak.me/tools/parts-of-me.html"><span class="ib t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="9" r="3.5"/><circle cx="16" cy="9" r="3.5"/><circle cx="12" cy="16" r="3.5"/></svg></span><p class="tag">IFS-informed</p><h3>Parts of Me</h3><p>Get to know an inner critic or protector, and what it's trying to do for you.</p><span class="go">Try it ↗</span></a>
+      <a class="tcard" href="https://wooheekwak.me/tools/drop-the-rope.html"><span class="ib s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h7"/><path d="M14 12h7"/><path d="M10 12c0-2 1-3 2-3s2 1 2 3-1 3-2 3-2-1-2-3Z"/></svg></span><p class="tag">ACT</p><h3>Drop the Rope</h3><p>What you resist persists. Make room for discomfort and take one willing step.</p><span class="go">Try it ↗</span></a>
+      <a class="tcard" href="https://wooheekwak.me/tools/small-steps.html"><span class="ib t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-9"/><path d="M12 12c0-4-3-6-7-6 0 4 3 6 7 6Z"/><path d="M12 14c0-3 2.5-5 6-5 0 3-2.5 5-6 5Z"/></svg></span><p class="tag">Behavioral activation</p><h3>Small Steps</h3><p>One small, doable action for today, to build momentum when everything feels heavy.</p><span class="go">Try it ↗</span></a>
+    </div>
+    <div class="tools-foot">
+      <p>Plus worksheets and facilitator guides for in-session use.</p>
+      <div class="hero-actions"><a class="btn btn-primary" href="https://wooheekwak.me/#tools">See all 13 tools ↗</a><a class="btn btn-ghost" href="https://wooheekwak.me/therapists/">For therapists ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="block" id="architecture">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Design</p>
+      <h2>Privacy by <em>architecture</em>, not by promise.</h2>
+      <p class="lede">The client's inner life shouldn't sit in a central database. Today's tools run entirely on the client's device. The direction we're exploring keeps it that way, even as the loop gets richer.</p>
+    </div>
+    <div class="arch">
+      <div class="arch-card">
+        <h3>Today <span class="live">Live</span></h3>
+        <p>Tools run in the client's browser. The client decides what leaves.</p>
+        <svg viewBox="0 0 480 250" role="img" aria-label="Today: the tool runs on the client's phone; the client chooses to email or print a summary to the therapist" font-family="DM Sans, sans-serif">
+          <defs><marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#0E7C72" stroke-width="1.8"/></marker></defs>
+          <rect x="16" y="40" width="150" height="170" rx="22" fill="#F7F8FA" stroke="#DFE3E9" stroke-width="1.5"/>
+          <text x="91" y="30" text-anchor="middle" font-size="11.5" letter-spacing="1.5" fill="#657083">CLIENT'S DEVICE</text>
+          <rect x="36" y="62" width="110" height="64" rx="12" fill="#fff" stroke="#0E7C72" stroke-width="1.5"/><text x="91" y="90" text-anchor="middle" font-size="12.5" fill="#0F1B2D">Tool runs</text><text x="91" y="107" text-anchor="middle" font-size="12.5" fill="#0F1B2D">here</text>
+          <rect x="36" y="138" width="110" height="52" rx="12" fill="#E3F2F0"/><text x="91" y="160" text-anchor="middle" font-size="11.5" fill="#0B6158">Answers stay</text><text x="91" y="176" text-anchor="middle" font-size="11.5" fill="#0B6158">on the device</text>
+          <path d="M170 124 H306" stroke="#0E7C72" stroke-width="2" marker-end="url(#a1)"/>
+          <text x="238" y="110" text-anchor="middle" font-size="11.5" fill="#0F1B2D">Client chooses</text><text x="238" y="146" text-anchor="middle" font-size="11" fill="#657083">email or PDF</text>
+          <rect x="312" y="40" width="150" height="170" rx="22" fill="#F7F8FA" stroke="#DFE3E9" stroke-width="1.5"/>
+          <text x="387" y="30" text-anchor="middle" font-size="11.5" letter-spacing="1.5" fill="#657083">THERAPIST</text>
+          <rect x="332" y="62" width="110" height="64" rx="12" fill="#fff" stroke="#0E7C72" stroke-width="1.5"/><text x="387" y="90" text-anchor="middle" font-size="12.5" fill="#0F1B2D">Reads the</text><text x="387" y="107" text-anchor="middle" font-size="12.5" fill="#0F1B2D">summary</text>
+          <rect x="332" y="138" width="110" height="52" rx="12" fill="#E3F2F0"/><text x="387" y="160" text-anchor="middle" font-size="11.5" fill="#0B6158">Plans the</text><text x="387" y="176" text-anchor="middle" font-size="11.5" fill="#0B6158">next session</text>
+          <text x="240" y="238" text-anchor="middle" font-size="11" fill="#657083">The website only serves the tools. It collects nothing.</text>
+        </svg>
+        <ul>
+          <li>No accounts, cookies, analytics, or tracking.</li>
+          <li>The client reads and edits the summary in their own email app before sending.</li>
+          <li>Every tool links to 988 and points back to the therapist.</li>
+        </ul>
+      </div>
+      <div class="arch-card">
+        <h3>Where we're heading <span class="future" style="margin:0">Exploring</span></h3>
+        <p>A secure pairing between one therapist and one client, with AI that runs on their own devices.</p>
+        <svg viewBox="0 0 480 250" role="img" aria-label="Exploring: a therapist device and a client device, paired and end-to-end encrypted; each runs its own agent; the client approves what is shared" font-family="DM Sans, sans-serif">
+          <defs><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#3D4FB0" stroke-width="1.8"/></marker></defs>
+          <rect x="16" y="40" width="150" height="170" rx="22" fill="#F7F8FA" stroke="#DFE3E9" stroke-width="1.5"/>
+          <text x="91" y="30" text-anchor="middle" font-size="11.5" letter-spacing="1.5" fill="#657083">THERAPIST'S DEVICE</text>
+          <rect x="36" y="62" width="110" height="64" rx="12" fill="#fff" stroke="#0E7C72" stroke-width="1.5"/><text x="91" y="90" text-anchor="middle" font-size="12.5" fill="#0F1B2D">Co-pilot</text><text x="91" y="107" text-anchor="middle" font-size="11.5" fill="#657083">drafts plans</text>
+          <rect x="36" y="138" width="110" height="52" rx="12" fill="#E3F2F0"/><text x="91" y="160" text-anchor="middle" font-size="11.5" fill="#0B6158">Designs tools,</text><text x="91" y="176" text-anchor="middle" font-size="11.5" fill="#0B6158">records voice</text>
+          <rect x="312" y="40" width="150" height="170" rx="22" fill="#F7F8FA" stroke="#DFE3E9" stroke-width="1.5"/>
+          <text x="387" y="30" text-anchor="middle" font-size="11.5" letter-spacing="1.5" fill="#657083">CLIENT'S DEVICE</text>
+          <rect x="332" y="62" width="110" height="64" rx="12" fill="#fff" stroke="#0E7C72" stroke-width="1.5"/><text x="387" y="90" text-anchor="middle" font-size="12.5" fill="#0F1B2D">Guided tools</text><text x="387" y="107" text-anchor="middle" font-size="11.5" fill="#657083">in her voice</text>
+          <rect x="332" y="138" width="110" height="52" rx="12" fill="#E3F2F0"/><text x="387" y="160" text-anchor="middle" font-size="11.5" fill="#0B6158">Practice and</text><text x="387" y="176" text-anchor="middle" font-size="11.5" fill="#0B6158">progress stay here</text>
+          <path d="M172 92 H306" stroke="#3D4FB0" stroke-width="2" marker-end="url(#a2)"/><text x="239" y="82" text-anchor="middle" font-size="11" fill="#0F1B2D">tools sent</text>
+          <path d="M306 164 H172" stroke="#3D4FB0" stroke-width="2" marker-end="url(#a2)"/><text x="239" y="154" text-anchor="middle" font-size="11" fill="#0F1B2D">client-approved</text><text x="239" y="182" text-anchor="middle" font-size="11" fill="#0F1B2D">summaries</text>
+          <rect x="196" y="112" width="86" height="24" rx="12" fill="#E8ECFB"/><text x="239" y="128" text-anchor="middle" font-size="10.5" fill="#3D4FB0">🔒 paired, E2E</text>
+          <text x="240" y="238" text-anchor="middle" font-size="11" fill="#657083">Any relay passes sealed messages it cannot read.</text>
+        </svg>
+        <ul>
+          <li>Only the paired therapist and client can read what passes between them.</li>
+          <li>The client sees and approves every summary before it is sent.</li>
+          <li>Safety stays human: tools always point to 988 and the therapist.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="block alt" id="roadmap">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Roadmap</p>
+      <h2>Each step <em>earns</em> the next.</h2>
+      <p class="lede">Useful at every stage, and gated by consent and evidence before more technology is added.</p>
+    </div>
+    <div class="road">
+      <div class="now"><span class="dot"></span><p class="ph">Now · live</p><h3>Free, private tools</h3><p>Visual tools and worksheets. Clients choose to email or print a summary for their therapist.</p></div>
+      <div><span class="dot"></span><p class="ph">Next</p><h3>The loop</h3><p>Short repeat practices, guidance in the therapist's own voice, and progress kept on the client's device.</p></div>
+      <div><span class="dot"></span><p class="ph">Later</p><h3>Paired co-pilot</h3><p>With consent and clinical oversight: secure device pairing and an on-device co-pilot for session planning.</p></div>
+      <div><span class="dot"></span><p class="ph">Horizon</p><h3>An open framework</h3><p>A playbook any therapist can use to build and curate their own tools and agents. Not a catalog.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER + CTA -->
+<section class="block">
+  <div class="wrap">
+    <div class="founder">
+      <span class="mono" aria-hidden="true">WK</span>
+      <div>
+        <h3>Created by Woohee (Elise) Kwak</h3>
+        <p>Counselor-in-training (M.Ed., Clinical Mental Health Counseling) and intern therapist in Seattle. Previously a product leader at Microsoft for nearly 20 years, building customer voice, sentiment, personalization, and experimentation platforms at scale.</p>
+        <p>Beyond the Room brings both worlds together: the clinical judgment of the room and the craft of building products people trust.</p>
+        <a href="https://wooheekwak.me">wooheekwak.me ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block dark cta" id="partner">
+  <div class="wrap">
+    <p class="eyebrow">Partner with us</p>
+    <h2>Help take therapy <em style="color:#5FC4B8;font-style:normal">beyond the room</em>.</h2>
+    <p class="lede">The tools are live and the framework is taking shape. The next stage is a clinical pilot and a paired, on-device prototype. I'm looking for partners who share the conviction that technology should strengthen the therapeutic relationship, not replace it.</p>
+    <div class="partners">
+      <div class="ptn"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-5h6v5"/><path d="M12 8v4M10 10h4"/></svg></span><h3>Clinicians &amp; practices</h3><p>Try the tools with clients, shape new ones, and join an early pilot of the full loop.</p></div>
+      <div class="ptn"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v5M15 3v5"/><path d="M6 8h12v3a6 6 0 0 1-12 0V8Z"/><path d="M12 17v4"/></svg></span><h3>Platform partners</h3><p>Practice-management, EHR, and telehealth teams interested in bringing therapist-led, privacy-first tools to their clinicians.</p></div>
+      <div class="ptn"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3>Investors &amp; advisors</h3><p>Help move from a proven set of tools to a secure, paired, on-device product, with clinical and regulatory rigor.</p></div>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" style="background:#fff;color:#0B1626" href="mailto:wooheekwak@outlook.com?subject=Beyond%20the%20Room%3A%20partnership">Start a conversation</a>
+      <a class="btn btn-ghost" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.3)" href="https://wooheekwak.me/#tools">Try the live tools ↗</a>
+    </div>
+    <p class="contact-line">wooheekwak@outlook.com · <a href="https://wooheekwak.me">wooheekwak.me</a></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Beyond the Room tools support reflection and skill practice. They are not therapy, and they complement, not replace, professional mental health care. If you're in crisis in the U.S., call or text 988, or call 911.</p>
+    <p>This site collects nothing: no accounts, cookies, analytics, or tracking.</p>
+    <p>© 2026 Woohee (Elise) Kwak. The Beyond the Room framework was first published in November 2026.</p>
+  </div>
+</footer>
+
+<script>
+  // 168 hours, one highlighted (the session). Drawn on the page; nothing is sent anywhere.
+  (function () {
+    var w = document.getElementById("week"); if (!w) return;
+    var html = "";
+    for (var i = 0; i < 168; i++) html += i === 58 ? '<i class="on"></i>' : "<i></i>";
+    w.innerHTML = html;
+  })();
+</script>
+</body>
+</html>
