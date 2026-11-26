@@ -17,13 +17,13 @@
 @font-face { font-family: "DM Sans"; src: url("../resources/assets/fonts/dm-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 
 :root {
-  --font-display: "Lora", Georgia, "Times New Roman", serif;
+  --font-display: "Bricolage Grotesque", "DM Sans", -apple-system, sans-serif;
   --font-body: "DM Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-  --bg: #FDFAF6; --surface: #FFFFFF; --ink: #2A2F35; --muted: #5A6370; --line: #E8DDD0;
-  --accent: #476B56; --accent-ink: #FFFFFF; --accent-soft: #EEF4F0;
-  --warm: #C4714A; --warm-ink: #9A5232; --warm-soft: #FBF0EA; --sand: #F5EFE6; --focus: #3D4A5C;
+  --bg: #FFFFFF; --surface: #FFFFFF; --ink: #0F1B2D; --muted: #657083; --line: #DFE3E9;
+  --accent: #0E7C72; --accent-ink: #FFFFFF; --accent-soft: #E3F2F0;
+  --warm: #1F3A5F; --warm-ink: #0B6158; --warm-soft: #E9EDF3; --sand: #F3F5F8; --focus: #0F1B2D;
   --radius: 20px;
-  --shadow: 0 1px 2px rgba(42,47,53,.04), 0 10px 30px rgba(42,47,53,.06);
+  --shadow: 0 1px 2px rgba(15,27,45,.04), 0 10px 30px rgba(15,27,45,.06);
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -49,7 +49,7 @@ h1 em, .q em { color: var(--warm); font-style: italic; }
 .progress li.on { background: var(--accent); }
 .ground-btn { appearance: none; font: inherit; font-size: 13.5px; cursor: pointer; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--accent); white-space: nowrap; transition: border-color .2s; }
 .ground-btn:hover { border-color: var(--accent); }
-.grounding { display: flex; gap: 14px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #CFE0D4; border-radius: 16px; padding: 14px 16px; margin: 0 0 22px; }
+.grounding { display: flex; gap: 14px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #BFE0DC; border-radius: 16px; padding: 14px 16px; margin: 0 0 22px; }
 .grounding strong { display: block; color: var(--accent); font-weight: 600; }
 .grounding p { margin: 0; font-size: 14.5px; }
 .grounding .x { appearance: none; background: none; border: 0; font-size: 22px; line-height: 1; color: var(--muted); cursor: pointer; margin-left: auto; padding: 0 4px; }
@@ -79,8 +79,8 @@ h1 em, .q em { color: var(--warm); font-style: italic; }
 .field { margin-top: 16px; }
 .field > label { display: block; font-weight: 500; margin-bottom: 8px; }
 textarea, input[type=text] { width: 100%; font: inherit; font-size: 16px; line-height: 1.6; padding: 13px 15px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); resize: vertical; }
-textarea:focus, input[type=text]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(71,107,86,.15); }
-::placeholder { color: #8C939C; }
+textarea:focus, input[type=text]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(14,124,114,.15); }
+::placeholder { color: #8A95A5; }
 
 .chipset { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
 .chip { appearance: none; font: inherit; font-size: 14.5px; cursor: pointer; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; min-height: 40px; color: var(--ink); transition: all .2s; }
@@ -184,7 +184,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
 .col-box { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
 .col-box h3 { margin: 0 0 10px; font-size: 15px; font-weight: 600; }
-.col-box.against { border-color: #CFE0D4; background: #FAFCFA; }
+.col-box.against { border-color: #BFE0DC; background: #FAFCFA; }
 
 .compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 16px 0 0; }
 .compare div { background: var(--sand); border-radius: 14px; padding: 12px 14px; }
@@ -198,19 +198,19 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .followup { margin-top: 26px; background: var(--accent-soft); border-radius: 18px; padding: 18px 20px; }
 .followup h3 { font-family: var(--font-display); font-weight: 400; font-size: 21px; margin: 0 0 4px; }
 .followup p { margin: 0 0 10px; font-size: 14.5px; color: var(--muted); }
-.session-banner { display: flex; gap: 12px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #CFE0D4; border-radius: 16px; padding: 14px 16px; margin: -12px 0 28px; font-size: 14.5px; }
+.session-banner { display: flex; gap: 12px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #BFE0DC; border-radius: 16px; padding: 14px 16px; margin: -12px 0 28px; font-size: 14.5px; }
 .session-banner b { display: block; color: var(--accent); font-weight: 600; }
 .session-banner p { margin: 0; }
 .print-head { display: none; }
 .erase-row { margin-top: 14px; font-size: 14px; }
 
 
-.opt.bal { background: #F2F8F3; border-color: #CFE0D4; align-items: center; }
-.opt.bal b { font-weight: 500; font-family: var(--font-display); font-size: 17px; color: #2F4A3A; }
-.opt.bal .bal-icon { flex: none; width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 1.5px solid #B8D4C0; position: relative; }
-.opt.bal .bal-icon::after { content: ""; position: absolute; inset: 6px; border-radius: 50%; background: #B8D4C0; }
-.opt.bal:hover { border-color: var(--accent); background: #EAF3EC; }
-.opt.bal[aria-pressed="true"] { background: #DDEDE1; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(71,107,86,.12); }
+.opt.bal { background: #EEF7F6; border-color: #BFE0DC; align-items: center; }
+.opt.bal b { font-weight: 500; font-family: var(--font-display); font-size: 17px; color: #0B4F49; }
+.opt.bal .bal-icon { flex: none; width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 1.5px solid #A9D9D3; position: relative; }
+.opt.bal .bal-icon::after { content: ""; position: absolute; inset: 6px; border-radius: 50%; background: #A9D9D3; }
+.opt.bal:hover { border-color: var(--accent); background: #E3F2F0; }
+.opt.bal[aria-pressed="true"] { background: #D3ECE8; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(14,124,114,.12); }
 .opt.bal[aria-pressed="true"] .bal-icon { background: var(--accent); border-color: var(--accent); }
 .opt.bal[aria-pressed="true"] .bal-icon::after { inset: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 12.5l3.2 3.2L17 9' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat; }
 /* ---- visuals ---- */
@@ -223,16 +223,16 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 @keyframes draw { to { stroke-dashoffset: 0; } }
 .thread-caps { display: flex; justify-content: space-between; gap: 16px; font-size: 12.5px; color: var(--muted); margin: -2px 2px 16px; }
 .thread-caps span:last-child { text-align: right; color: var(--accent); }
-.thread-caps .old { font-family: var(--font-display); font-style: italic; color: var(--warm-ink); text-decoration: line-through; text-decoration-color: rgba(196,113,74,.5); opacity: .8; max-width: 46%; }
+.thread-caps .old { font-family: var(--font-display); font-style: italic; color: var(--warm-ink); text-decoration: line-through; text-decoration-color: rgba(31,58,95,.5); opacity: .8; max-width: 46%; }
 .thread-caps .new { font-family: var(--font-display); font-style: italic; font-size: 14.5px; color: var(--accent); max-width: 52%; }
 .cyc { width: 100%; max-width: 440px; height: auto; display: block; margin: 4px auto 14px; }
-.cyc .dot { filter: drop-shadow(0 0 4px rgba(196,113,74,.6)); }
+.cyc .dot { filter: drop-shadow(0 0 4px rgba(31,58,95,.6)); }
 .build { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; position: relative; margin: 0 0 22px; padding: 16px 8px 30px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; }
 .build .bn { display: grid; justify-items: center; text-align: center; gap: 3px; position: relative; z-index: 1; min-width: 0; padding: 0 4px; }
 .build .bi { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font-size: 20px; background: var(--bg); border: 1.5px dashed var(--line); transition: all .3s; }
 .build .bn.done .bi { background: var(--warm-soft); border: 1.5px solid #E8C2AE; }
-.build .bn.now .bi { background: #fff; border: 2px solid var(--warm); box-shadow: 0 0 0 5px rgba(196,113,74,.12); animation: nowpulse 2.4s ease-in-out infinite; }
-@keyframes nowpulse { 50% { box-shadow: 0 0 0 9px rgba(196,113,74,.05); } }
+.build .bn.now .bi { background: #fff; border: 2px solid var(--warm); box-shadow: 0 0 0 5px rgba(31,58,95,.12); animation: nowpulse 2.4s ease-in-out infinite; }
+@keyframes nowpulse { 50% { box-shadow: 0 0 0 9px rgba(31,58,95,.05); } }
 .build b { font-size: 12.5px; font-weight: 600; color: var(--muted); }
 .build .bn.done b, .build .bn.now b { color: var(--ink); }
 .build small { font-size: 12px; color: var(--muted); line-height: 1.35; font-family: var(--font-display); font-style: italic; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
@@ -241,8 +241,8 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .build .back span { position: relative; top: 8px; background: var(--surface); padding: 0 6px; }
 .build.closed .back { border-color: #E8C2AE; color: var(--warm-ink); }
 @media (max-width: 560px) { .build small { display: none; } .build .bi { width: 40px; height: 40px; font-size: 18px; } .build .line { top: 36px; } .build b { font-size: 11.5px; } }
-.tcloud { position: relative; margin: 6px 0 26px 4px; padding: 20px 24px; border-radius: 40px 46px 38px 44px; background: var(--cloud, #FBF0EA); border: 1px solid #EED7CA; transition: background .3s; max-width: 560px; }
-.tcloud::before, .tcloud::after { content: ""; position: absolute; border-radius: 50%; background: var(--cloud, #FBF0EA); border: 1px solid #EED7CA; transition: background .3s; }
+.tcloud { position: relative; margin: 6px 0 26px 4px; padding: 20px 24px; border-radius: 40px 46px 38px 44px; background: var(--cloud, #E9EDF3); border: 1px solid #EED7CA; transition: background .3s; max-width: 560px; }
+.tcloud::before, .tcloud::after { content: ""; position: absolute; border-radius: 50%; background: var(--cloud, #E9EDF3); border: 1px solid #EED7CA; transition: background .3s; }
 .tcloud::before { width: 18px; height: 18px; left: 26px; bottom: -22px; }
 .tcloud::after { width: 10px; height: 10px; left: 14px; bottom: -36px; }
 .tcloud .tc-q { font-family: var(--font-display); font-style: italic; font-size: 19px; line-height: 1.4; margin: 0; color: var(--ink); }
@@ -287,7 +287,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .map .m.now i { background: var(--warm-ink); box-shadow: 0 0 0 3px rgba(154,82,50,.18); }
 .map.new .m.done i { background: var(--accent); }
 .map.new .m.now { background: var(--accent-soft); color: var(--accent); }
-.map.new .m.now i { background: var(--accent); box-shadow: 0 0 0 3px rgba(71,107,86,.18); }
+.map.new .m.now i { background: var(--accent); box-shadow: 0 0 0 3px rgba(14,124,114,.18); }
 .map .arrow { color: var(--line); font-size: 13px; }
 
 .cycle { display: grid; grid-template-columns: 1fr minmax(0, 1.25fr) 1fr; grid-template-areas: "c1 t c2" "r m f" "c4 a c3"; gap: 8px; align-items: center; margin: 4px 0 6px; }
@@ -335,7 +335,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .meter .row { display: grid; grid-template-columns: 56px minmax(0, 1fr) 44px; gap: 10px; align-items: center; font-size: 12.5px; color: var(--muted); margin-top: 4px; }
 .meter .bar2 { height: 10px; background: var(--sand); border-radius: 6px; overflow: hidden; }
 .meter .bar2 i { display: block; height: 100%; border-radius: 6px; }
-.meter .before i { background: #E8A882; } .meter .after i { background: var(--accent); }
+.meter .before i { background: #9FB3CC; } .meter .after i { background: var(--accent); }
 .meter .num { text-align: right; color: var(--ink); font-weight: 600; }
 
 .practice { margin-top: 22px; border: 2px solid var(--accent); border-radius: 22px; overflow: hidden; }
@@ -348,7 +348,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .practice .p-body { padding: 18px 20px; background: #fff; display: grid; gap: 16px; }
 .practice .p-body h4 { margin: 0 0 8px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
 .gauge { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; }
-.gauge .g { height: 12px; border-radius: 8px; background: linear-gradient(90deg, #EEF4F0, #F6E2D6 60%, #E8A882); position: relative; }
+.gauge .g { height: 12px; border-radius: 8px; background: linear-gradient(90deg, #E3F2F0, #F6E2D6 60%, #9FB3CC); position: relative; }
 .gauge .g b { position: absolute; top: 50%; width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 3px solid var(--warm-ink); transform: translate(-50%, -50%); }
 .gauge .g b.after { border-color: var(--accent); }
 .gauge .pct { font-weight: 600; text-align: right; }
@@ -369,9 +369,9 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .feedback-line a { color: var(--accent); font-weight: 500; }
 
 /* ---- share with your therapist (session mode) ---- */
-.share-th { margin: 24px 0 4px; background: #fff; border: 1px solid #CFE0D4; border-radius: 20px; padding: 20px 22px 16px; box-shadow: 0 1px 2px rgba(42,47,53,.04), 0 10px 30px rgba(42,47,53,.06); text-align: left; }
+.share-th { margin: 24px 0 4px; background: #fff; border: 1px solid #BFE0DC; border-radius: 20px; padding: 20px 22px 16px; box-shadow: 0 1px 2px rgba(15,27,45,.04), 0 10px 30px rgba(15,27,45,.06); text-align: left; }
 .share-th .st-h { margin: 0 0 2px; font-family: var(--font-display); font-size: 22px; }
-.share-th .st-h b { font-weight: 400; font-style: italic; color: #476B56; }
+.share-th .st-h b { font-weight: 400; font-style: italic; color: #0E7C72; }
 .share-th .st-sub { margin: 0 0 14px; color: var(--muted); font-size: 14.5px; }
 .share-th .st-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .share-th .st-tip { margin: 12px 0 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
@@ -382,6 +382,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
   body.printing-summary #print-summary { display: block !important; font: 12pt/1.6 Georgia, serif; white-space: pre-wrap; color: #222; }
 }
 </style>
+<link rel="stylesheet" href="../assets/btr-theme.css">
 </head>
 <body>
 <div class="wrap">
@@ -685,19 +686,19 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
     const ex = [["“I won't look good", "next to everyone else.”"], ["Insecure, anxious,", "embarrassed in advance"], ["Skip the party.", "Relief now…"]];
     const exPos = [[cx, 30, "middle"], [pt(30)[0], pt(30)[1] + 62, "middle"], [pt(150)[0], pt(150)[1] + 62, "middle"]];
     let s = `<svg class="cyc" viewBox="0 0 380 340" role="img" aria-label="A loop: a thought leads to a feeling, the feeling leads to an action, and the action feeds the thought." font-family="DM Sans, sans-serif">
-      <defs><marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#C4714A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+      <defs><marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#1F3A5F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
       <circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="#F1E4DA" stroke-width="16"/>
-      ${[[-90, 30], [30, 150], [150, 270]].map(([a, b]) => `<path d="${arc(a, b)}" fill="none" stroke="#C4714A" stroke-width="2" marker-end="url(#ah)"/>`).join("")}
+      ${[[-90, 30], [30, 150], [150, 270]].map(([a, b]) => `<path d="${arc(a, b)}" fill="none" stroke="#1F3A5F" stroke-width="2" marker-end="url(#ah)"/>`).join("")}
       <path id="cyc-path" d="M${cx} ${cy - R} A ${R} ${R} 0 1 1 ${cx - .1} ${cy - R}" fill="none" stroke="none"/>
-      <circle class="dot" r="5.5" fill="#C4714A"><animateMotion dur="6s" repeatCount="indefinite" rotate="auto"><mpath href="#cyc-path"/></animateMotion></circle>
-      <text x="${cx}" y="${cy - 4}" text-anchor="middle" font-size="12" fill="#9A5232" font-family="Lora, serif" font-style="italic">…and each time around,</text>
-      <text x="${cx}" y="${cy + 13}" text-anchor="middle" font-size="12" fill="#9A5232" font-family="Lora, serif" font-style="italic">the thought feels truer</text>`;
+      <circle class="dot" r="5.5" fill="#1F3A5F"><animateMotion dur="6s" repeatCount="indefinite" rotate="auto"><mpath href="#cyc-path"/></animateMotion></circle>
+      <text x="${cx}" y="${cy - 4}" text-anchor="middle" font-size="12" fill="#0B6158" font-family="Bricolage Grotesque, DM Sans, sans-serif" font-style="italic">…and each time around,</text>
+      <text x="${cx}" y="${cy + 13}" text-anchor="middle" font-size="12" fill="#0B6158" font-family="Bricolage Grotesque, DM Sans, sans-serif" font-style="italic">the thought feels truer</text>`;
     n.forEach(([deg, emo, lab], i) => { const [x, y] = pt(deg);
       s += `<circle cx="${x}" cy="${y}" r="34" fill="#fff" stroke="#E8C2AE" stroke-width="1.5"/>
         <text x="${x}" y="${y + 2}" text-anchor="middle" font-size="20">${emo}</text>
-        <text x="${x}" y="${y + 21}" text-anchor="middle" font-size="11" font-weight="600" fill="#2A2F35" class="nl">${lab}</text>`;
+        <text x="${x}" y="${y + 21}" text-anchor="middle" font-size="11" font-weight="600" fill="#0F1B2D" class="nl">${lab}</text>`;
       const [tx, ty, an] = exPos[i];
-      s += ex[i].map((l, j) => `<text x="${tx}" y="${ty + (i === 0 ? -14 + j * 15 : j * 15)}" text-anchor="${an}" font-size="12.5" fill="#5A6370" class="ex">${l}</text>`).join("");
+      s += ex[i].map((l, j) => `<text x="${tx}" y="${ty + (i === 0 ? -14 + j * 15 : j * 15)}" text-anchor="${an}" font-size="12.5" fill="#657083" class="ex">${l}</text>`).join("");
     });
     return s + `</svg>`;
   }
@@ -714,7 +715,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
     return `<p class="tc-q${t.length ? "" : " empty"}">${t.length ? t.slice(0, 3).map((x) => `“${esc(x)}”`).join("<br>") : "Tap a thought below. It will appear here."}</p>
       ${t.length ? `<p class="tc-b">Feels ${d.belief}% true right now</p>` : ""}`;
   }
-  const cloudBg = () => `rgba(196,113,74,${(0.05 + d.belief / 100 * 0.2).toFixed(3)})`;
+  const cloudBg = () => `rgba(31,58,95,${(0.05 + d.belief / 100 * 0.2).toFixed(3)})`;
   function feelInner() {
     const k = d.intensity / 10, r = 22 + k * 20;
     const mix = (a, b) => Math.round(a + (b - a) * k);
@@ -730,24 +731,24 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
   function avoidHTML() {
     return `<div class="avoid" role="img" aria-label="A curve showing discomfort over time: avoiding brings quick relief, then the discomfort comes back stronger the next time.">
       <svg viewBox="0 0 520 170" aria-hidden="true" font-family="DM Sans, sans-serif">
-        <line x1="40" y1="140" x2="505" y2="140" stroke="#E8DDD0" stroke-width="1.5"/><line x1="40" y1="20" x2="40" y2="140" stroke="#E8DDD0" stroke-width="1.5"/>
+        <line x1="40" y1="140" x2="505" y2="140" stroke="#DFE3E9" stroke-width="1.5"/><line x1="40" y1="20" x2="40" y2="140" stroke="#DFE3E9" stroke-width="1.5"/>
         <text x="34" y="26" font-size="11" fill="#8A929C" text-anchor="end">high</text><text x="505" y="158" font-size="11" fill="#8A929C" text-anchor="end">time →</text>
         <text transform="translate(16 92) rotate(-90)" font-size="11" fill="#8A929C" text-anchor="middle">discomfort</text>
-        <path class="draw" pathLength="1" d="M44 70 C 90 50, 110 40, 130 46 C 150 52, 160 118, 190 120 C 230 122, 250 110, 290 86 C 330 62, 350 48, 390 40 C 430 32, 460 28, 500 26" fill="none" stroke="#C4714A" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="130" cy="46" r="4" fill="#C4714A" class="lab" style="animation-delay:.6s"/>
-        <text x="138" y="40" font-size="12" fill="#5A6370" class="lab" style="animation-delay:.7s">the urge to get away</text>
-        <text x="170" y="136" font-size="12" fill="#476B56" class="lab" style="animation-delay:1.2s">quick relief</text>
-        <text x="500" y="16" font-size="12" fill="#9A5232" text-anchor="end" class="lab" style="animation-delay:2s">…then it comes back stronger</text>
+        <path class="draw" pathLength="1" d="M44 70 C 90 50, 110 40, 130 46 C 150 52, 160 118, 190 120 C 230 122, 250 110, 290 86 C 330 62, 350 48, 390 40 C 430 32, 460 28, 500 26" fill="none" stroke="#1F3A5F" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="130" cy="46" r="4" fill="#1F3A5F" class="lab" style="animation-delay:.6s"/>
+        <text x="138" y="40" font-size="12" fill="#657083" class="lab" style="animation-delay:.7s">the urge to get away</text>
+        <text x="170" y="136" font-size="12" fill="#0E7C72" class="lab" style="animation-delay:1.2s">quick relief</text>
+        <text x="500" y="16" font-size="12" fill="#0B6158" text-anchor="end" class="lab" style="animation-delay:2s">…then it comes back stronger</text>
       </svg></div>`;
   }
   // Step 6: a balance scale that tips with what you tap.
   function scaleHTML() {
     const pan = (x, cls, lab, col) => `<g class="pan ${cls}"><line x1="${x}" y1="52" x2="${x - 44}" y2="118" stroke="#B9AC9C" stroke-width="1.4"/><line x1="${x}" y1="52" x2="${x + 44}" y2="118" stroke="#B9AC9C" stroke-width="1.4"/>
         <path d="M${x - 58} 118 Q ${x} 146, ${x + 58} 118 Z" fill="${col}" stroke="#D8CBBB" stroke-width="1.2"/>
-        <g class="w"></g><text x="${x}" y="166" text-anchor="middle" font-size="12.5" fill="#5A6370" font-family="DM Sans, sans-serif">${lab}</text></g>`;
+        <g class="w"></g><text x="${x}" y="166" text-anchor="middle" font-size="12.5" fill="#657083" font-family="DM Sans, sans-serif">${lab}</text></g>`;
     return `<div class="scalewrap" aria-hidden="true"><svg viewBox="0 0 420 180">
       <path d="M210 52 L190 172 L230 172 Z" fill="#EDE4D8"/><rect x="170" y="168" width="80" height="8" rx="4" fill="#E2D6C6"/>
-      <g class="beam"><rect x="80" y="48" width="260" height="8" rx="4" fill="#C9B9A6"/>${pan(90, "pl", "Feels true", "#FBF0EA")}${pan(330, "pr", "Doesn't quite fit", "#EEF4F0")}</g>
+      <g class="beam"><rect x="80" y="48" width="260" height="8" rx="4" fill="#C9B9A6"/>${pan(90, "pl", "Feels true", "#E9EDF3")}${pan(330, "pr", "Doesn't quite fit", "#E3F2F0")}</g>
       <circle cx="210" cy="52" r="8" fill="#B9A58F"/>
     </svg><p class="verdict" id="verdict"></p></div>`;
   }

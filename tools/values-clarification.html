@@ -17,13 +17,13 @@
 @font-face { font-family: "DM Sans"; src: url("../resources/assets/fonts/dm-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 
 :root {
-  --font-display: "Lora", Georgia, "Times New Roman", serif;
+  --font-display: "Bricolage Grotesque", "DM Sans", -apple-system, sans-serif;
   --font-body: "DM Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-  --bg: #FDFAF6; --surface: #FFFFFF; --ink: #2A2F35; --muted: #5A6370; --line: #E8DDD0;
-  --accent: #9A5232; --accent-hover: #84452A; --accent-soft: #FBF0EA;
-  --sage: #476B56; --sage-soft: #EEF4F0; --sand: #F5EFE6; --slate: #3D4A5C; --focus: #3D4A5C;
+  --bg: #FFFFFF; --surface: #FFFFFF; --ink: #0F1B2D; --muted: #657083; --line: #DFE3E9;
+  --accent: #0B6158; --accent-hover: #0B6158; --accent-soft: #E9EDF3;
+  --sage: #0E7C72; --sage-soft: #E3F2F0; --sand: #F3F5F8; --slate: #0F1B2D; --focus: #0F1B2D;
   --radius: 20px;
-  --shadow: 0 1px 2px rgba(42,47,53,.04), 0 10px 30px rgba(42,47,53,.06);
+  --shadow: 0 1px 2px rgba(15,27,45,.04), 0 10px 30px rgba(15,27,45,.06);
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -166,15 +166,15 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; } }
 
 /* session mode (link shared by a therapist) */
-.session-banner { display: flex; gap: 12px; align-items: flex-start; background: var(--accent-soft, #EEF4F0); border: 1px solid #CFE0D4; border-radius: 16px; padding: 14px 16px; margin: -12px 0 28px; font-size: 14.5px; }
-.session-banner b { display: block; color: var(--accent, #476B56); font-weight: 600; }
+.session-banner { display: flex; gap: 12px; align-items: flex-start; background: var(--accent-soft, #E3F2F0); border: 1px solid #BFE0DC; border-radius: 16px; padding: 14px 16px; margin: -12px 0 28px; font-size: 14.5px; }
+.session-banner b { display: block; color: var(--accent, #0E7C72); font-weight: 600; }
 .session-banner p { margin: 0; }
 .session-save { margin-top: 28px; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 24px 24px 20px; }
 .session-save h3 { font-family: var(--font-display); font-weight: 400; font-size: 24px; margin: 0 0 4px; }
 .session-save .sub { color: var(--muted); font-size: 14.5px; margin: 0 0 18px; }
 .session-save ol { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 16px; }
 .session-save ol > li { counter-increment: s; display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; }
-.session-save ol > li::before { content: counter(s); width: 28px; height: 28px; border-radius: 50%; background: var(--accent, #476B56); color: #fff; display: grid; place-items: center; font-size: 13px; font-weight: 600; }
+.session-save ol > li::before { content: counter(s); width: 28px; height: 28px; border-radius: 50%; background: var(--accent, #0E7C72); color: #fff; display: grid; place-items: center; font-size: 13px; font-weight: 600; }
 .session-save label, .session-save .lbl { display: block; font-weight: 500; margin-bottom: 6px; }
 .session-save input[type=text] { width: 100%; max-width: 320px; font: inherit; font-size: 16px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink); }
 .session-save .tip { font-size: 13.5px; color: var(--muted); margin: 8px 0 0; }
@@ -235,7 +235,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .vg-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .vg-vs > div { border-radius: 14px; padding: 12px 10px; text-align: center; display: grid; gap: 2px; }
 .vg-vs .goal { background: var(--sand); }
-.vg-vs .value { background: var(--sage-soft); box-shadow: inset 0 0 0 1.5px #CFE0D4; }
+.vg-vs .value { background: var(--sage-soft); box-shadow: inset 0 0 0 1.5px #BFE0DC; }
 .vg-vs .ic { font-size: 20px; line-height: 1.2; }
 .vg-vs small { font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .vg-vs b { font-family: var(--font-display); font-weight: 400; font-size: 18px; }
@@ -262,7 +262,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .vg-card[aria-pressed="true"] { transform: rotateY(180deg); }
 .vg-card span { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 10px 12px; border-radius: 14px; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 .vg-card .front { background: var(--accent-soft); border: 1px solid #EBCFC0; font-family: var(--font-display); font-size: 18px; color: var(--ink); }
-.vg-card .back { background: var(--sage-soft); border: 1px solid #CFE0D4; transform: rotateY(180deg); font-size: 14px; line-height: 1.5; color: var(--sage); font-weight: 500; }
+.vg-card .back { background: var(--sage-soft); border: 1px solid #BFE0DC; transform: rotateY(180deg); font-size: 14px; line-height: 1.5; color: var(--sage); font-weight: 500; }
 .vg-card small { display: block; font-family: var(--font-body); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; font-weight: 400; }
 .vg-note { margin: 14px 0 0; font-family: var(--font-display); font-style: italic; font-size: 16.5px; text-align: center; }
 .vg-note em { color: var(--accent); }
@@ -294,17 +294,18 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 </style>
 <style>
 .rel { margin-top: 48px; }
-.rel-eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #5A6370; margin: 0 0 6px; }
-.rel h2 { font-family: "Lora", Georgia, serif; font-weight: 400; font-size: 24px; line-height: 1.2; margin: 0 0 6px; color: #2A2F35; }
-.rel-sub { font-size: 14.5px; color: #5A6370; margin: 0 0 16px; }
+.rel-eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #657083; margin: 0 0 6px; }
+.rel h2 { font-family: "Bricolage Grotesque", "DM Sans", -apple-system, sans-serif; font-weight: 400; font-size: 24px; line-height: 1.2; margin: 0 0 6px; color: #0F1B2D; }
+.rel-sub { font-size: 14.5px; color: #657083; margin: 0 0 16px; }
 .rel-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-.rel-list a { display: block; height: 100%; text-decoration: none; color: #2A2F35; background: #FFFFFF; border: 1px solid #E8DDD0; border-radius: 16px; padding: 14px 16px; transition: border-color .2s, transform .2s; }
-.rel-list a:hover { border-color: #476B56; transform: translateY(-1px); }
+.rel-list a { display: block; height: 100%; text-decoration: none; color: #0F1B2D; background: #FFFFFF; border: 1px solid #DFE3E9; border-radius: 16px; padding: 14px 16px; transition: border-color .2s, transform .2s; }
+.rel-list a:hover { border-color: #0E7C72; transform: translateY(-1px); }
 .rel-list b { display: block; font-weight: 600; font-size: 15px; line-height: 1.35; }
-.rel-list span { display: block; font-size: 13.5px; color: #5A6370; margin-top: 3px; }
-.rel-list em { display: block; font-style: normal; font-size: 13px; color: #476B56; font-weight: 500; margin-top: 8px; }
+.rel-list span { display: block; font-size: 13.5px; color: #657083; margin-top: 3px; }
+.rel-list em { display: block; font-style: normal; font-size: 13px; color: #0E7C72; font-weight: 500; margin-top: 8px; }
 @media print { .rel { display: none !important; } }
 </style>
+<link rel="stylesheet" href="../assets/btr-theme.css">
 </head>
 <body>
 <div class="wrap">
@@ -362,25 +363,25 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
             <defs><linearGradient id="vgsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF3EA"/><stop offset="1" stop-color="#F1ECE3"/></linearGradient></defs>
             <rect width="600" height="200" rx="16" fill="url(#vgsky)"/>
             <circle cx="545" cy="52" r="22" fill="#F6D9B5" opacity=".8"/>
-            <path d="M0 60 L600 60" stroke="#E6DACA" stroke-dasharray="2 6"/>
+            <path d="M0 60 L600 60" stroke="#DFE3E9" stroke-dasharray="2 6"/>
             <path id="vg-path" d="M30 182 C 120 182, 120 120, 210 128 S 330 160, 380 112 S 470 70, 600 62" fill="none" stroke="#DCCDB7" stroke-width="10" stroke-linecap="round"/>
             <path d="M30 182 C 120 182, 120 120, 210 128 S 330 160, 380 112 S 470 70, 600 62" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="6 8" opacity=".9"/>
-            <g class="flag" transform="translate(150 140)"><path d="M0 0 V-34" stroke="#8A7A66" stroke-width="2"/><path d="M0 -34 L22 -28 L0 -22 Z" fill="#C4714A"/><text x="4" y="14" font-size="15" fill="#5A6370" font-family="DM Sans, sans-serif">Walk daily</text></g>
-            <g class="flag" transform="translate(300 146)"><path d="M0 0 V-34" stroke="#8A7A66" stroke-width="2"/><path d="M0 -34 L22 -28 L0 -22 Z" fill="#C4714A"/><text x="-26" y="18" font-size="15" fill="#5A6370" font-family="DM Sans, sans-serif">Run a 10K</text></g>
-            <g class="flag" transform="translate(430 96)"><path d="M0 0 V-34" stroke="#8A7A66" stroke-width="2"/><path d="M0 -34 L22 -28 L0 -22 Z" fill="#C4714A"/><text x="-14" y="18" font-size="15" fill="#5A6370" font-family="DM Sans, sans-serif">Cook at home</text></g>
-            <circle r="8" fill="#476B56" stroke="#fff" stroke-width="2.5"><animateMotion dur="10s" repeatCount="indefinite" rotate="0"><mpath href="#vg-path"/></animateMotion></circle>
+            <g class="flag" transform="translate(150 140)"><path d="M0 0 V-34" stroke="#8A7A66" stroke-width="2"/><path d="M0 -34 L22 -28 L0 -22 Z" fill="#1F3A5F"/><text x="4" y="14" font-size="15" fill="#657083" font-family="DM Sans, sans-serif">Walk daily</text></g>
+            <g class="flag" transform="translate(300 146)"><path d="M0 0 V-34" stroke="#8A7A66" stroke-width="2"/><path d="M0 -34 L22 -28 L0 -22 Z" fill="#1F3A5F"/><text x="-26" y="18" font-size="15" fill="#657083" font-family="DM Sans, sans-serif">Run a 10K</text></g>
+            <g class="flag" transform="translate(430 96)"><path d="M0 0 V-34" stroke="#8A7A66" stroke-width="2"/><path d="M0 -34 L22 -28 L0 -22 Z" fill="#1F3A5F"/><text x="-14" y="18" font-size="15" fill="#657083" font-family="DM Sans, sans-serif">Cook at home</text></g>
+            <circle r="8" fill="#0E7C72" stroke="#fff" stroke-width="2.5"><animateMotion dur="10s" repeatCount="indefinite" rotate="0"><mpath href="#vg-path"/></animateMotion></circle>
             <g transform="translate(74 52)">
-              <circle r="30" fill="#fff" stroke="#D9C7AE" stroke-width="2"/><circle r="24" fill="none" stroke="#EFE3D1"/>
+              <circle r="30" fill="#fff" stroke="#C9D2DD" stroke-width="2"/><circle r="24" fill="none" stroke="#E6EAF0"/>
               <text y="-14" text-anchor="middle" font-size="8" fill="#A08A70" font-family="DM Sans, sans-serif">N</text>
-              <g class="vg-needle"><path d="M0 -20 L5 0 L0 4 L-5 0 Z" fill="#9A5232" transform="rotate(68)"/><path d="M0 20 L5 0 L0 -4 L-5 0 Z" fill="#C9BBA8" transform="rotate(68)"/></g>
-              <circle r="2.5" fill="#3A3027"/>
+              <g class="vg-needle"><path d="M0 -20 L5 0 L0 4 L-5 0 Z" fill="#0B6158" transform="rotate(68)"/><path d="M0 20 L5 0 L0 -4 L-5 0 Z" fill="#C9BBA8" transform="rotate(68)"/></g>
+              <circle r="2.5" fill="#0F1B2D"/>
             </g>
-            <rect x="112" y="24" width="52" height="18" rx="9" fill="#EEF4F0" stroke="#CFE0D4"/>
-            <text x="138" y="37" text-anchor="middle" font-size="10" letter-spacing="1.5" fill="#476B56" font-family="DM Sans, sans-serif" font-weight="600">VALUE</text>
-            <text x="172" y="40" font-size="21" fill="#3A3027" font-family="Lora, serif" font-style="italic">Health</text>
-            <text x="112" y="62" font-size="13.5" fill="#476B56" font-family="Lora, serif" font-style="italic">the direction you keep walking</text>
-            <rect x="196" y="176" width="150" height="18" rx="9" fill="#F5EFE6" stroke="#E6DACA"/>
-            <text x="271" y="189" text-anchor="middle" font-size="10" letter-spacing="1.2" fill="#9A5232" font-family="DM Sans, sans-serif" font-weight="600">GOALS ALONG THE WAY</text>
+            <rect x="112" y="24" width="52" height="18" rx="9" fill="#E3F2F0" stroke="#BFE0DC"/>
+            <text x="138" y="37" text-anchor="middle" font-size="10" letter-spacing="1.5" fill="#0E7C72" font-family="DM Sans, sans-serif" font-weight="600">VALUE</text>
+            <text x="172" y="40" font-size="21" fill="#0F1B2D" font-family="Bricolage Grotesque, DM Sans, sans-serif" font-style="italic">Health</text>
+            <text x="112" y="62" font-size="13.5" fill="#0E7C72" font-family="Bricolage Grotesque, DM Sans, sans-serif" font-style="italic">the direction you keep walking</text>
+            <rect x="196" y="176" width="150" height="18" rx="9" fill="#F3F5F8" stroke="#DFE3E9"/>
+            <text x="271" y="189" text-anchor="middle" font-size="10" letter-spacing="1.2" fill="#0B6158" font-family="DM Sans, sans-serif" font-weight="600">GOALS ALONG THE WAY</text>
           </svg>
         </div>
         <div class="vg-legend"><p><b class="g">Goals</b> are places you arrive. You reach them, check them off, and set new ones.</p><p><b class="v">Values</b> are the direction you keep walking. You're never "done" with them. They describe <em>who you are</em> along the way.</p></div>
@@ -864,15 +865,15 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
     const n = list.length, R = 100, cx = 220, cy = 160;
     const ang = (i) => (-90 + i * 360 / n) * Math.PI / 180;
     const rose = [0, 45, 90, 135, 180, 225, 270, 315].map((a, i) => { const L = i % 2 ? 34 : 60, w = i % 2 ? 5 : 8; return `<path d="M0 ${-L} L${w} 0 L0 ${L * 0.12} L${-w} 0 Z" transform="rotate(${a})" fill="${i % 2 ? "#F3ECE1" : "#EDE3D6"}"/>`; }).join("");
-    const spokes = list.map((_, i) => `<line x1="${cx}" y1="${cy}" x2="${(cx + Math.cos(ang(i)) * R).toFixed(1)}" y2="${(cy + Math.sin(ang(i)) * R).toFixed(1)}" stroke="#D9C7AE" stroke-width="1.5" stroke-dasharray="${living ? "2 4" : "0"}"/>`).join("");
+    const spokes = list.map((_, i) => `<line x1="${cx}" y1="${cy}" x2="${(cx + Math.cos(ang(i)) * R).toFixed(1)}" y2="${(cy + Math.sin(ang(i)) * R).toFixed(1)}" stroke="#C9D2DD" stroke-width="1.5" stroke-dasharray="${living ? "2 4" : "0"}"/>`).join("");
     let shape = "";
     if (n >= 3) {
       const rr = (v) => living ? R * Math.max(0.06, (living[v] ?? 5) / 10) : R * 0.62;
       const poly = list.map((v, i) => `${(cx + Math.cos(ang(i)) * rr(v)).toFixed(1)},${(cy + Math.sin(ang(i)) * rr(v)).toFixed(1)}`).join(" ");
-      shape = `<polygon class="vc-shape" points="${poly}" fill="${living ? "rgba(71,107,86,.22)" : "rgba(71,107,86,.10)"}" stroke="#476B56" stroke-width="2" stroke-linejoin="round"/>`
-        + (living ? list.map((v, i) => `<circle cx="${(cx + Math.cos(ang(i)) * rr(v)).toFixed(1)}" cy="${(cy + Math.sin(ang(i)) * rr(v)).toFixed(1)}" r="4" fill="#476B56"/>`).join("") : "");
+      shape = `<polygon class="vc-shape" points="${poly}" fill="${living ? "rgba(14,124,114,.22)" : "rgba(14,124,114,.10)"}" stroke="#0E7C72" stroke-width="2" stroke-linejoin="round"/>`
+        + (living ? list.map((v, i) => `<circle cx="${(cx + Math.cos(ang(i)) * rr(v)).toFixed(1)}" cy="${(cy + Math.sin(ang(i)) * rr(v)).toFixed(1)}" r="4" fill="#0E7C72"/>`).join("") : "");
     }
-    const rings = living ? [0.25, 0.5, 0.75].map((f) => `<circle cx="${cx}" cy="${cy}" r="${R * f}" fill="none" stroke="#EFE3D1"/>`).join("") : `<circle cx="${cx}" cy="${cy}" r="${R - 12}" fill="none" stroke="#EFE3D1" stroke-dasharray="2 5"/>`;
+    const rings = living ? [0.25, 0.5, 0.75].map((f) => `<circle cx="${cx}" cy="${cy}" r="${R * f}" fill="none" stroke="#E6EAF0"/>`).join("") : `<circle cx="${cx}" cy="${cy}" r="${R - 12}" fill="none" stroke="#E6EAF0" stroke-dasharray="2 5"/>`;
     const pts = list.map((v, i) => {
       const a = ang(i), x = cx + Math.cos(a) * R, y = cy + Math.sin(a) * R;
       const lx = cx + Math.cos(a) * (R + 22), ly = cy + Math.sin(a) * (R + 22) + 4, anchor = Math.abs(Math.cos(a)) < 0.3 ? "middle" : Math.cos(a) > 0 ? "start" : "end";
@@ -881,14 +882,14 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
       if (anchor !== "middle" && label.length > 11 && label.includes(" ")) { const mid = label.length / 2; let k = -1, best = 99; [...label].forEach((ch, j) => { if (ch === " " && Math.abs(j - mid) < best) { best = Math.abs(j - mid); k = j; } }); lines = [label.slice(0, k), label.slice(k + 1)]; }
       const y0 = (Math.abs(Math.cos(a)) < 0.3 && Math.sin(a) < 0 ? ly - 6 : ly) - (lines.length - 1) * 8;
       const score = living ? ` (${living[v] ?? 5})` : "";
-      return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="6" fill="#476B56" stroke="#fff" stroke-width="2"/>
-        <text x="${lx.toFixed(1)}" y="${y0.toFixed(1)}" text-anchor="${anchor}" font-family="Lora, serif" font-size="16" fill="#3A3027">${lines.map((l, j) => `<tspan x="${lx.toFixed(1)}" dy="${j ? 17 : 0}">${esc(l)}${j === lines.length - 1 && score ? `<tspan fill="#8A7E70" font-size="13">${score}</tspan>` : ""}</tspan>`).join("")}</text>`;
+      return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="6" fill="#0E7C72" stroke="#fff" stroke-width="2"/>
+        <text x="${lx.toFixed(1)}" y="${y0.toFixed(1)}" text-anchor="${anchor}" font-family="Bricolage Grotesque, DM Sans, sans-serif" font-size="16" fill="#0F1B2D">${lines.map((l, j) => `<tspan x="${lx.toFixed(1)}" dy="${j ? 17 : 0}">${esc(l)}${j === lines.length - 1 && score ? `<tspan fill="#8A7E70" font-size="13">${score}</tspan>` : ""}</tspan>`).join("")}</text>`;
     }).join("");
-    const empty = !n ? `<text x="${cx}" y="${cy + 4}" text-anchor="middle" font-family="Lora, serif" font-style="italic" font-size="14" fill="#A99C8C">Choose your five</text>` : "";
+    const empty = !n ? `<text x="${cx}" y="${cy + 4}" text-anchor="middle" font-family="Bricolage Grotesque, DM Sans, sans-serif" font-style="italic" font-size="14" fill="#8A95A5">Choose your five</text>` : "";
     return `<svg viewBox="0 0 440 312" class="vc-svg${big ? " big" : ""}">
-      <circle cx="${cx}" cy="${cy}" r="${R}" fill="#FFFDF8" stroke="#D9C7AE" stroke-width="2"/>
+      <circle cx="${cx}" cy="${cy}" r="${R}" fill="#FFFFFF" stroke="#C9D2DD" stroke-width="2"/>
       ${rings}<g transform="translate(${cx} ${cy})">${rose}</g>${spokes}${shape}
-      ${n ? `<circle cx="${cx}" cy="${cy}" r="4" fill="#3A3027"/>` : ""}
+      ${n ? `<circle cx="${cx}" cy="${cy}" r="4" fill="#0F1B2D"/>` : ""}
       ${pts}${empty}
     </svg>`;
   }

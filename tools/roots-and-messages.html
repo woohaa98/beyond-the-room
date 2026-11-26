@@ -17,13 +17,13 @@
 @font-face { font-family: "DM Sans"; src: url("../resources/assets/fonts/dm-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 
 :root {
-  --font-display: "Lora", Georgia, "Times New Roman", serif;
+  --font-display: "Bricolage Grotesque", "DM Sans", -apple-system, sans-serif;
   --font-body: "DM Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-  --bg: #FDFAF6; --surface: #FFFFFF; --ink: #2A2F35; --muted: #5A6370; --line: #E8DDD0;
-  --accent: #476B56; --accent-ink: #FFFFFF; --accent-soft: #EEF4F0;
-  --warm: #C4714A; --warm-ink: #9A5232; --warm-soft: #FBF0EA; --sand: #F5EFE6; --focus: #3D4A5C;
+  --bg: #FFFFFF; --surface: #FFFFFF; --ink: #0F1B2D; --muted: #657083; --line: #DFE3E9;
+  --accent: #0E7C72; --accent-ink: #FFFFFF; --accent-soft: #E3F2F0;
+  --warm: #1F3A5F; --warm-ink: #0B6158; --warm-soft: #E9EDF3; --sand: #F3F5F8; --focus: #0F1B2D;
   --radius: 20px;
-  --shadow: 0 1px 2px rgba(42,47,53,.04), 0 10px 30px rgba(42,47,53,.06);
+  --shadow: 0 1px 2px rgba(15,27,45,.04), 0 10px 30px rgba(15,27,45,.06);
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -49,7 +49,7 @@ h1 em, .q em { color: var(--warm); font-style: italic; }
 .progress li.on { background: var(--accent); }
 .ground-btn { appearance: none; font: inherit; font-size: 13.5px; cursor: pointer; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--accent); white-space: nowrap; transition: border-color .2s; }
 .ground-btn:hover { border-color: var(--accent); }
-.grounding { display: flex; gap: 14px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #CFE0D4; border-radius: 16px; padding: 14px 16px; margin: 0 0 22px; }
+.grounding { display: flex; gap: 14px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #BFE0DC; border-radius: 16px; padding: 14px 16px; margin: 0 0 22px; }
 .grounding strong { display: block; color: var(--accent); font-weight: 600; }
 .grounding p { margin: 0; font-size: 14.5px; }
 .grounding .x { appearance: none; background: none; border: 0; font-size: 22px; line-height: 1; color: var(--muted); cursor: pointer; margin-left: auto; padding: 0 4px; }
@@ -79,8 +79,8 @@ h1 em, .q em { color: var(--warm); font-style: italic; }
 .field { margin-top: 16px; }
 .field > label { display: block; font-weight: 500; margin-bottom: 8px; }
 textarea, input[type=text] { width: 100%; font: inherit; font-size: 16px; line-height: 1.6; padding: 13px 15px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); resize: vertical; }
-textarea:focus, input[type=text]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(71,107,86,.15); }
-::placeholder { color: #8C939C; }
+textarea:focus, input[type=text]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(14,124,114,.15); }
+::placeholder { color: #8A95A5; }
 
 .chipset { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
 .chip { appearance: none; font: inherit; font-size: 14.5px; cursor: pointer; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; min-height: 40px; color: var(--ink); transition: all .2s; }
@@ -156,7 +156,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 
 /* ---- shared by Small Steps, Kind Boundaries, Gentle Start-Up ---- */
 .privacy-line { font-size: 13.5px; color: var(--muted); margin: -20px 0 28px; }
-.session-banner { display: flex; gap: 12px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #CFE0D4; border-radius: 16px; padding: 14px 16px; margin: -12px 0 28px; font-size: 14.5px; }
+.session-banner { display: flex; gap: 12px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #BFE0DC; border-radius: 16px; padding: 14px 16px; margin: -12px 0 28px; font-size: 14.5px; }
 .session-banner b { display: block; color: var(--accent); font-weight: 600; }
 .session-banner p { margin: 0; }
 .explain { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin: 0 0 18px; }
@@ -167,10 +167,10 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .callout strong { color: var(--accent); }
 .callout.warm { background: var(--warm-soft); }
 .callout.warm strong { color: var(--warm-ink); }
-.script { background: #F2F8F3; border: 1px solid #CFE0D4; border-radius: 18px; padding: 20px 22px; margin: 6px 0 0; }
+.script { background: #EEF7F6; border: 1px solid #BFE0DC; border-radius: 18px; padding: 20px 22px; margin: 6px 0 0; }
 .script .k { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 8px; }
 .script p.say { font-family: var(--font-display); font-size: 20px; line-height: 1.5; margin: 0; }
-.script textarea { width: 100%; font: inherit; font-family: var(--font-display); font-size: 19px; line-height: 1.5; padding: 12px 14px; border: 1px solid #CFE0D4; border-radius: 12px; background: #fff; color: var(--ink); resize: vertical; min-height: 120px; }
+.script textarea { width: 100%; font: inherit; font-family: var(--font-display); font-size: 19px; line-height: 1.5; padding: 12px 14px; border: 1px solid #BFE0DC; border-radius: 12px; background: #fff; color: var(--ink); resize: vertical; min-height: 120px; }
 .tone { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 12px; }
 .card-sec { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
 .card-sec h3 { margin: 0 0 6px; font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
@@ -180,7 +180,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .tag-row span { font-size: 13px; background: var(--sand); border-radius: 999px; padding: 4px 12px; }
 .print-head { display: none; }
 .erase-row { margin-top: 14px; font-size: 14px; }
-.vbtn { appearance: none; font: inherit; font-size: 14.5px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; background: #fff; border: 1px solid #CFE0D4; color: var(--accent); border-radius: 999px; padding: 9px 16px; min-height: 42px; }
+.vbtn { appearance: none; font: inherit; font-size: 14.5px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; background: #fff; border: 1px solid #BFE0DC; color: var(--accent); border-radius: 999px; padding: 9px 16px; min-height: 42px; }
 .vbtn:disabled { opacity: .45; cursor: not-allowed; }
 @media print {
   .print-head { display: block !important; border-bottom: 1px solid #ccc; padding-bottom: 8px; margin-bottom: 14px; font-size: 10pt; color: #444; }
@@ -193,14 +193,14 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .photo-box img { display: block; width: 100%; max-width: 360px; height: auto; border-radius: 14px; border: 1px solid var(--line); margin: 0 auto; -webkit-touch-callout: default; }
 @media print { .photo-box { display: none !important; } }
 
-.opt.bal { background: #F2F8F3; border-color: #CFE0D4; align-items: center; }
-.opt.bal b { font-weight: 500; font-family: var(--font-display); font-size: 17px; color: #2F4A3A; }
-.opt.bal:hover { border-color: var(--accent); background: #EAF3EC; }
-.opt.bal[aria-pressed="true"] { background: #DDEDE1; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(71,107,86,.12); }
+.opt.bal { background: #EEF7F6; border-color: #BFE0DC; align-items: center; }
+.opt.bal b { font-weight: 500; font-family: var(--font-display); font-size: 17px; color: #0B4F49; }
+.opt.bal:hover { border-color: var(--accent); background: #E3F2F0; }
+.opt.bal[aria-pressed="true"] { background: #D3ECE8; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(14,124,114,.12); }
 .opt[disabled] { opacity: .45; cursor: not-allowed; }
-.share-th { margin: 24px 0 4px; background: #fff; border: 1px solid #CFE0D4; border-radius: 20px; padding: 20px 22px 16px; box-shadow: 0 1px 2px rgba(42,47,53,.04), 0 10px 30px rgba(42,47,53,.06); text-align: left; }
+.share-th { margin: 24px 0 4px; background: #fff; border: 1px solid #BFE0DC; border-radius: 20px; padding: 20px 22px 16px; box-shadow: 0 1px 2px rgba(15,27,45,.04), 0 10px 30px rgba(15,27,45,.06); text-align: left; }
 .share-th .st-h { margin: 0 0 2px; font-family: var(--font-display); font-size: 22px; }
-.share-th .st-h b { font-weight: 400; font-style: italic; color: #476B56; }
+.share-th .st-h b { font-weight: 400; font-style: italic; color: #0E7C72; }
 .share-th .st-sub { margin: 0 0 14px; color: var(--muted); font-size: 14.5px; }
 .share-th .st-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .share-th .st-tip { margin: 12px 0 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
@@ -211,15 +211,15 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
   body.printing-summary #print-summary { display: block !important; font: 12pt/1.6 Georgia, serif; white-space: pre-wrap; color: #222; }
 }
 
-.map-wrap { background: radial-gradient(120% 80% at 50% 0%, #FFFDF8, #FBF6EE 70%, #F6EFE4); border: 1px solid var(--line); border-radius: 22px; padding: 10px 8px 8px; margin: 0 0 22px; box-shadow: var(--shadow); }
+.map-wrap { background: radial-gradient(120% 80% at 50% 0%, #FFFFFF, #FBF6EE 70%, #F6EFE4); border: 1px solid var(--line); border-radius: 22px; padding: 10px 8px 8px; margin: 0 0 22px; box-shadow: var(--shadow); }
 .map-svg { width: 100%; height: auto; display: block; }
 .map-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 @media (max-width: 600px) { .map-scroll .map-svg { min-width: 500px; } .map-hint { display: block !important; } }
 .map-hint { display: none; text-align: center; font-size: 12px; color: var(--muted); margin: 2px 0 0; }
 @media print { .map-scroll .map-svg { min-width: 0 !important; } .map-hint { display: none !important; } }
 .map-svg .node { cursor: pointer; }
-.map-svg .node.sel circle.ring { stroke: #2A2F35; stroke-width: 2.5; }
-.map-svg .node:focus-visible circle.ring { stroke: var(--focus, #3D4A5C); stroke-dasharray: 3 3; }
+.map-svg .node.sel circle.ring { stroke: #0F1B2D; stroke-width: 2.5; }
+.map-svg .node:focus-visible circle.ring { stroke: var(--focus, #0F1B2D); stroke-dasharray: 3 3; }
 .map-svg .pop { animation: pop .5s cubic-bezier(.3,1.5,.5,1) both; transform-box: fill-box; transform-origin: center; }
 @keyframes pop { from { transform: scale(.3); opacity: 0; } to { transform: none; opacity: 1; } }
 .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: center; margin: 4px 6px 6px; font-size: 12.5px; color: var(--muted); }
@@ -250,7 +250,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .relchip svg { width: 26px; height: 8px; }
 .relchip[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
 .msg { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; margin: 0 0 10px; }
-.msg.on { border-color: #D9B25F; background: #FFFBF0; }
+.msg.on { border-color: #D9B25F; background: #FFFFFF; }
 .msg-top { display: flex; gap: 10px; align-items: center; cursor: pointer; }
 .msg-top .q { font-family: var(--font-display); font-style: italic; font-size: 17px; flex: 1; }
 .msg-top .tick { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--line); display: grid; place-items: center; font-size: 13px; color: #fff; flex: none; }
@@ -262,7 +262,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .crl button { appearance: none; font: inherit; font-size: 13.5px; cursor: pointer; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: #fff; }
 .crl button[data-c="carry"][aria-pressed="true"] { background: #E3EFE6; border-color: #6E9C7F; color: #2F5A3F; }
 .crl button[data-c="rewrite"][aria-pressed="true"] { background: #FBEFD9; border-color: #C99A3F; color: #7A5A1E; }
-.crl button[data-c="leave"][aria-pressed="true"] { background: #F1ECE6; border-color: #A99C8C; color: #5A4E42; }
+.crl button[data-c="leave"][aria-pressed="true"] { background: #F1ECE6; border-color: #8A95A5; color: #5A4E42; }
 .mv { margin-top: 8px; }
 .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 16px 0 0; }
 @media (max-width: 640px) { .cols { grid-template-columns: 1fr; } }
@@ -277,7 +277,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .strengths b { color: var(--accent); }
 .gentle { font-size: 14px; color: var(--muted); background: var(--surface); border: 1px dashed var(--line); border-radius: 14px; padding: 10px 14px; margin: 0 0 18px; }
 @media print { .map-wrap { box-shadow: none; } .people-row, .editor { display: none !important; } }
-.session-prep { margin: 22px 0 0; background: #FFFBF0; border: 1px solid #EBD9AE; border-radius: 20px; padding: 18px 20px 16px; }
+.session-prep { margin: 22px 0 0; background: #FFFFFF; border: 1px solid #EBD9AE; border-radius: 20px; padding: 18px 20px 16px; }
 .sp-eyebrow { margin: 0 0 4px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: #8B6A2E; }
 .sp-h { margin: 0 0 4px; font-family: var(--font-display); font-weight: 400; font-size: 22px; }
 .sp-h em { color: #B98A33; }
@@ -288,7 +288,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
   .session-notes { page-break-before: always; break-before: page; font-size: 10.5pt; color: #222; }
   .session-notes h2 { font-family: var(--font-display); font-weight: 400; font-size: 20pt; margin: 0 0 2px; }
   .session-notes h2 span { font-style: italic; color: #8B6A2E; font-size: 14pt; }
-  .session-notes h3 { font-size: 9pt; letter-spacing: .12em; text-transform: uppercase; color: #476B56; margin: 16px 0 6px; }
+  .session-notes h3 { font-size: 9pt; letter-spacing: .12em; text-transform: uppercase; color: #0E7C72; margin: 16px 0 6px; }
   .session-notes .pn-date { margin: 0 0 12px; color: #666; }
   .session-notes .pn-start { background: #FFF8E8; border: 1px solid #EBD9AE; border-radius: 10px; padding: 8px 12px; }
   .session-notes .pn-start p { margin: 4px 0; }
@@ -302,6 +302,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 }
 .feedback-line a { color: var(--accent); font-weight: 500; }
 </style>
+<link rel="stylesheet" href="../assets/btr-theme.css">
 </head>
 <body>
 <div class="wrap">
@@ -424,16 +425,16 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
   function rrect(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r); ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h); ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r); ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y); ctx.closePath(); }
   /* spec: { eyebrow, title, blocks: [{ h, text } | { h, quote } | { h, list: [] } | { timeline: [{ dot, title, sub, dashed }] }], footer } */
   async function makeCard(spec) {
-    try { await Promise.all(['italic 400 40px "Lora"', '400 40px "Lora"', '400 30px "DM Sans"', '600 30px "DM Sans"'].map((f) => document.fonts.load(f))); } catch (_) {}
+    try { await Promise.all(['400 40px "Bricolage Grotesque"', '400 40px "Bricolage Grotesque"', '400 30px "DM Sans"', '600 30px "DM Sans"'].map((f) => document.fonts.load(f))); } catch (_) {}
     const W = 1080, P = 90, inner = W - P * 2;
-    const C = { bg: "#FDFAF6", ink: "#2A2F35", muted: "#5A6370", sage: "#476B56", soft: "#EEF4F0", line: "#E8DDD0" };
+    const C = { bg: "#FFFFFF", ink: "#0F1B2D", muted: "#657083", sage: "#0E7C72", soft: "#E3F2F0", line: "#DFE3E9" };
     const m = document.createElement("canvas").getContext("2d"), ops = [];
     const text = (font, color, str, lh, gap, opts = {}) => { m.font = font; const lines = wrapLines(m, str, inner - (opts.indent || 0) - (opts.box ? 64 : 0)); ops.push({ k: "text", font, color, lines, lh, gap, ...opts }); };
     if (spec.eyebrow) text('600 26px "DM Sans"', C.muted, spec.eyebrow.toUpperCase(), 34, 12, { spacing: true });
-    if (spec.title) text('400 56px "Lora"', C.ink, spec.title, 66, 44);
+    if (spec.title) text('400 56px "Bricolage Grotesque"', C.ink, spec.title, 66, 44);
     (spec.blocks || []).forEach((b) => {
       if (b.h) text('600 24px "DM Sans"', C.sage, b.h.toUpperCase(), 32, 12, { spacing: true });
-      if (b.quote) text('italic 400 38px "Lora"', C.ink, b.quote, 52, 40, { box: true });
+      if (b.quote) text('400 38px "Bricolage Grotesque"', C.ink, b.quote, 52, 40, { box: true });
       if (b.text) text('400 30px "DM Sans"', C.ink, b.text, 42, 40);
       if (b.list) { b.list.forEach((li, i) => text('400 29px "DM Sans"', C.ink, "• " + li, 40, i === b.list.length - 1 ? 40 : 8)); }
       if (b.img) { const h = Math.round(inner * b.img.height / b.img.width); ops.push({ k: "img", img: b.img, h, gap: 40 }); }
@@ -545,10 +546,10 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
     }
     return `M${x1} ${y1} Q ${cx.toFixed(1)} ${cy.toFixed(1)} ${x2} ${y2}`;
   }
-  const REL_STYLE = { close: 'stroke="#6E9C7F" stroke-width="3.2"', mixed: 'stroke="#C9A04F" stroke-width="2.2"', distant: 'stroke="#9FB0C2" stroke-width="2.4" stroke-dasharray="2 6" stroke-linecap="round"', tense: 'stroke="#C4714A" stroke-width="2.2"', cutoff: 'stroke="#9A8C7C" stroke-width="2.4" stroke-dasharray="10 7"' };
+  const REL_STYLE = { close: 'stroke="#6E9C7F" stroke-width="3.2"', mixed: 'stroke="#C9A04F" stroke-width="2.2"', distant: 'stroke="#9FB0C2" stroke-width="2.4" stroke-dasharray="2 6" stroke-linecap="round"', tense: 'stroke="#1F3A5F" stroke-width="2.2"', cutoff: 'stroke="#7A8596" stroke-width="2.4" stroke-dasharray="10 7"' };
   const SAMPLE = { close: "M2 5 L32 5", distant: "M3 5 L32 5", cutoff: "M2 5 L32 5",
     mixed: "M2 5 Q 5.75 1, 9.5 5 T 17 5 T 24.5 5 T 32 5", tense: "M2 5 L6 1.5 L10 8.5 L14 1.5 L18 8.5 L22 1.5 L26 8.5 L30 1.5 L32 5" };
-  function relSample(kind) { return `<svg viewBox="0 0 34 10" aria-hidden="true"><path d="${SAMPLE[kind]}" fill="none" ${REL_STYLE[kind].replace(/stroke-width="[\d.]+"/, 'stroke-width="2"')}/>${kind === "cutoff" ? '<path d="M15 1 L15 9 M19 1 L19 9" stroke="#9A8C7C" stroke-width="1.6"/>' : ""}</svg>`; }
+  function relSample(kind) { return `<svg viewBox="0 0 34 10" aria-hidden="true"><path d="${SAMPLE[kind]}" fill="none" ${REL_STYLE[kind].replace(/stroke-width="[\d.]+"/, 'stroke-width="2"')}/>${kind === "cutoff" ? '<path d="M15 1 L15 9 M19 1 L19 9" stroke="#7A8596" stroke-width="1.6"/>' : ""}</svg>`; }
   const hasKidsOn = () => ["ch1", "ch2", "ch3"].some((id) => d.on.includes(id));
   const otherY = () => hasKidsOn() ? GEN_Y[3] + 140 : (d.on.includes("ptn") ? GEN_Y[2] + 172 : GEN_Y[2] + 150);
   function layout() {
@@ -605,13 +606,13 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
       const out = left ? -1 : 1, c1x = sx + out * 70, c2x = ex + out * 40;
       if (kind === "close" || kind === "distant" || kind === "cutoff") {
         s += `<path d="M${sx} ${sy} C ${c1x} ${sy + 30}, ${c2x} ${ey - 120}, ${ex} ${ey - 30}" fill="none" ${REL_STYLE[kind]} opacity=".9"/>`;
-        if (kind === "cutoff") { const mx = (sx + ex) / 2 + out * 30, my = (sy + ey) / 2; s += `<path d="M${mx - 7} ${my - 5} L${mx + 7} ${my - 5} M${mx - 7} ${my + 3} L${mx + 7} ${my + 3}" stroke="#9A8C7C" stroke-width="2.2"/>`; }
+        if (kind === "cutoff") { const mx = (sx + ex) / 2 + out * 30, my = (sy + ey) / 2; s += `<path d="M${mx - 7} ${my - 5} L${mx + 7} ${my - 5} M${mx - 7} ${my + 3} L${mx + 7} ${my + 3}" stroke="#7A8596" stroke-width="2.2"/>`; }
       } else s += `<path d="${relPath(kind, sx, sy, ex, ey - 30)}" fill="none" ${REL_STYLE[kind]} opacity=".9"/>`;
     });
     ids.forEach((id) => { if (id === "you" || id === "ptn" || id.startsWith("x") || !d.rel[id] || d.rel[id] === "unsure") return; const [x2, y2] = pos[id], [x1, y1] = pos.you;
       const dx = x2 - x1, dy = y2 - y1, Ln = Math.hypot(dx, dy), sx = x1 + dx / Ln * 36, sy = y1 + dy / Ln * 36, ex = x2 - dx / Ln * 30, ey = y2 - dy / Ln * 30;
       s += `<path d="${relPath(d.rel[id], sx, sy, ex, ey)}" fill="none" ${REL_STYLE[d.rel[id]]} opacity=".9"/>`;
-      if (d.rel[id] === "cutoff") { const mx = (sx + ex) / 2, my = (sy + ey) / 2, nx = -(ey - sy) / Ln, ny = (ex - sx) / Ln; s += [-5, 5].map((o) => `<path d="M${mx + o * (ex - sx) / Ln - nx * 7} ${my + o * (ey - sy) / Ln - ny * 7} L${mx + o * (ex - sx) / Ln + nx * 7} ${my + o * (ey - sy) / Ln + ny * 7}" stroke="#9A8C7C" stroke-width="2.4"/>`).join(""); } });
+      if (d.rel[id] === "cutoff") { const mx = (sx + ex) / 2, my = (sy + ey) / 2, nx = -(ey - sy) / Ln, ny = (ex - sx) / Ln; s += [-5, 5].map((o) => `<path d="M${mx + o * (ex - sx) / Ln - nx * 7} ${my + o * (ey - sy) / Ln - ny * 7} L${mx + o * (ex - sx) / Ln + nx * 7} ${my + o * (ey - sy) / Ln + ny * 7}" stroke="#7A8596" stroke-width="2.4"/>`).join(""); } });
     // people
     ids.forEach((id, i) => {
       const [x, y] = pos[id], me = id === "you", r = me ? 32 : 26, p = P(id), w = wordOf(id), sel = !opts.static && d.step === 2 && d.sel === id;
@@ -620,9 +621,9 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
       s += `<g class="node${sel ? " sel" : ""}${isNew ? " pop" : ""}" data-node="${id}" ${opts.static ? "" : `tabindex="0" role="button" aria-label="${esc(nameOf(id))}"`}>
         ${me ? `<circle cx="${x}" cy="${y}" r="52" fill="url(#yhalo)"/>` : ""}
         <circle class="ring" cx="${x}" cy="${y}" r="${r}" fill="${colorOf(id, i)}" stroke="${me ? "#E0B55E" : "rgba(0,0,0,.12)"}" stroke-width="${me ? 2.5 : 1.2}"/>
-        <text x="${x}" y="${y + (p.sym ? 7 : 5)}" text-anchor="middle" font-size="${p.sym ? (me ? 24 : 20) : 13}" ${p.sym ? "" : `fill="#6B5D4E" font-family="Lora, serif" font-style="italic"`}>${p.sym || (me ? "you" : "")}</text>
-        <text x="${x}" y="${y + r + 15}" text-anchor="middle" font-size="${me ? 13 : 12}" font-weight="${me ? 600 : 500}" fill="#2A2F35">${esc(nameOf(id).length > 16 ? nameOf(id).slice(0, 15) + "…" : nameOf(id))}</text>
-        ${w ? `<text x="${x}" y="${y + r + 29}" text-anchor="middle" font-size="11.5" fill="#7A6A58" font-family="Lora, serif" font-style="italic">${esc(w)}</text>` : ""}
+        <text x="${x}" y="${y + (p.sym ? 7 : 5)}" text-anchor="middle" font-size="${p.sym ? (me ? 24 : 20) : 13}" ${p.sym ? "" : `fill="#6B5D4E" font-family="Bricolage Grotesque, DM Sans, sans-serif" font-style="italic"`}>${p.sym || (me ? "you" : "")}</text>
+        <text x="${x}" y="${y + r + 15}" text-anchor="middle" font-size="${me ? 13 : 12}" font-weight="${me ? 600 : 500}" fill="#0F1B2D">${esc(nameOf(id).length > 16 ? nameOf(id).slice(0, 15) + "…" : nameOf(id))}</text>
+        ${w ? `<text x="${x}" y="${y + r + 29}" text-anchor="middle" font-size="11.5" fill="#7A6A58" font-family="Bricolage Grotesque, DM Sans, sans-serif" font-style="italic">${esc(w)}</text>` : ""}
         ${msgCount ? `<g><circle cx="${x + r * .72}" cy="${y - r * .72}" r="10" fill="#C99A3F"/><text x="${x + r * .72}" y="${y - r * .72 + 4}" text-anchor="middle" font-size="10.5" fill="#fff" font-weight="600">✉${msgCount > 1 ? msgCount : ""}</text></g>` : ""}
       </g>`;
     });
@@ -705,7 +706,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
       <p class="hint">Think about the relationship as it is now, or as it was if they've passed. Tap one for each. "Not sure" is a fine answer.</p>
       <div class="card" style="padding:6px 18px">
         ${people().filter((x) => x !== "you").map((x, i) => `<div class="rel-row">${av(x, i + 1)}<div><b>${esc(nameOf(x))}</b><div class="relchips">${RELS.map((r) => `<button type="button" class="relchip" data-rel="${x}" data-v="${r.id}" aria-pressed="${d.rel[x] === r.id}">${relSample(r.id)}${r.label}</button>`).join("")}<button type="button" class="relchip" data-rel="${x}" data-v="unsure" aria-pressed="${d.rel[x] === "unsure"}">Not sure</button></div></div></div>`).join("")}
-        ${d.on.includes("mom") && d.on.includes("dad") ? `<div class="rel-row"><span class="av" style="background:#F5EFE6">⚭</span><div><b>Between ${esc(nameOf("mom"))} and ${esc(nameOf("dad"))}</b><div class="relchips">${RELS.map((r) => `<button type="button" class="relchip" data-prel="${r.id}" aria-pressed="${d.prel === r.id}">${relSample(r.id)}${r.label}</button>`).join("")}</div></div></div>` : ""}
+        ${d.on.includes("mom") && d.on.includes("dad") ? `<div class="rel-row"><span class="av" style="background:#F3F5F8">⚭</span><div><b>Between ${esc(nameOf("mom"))} and ${esc(nameOf("dad"))}</b><div class="relchips">${RELS.map((r) => `<button type="button" class="relchip" data-prel="${r.id}" aria-pressed="${d.prel === r.id}">${relSample(r.id)}${r.label}</button>`).join("")}</div></div></div>` : ""}
       </div>
       ${nav("The Messages Passed Down")}`,
 

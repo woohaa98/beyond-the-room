@@ -19,22 +19,22 @@
 
 /* Theme: matches the homepage (cream / sand / terracotta / sage / slate). */
 :root {
-  --font-display: "Lora", Georgia, "Times New Roman", serif;
+  --font-display: "Bricolage Grotesque", "DM Sans", -apple-system, sans-serif;
   --font-body: "DM Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
 
-  --bg: #FDFAF6;           /* cream */
+  --bg: #FFFFFF;           /* cream */
   --surface: #FFFFFF;
-  --ink: #2A2F35;          /* text-dark */
-  --muted: #5A6370;        /* text-mid */
-  --line: #E8DDD0;         /* divider */
-  --accent: #476B56;       /* sage, text-safe */
+  --ink: #0F1B2D;          /* text-dark */
+  --muted: #657083;        /* text-mid */
+  --line: #DFE3E9;         /* divider */
+  --accent: #0E7C72;       /* sage, text-safe */
   --accent-ink: #FFFFFF;
-  --accent-soft: #EEF4F0;  /* sage wash */
-  --warm: #C4714A;         /* terracotta */
-  --focus: #3D4A5C;        /* slate */
+  --accent-soft: #E3F2F0;  /* sage wash */
+  --warm: #1F3A5F;         /* terracotta */
+  --focus: #0F1B2D;        /* slate */
 
   --radius: 20px;
-  --shadow: 0 1px 2px rgba(42,47,53,.04), 0 10px 30px rgba(42,47,53,.06);
+  --shadow: 0 1px 2px rgba(15,27,45,.04), 0 10px 30px rgba(15,27,45,.06);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -132,13 +132,13 @@ legend.q { font-family: var(--font-display); font-size: clamp(26px, 4.5vw, 32px)
 
 /* ---------- Step 3: nourish ---------- */
 .privacy-note { font-size: 13.5px; color: var(--muted); margin: -30px 0 36px; display: flex; gap: 8px; align-items: baseline; }
-.session-banner { display: flex; gap: 12px; align-items: flex-start; background: var(--accent-soft, #EEF4EF); border: 1px solid #CFE0D4; border-radius: 16px; padding: 14px 16px; margin: -18px 0 30px; font-size: 14.5px; }
+.session-banner { display: flex; gap: 12px; align-items: flex-start; background: var(--accent-soft, #EEF4EF); border: 1px solid #BFE0DC; border-radius: 16px; padding: 14px 16px; margin: -18px 0 30px; font-size: 14.5px; }
 .session-banner[hidden] { display: none; }
-.session-banner b { display: block; color: var(--accent, #476B56); font-weight: 600; }
+.session-banner b { display: block; color: var(--accent, #0E7C72); font-weight: 600; }
 .session-banner p { margin: 0; }
-.share-th { margin: 24px 0 4px; background: #fff; border: 1px solid #CFE0D4; border-radius: 20px; padding: 20px 22px 16px; box-shadow: 0 1px 2px rgba(42,47,53,.04), 0 10px 30px rgba(42,47,53,.06); text-align: left; }
+.share-th { margin: 24px 0 4px; background: #fff; border: 1px solid #BFE0DC; border-radius: 20px; padding: 20px 22px 16px; box-shadow: 0 1px 2px rgba(15,27,45,.04), 0 10px 30px rgba(15,27,45,.06); text-align: left; }
 .share-th .st-h { margin: 0 0 2px; font-family: var(--font-display); font-size: 22px; }
-.share-th .st-h b { font-weight: 400; font-style: italic; color: #476B56; }
+.share-th .st-h b { font-weight: 400; font-style: italic; color: #0E7C72; }
 .share-th .st-sub { margin: 0 0 14px; color: var(--muted); font-size: 14.5px; }
 .share-th .st-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .share-th .st-tip { margin: 12px 0 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
@@ -161,10 +161,10 @@ legend.q { font-family: var(--font-display); font-size: clamp(26px, 4.5vw, 32px)
 .fstep .q { margin-bottom: 8px; }
 .fstep { animation: fsIn .45s ease-out both; }
 @keyframes fsIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-.msg-card { margin-top: 16px; background: var(--surface, #fff); border: 1px solid var(--line); border-radius: 22px; padding: 26px 26px 20px; box-shadow: 0 10px 30px rgba(42,47,53,.06); }
+.msg-card { margin-top: 16px; background: var(--surface, #fff); border: 1px solid var(--line); border-radius: 22px; padding: 26px 26px 20px; box-shadow: 0 10px 30px rgba(15,27,45,.06); }
 .msg-card .mantra { margin-top: 0; }
 .soak { margin: 8px 0 26px; text-align: center; background: linear-gradient(180deg, var(--accent-soft) 0%, #FBF8F3 100%); border-radius: 22px; padding: 28px 22px 22px; }
-.soak-orb { width: 84px; height: 84px; margin: 0 auto 18px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #fff 0%, #CFE0D4 55%, #A9C6B2 100%); transform: scale(.8); transition: transform 4s ease-in-out; }
+.soak-orb { width: 84px; height: 84px; margin: 0 auto 18px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #fff 0%, #BFE0DC 55%, #A9C6B2 100%); transform: scale(.8); transition: transform 4s ease-in-out; }
 .soak-orb.in { transform: scale(1.12); transition-duration: 4s; }
 .soak-orb.out { transform: scale(.8); transition-duration: 6s; }
 .soak-words { font-family: var(--font-display); font-size: 21px; line-height: 1.55; margin: 0 auto 10px; max-width: 30em; }
@@ -176,9 +176,9 @@ legend.q { font-family: var(--font-display); font-size: clamp(26px, 4.5vw, 32px)
 .chipset { display: flex; flex-wrap: wrap; gap: 8px; }
 .chipset .chip { appearance: none; font: inherit; font-size: 14px; cursor: pointer; text-align: left; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; color: var(--ink); }
 .chipset .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
-.promise { margin: 6px 0 4px; background: #FBF5EF; border-left: 3px solid var(--warm); border-radius: 0 16px 16px 0; padding: 16px 18px; font-family: var(--font-display); font-size: 18px; line-height: 1.6; }
+.promise { margin: 6px 0 4px; background: #F3F5F8; border-left: 3px solid var(--warm); border-radius: 0 16px 16px 0; padding: 16px 18px; font-family: var(--font-display); font-size: 18px; line-height: 1.6; }
 .promise:empty { display: none; }
-.promise b { display: block; font-family: var(--font-body, inherit); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--warm-ink, #9A5232); margin-bottom: 6px; }
+.promise b { display: block; font-family: var(--font-body, inherit); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--warm-ink, #0B6158); margin-bottom: 6px; }
 .reflect-card { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); }
 .reflect-card .k { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 0 0 6px; }
 .reflect-card p { margin: 0 0 12px; }
@@ -189,11 +189,11 @@ legend.q { font-family: var(--font-display); font-size: clamp(26px, 4.5vw, 32px)
 .quotes { display: grid; gap: 12px; }
 .quote-card { appearance: none; font: inherit; color: inherit; text-align: left; cursor: pointer; width: 100%; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; display: grid; gap: 10px; transition: border-color .2s, background-color .2s, box-shadow .2s; }
 .quote-card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
-.quote-card[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 0 3px rgba(71,107,86,.12); }
+.quote-card[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 0 3px rgba(14,124,114,.12); }
 .quote-card .tag { font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
 .quote-card .poem { font-family: var(--font-display); font-style: italic; font-size: 19px; line-height: 1.55; white-space: pre-line; margin: 0; }
 .quote-card .by { font-size: 13.5px; color: var(--muted); margin: 0; }
-.chosen-quote { margin: 26px 0 0; padding: 22px 24px; border-left: 3px solid var(--warm); background: #FBF5EF; border-radius: 0 18px 18px 0; }
+.chosen-quote { margin: 26px 0 0; padding: 22px 24px; border-left: 3px solid var(--warm); background: #F3F5F8; border-radius: 0 18px 18px 0; }
 .chosen-quote .k { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
 .chosen-quote .poem { font-family: var(--font-display); font-style: italic; font-size: 21px; line-height: 1.5; white-space: pre-line; margin: 0; }
 .chosen-quote .by { font-size: 13.5px; color: var(--muted); margin: 8px 0 0; }
@@ -206,7 +206,7 @@ legend.q { font-family: var(--font-display); font-size: clamp(26px, 4.5vw, 32px)
 .act .plus { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; font-size: 14px; color: var(--accent); line-height: 1; }
 .act[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
 .act[aria-pressed="true"] .plus { background: var(--accent); border-color: var(--accent); color: #fff; }
-.act .time { font-size: 12px; color: var(--muted); background: #F5EFE6; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+.act .time { font-size: 12px; color: var(--muted); background: #F3F5F8; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
 .plan { margin-top: 26px; border: 2px solid var(--accent); border-radius: 22px; overflow: hidden; }
 .plan .top { background: var(--accent); color: #fff; padding: 16px 20px; }
 .plan .top p { margin: 0; }
@@ -238,17 +238,18 @@ legend.q { font-family: var(--font-display); font-size: clamp(26px, 4.5vw, 32px)
 </style>
 <style>
 .rel { margin-top: 48px; }
-.rel-eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #5A6370; margin: 0 0 6px; }
-.rel h2 { font-family: "Lora", Georgia, serif; font-weight: 400; font-size: 24px; line-height: 1.2; margin: 0 0 6px; color: #2A2F35; }
-.rel-sub { font-size: 14.5px; color: #5A6370; margin: 0 0 16px; }
+.rel-eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #657083; margin: 0 0 6px; }
+.rel h2 { font-family: "Bricolage Grotesque", "DM Sans", -apple-system, sans-serif; font-weight: 400; font-size: 24px; line-height: 1.2; margin: 0 0 6px; color: #0F1B2D; }
+.rel-sub { font-size: 14.5px; color: #657083; margin: 0 0 16px; }
 .rel-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-.rel-list a { display: block; height: 100%; text-decoration: none; color: #2A2F35; background: #FFFFFF; border: 1px solid #E8DDD0; border-radius: 16px; padding: 14px 16px; transition: border-color .2s, transform .2s; }
-.rel-list a:hover { border-color: #476B56; transform: translateY(-1px); }
+.rel-list a { display: block; height: 100%; text-decoration: none; color: #0F1B2D; background: #FFFFFF; border: 1px solid #DFE3E9; border-radius: 16px; padding: 14px 16px; transition: border-color .2s, transform .2s; }
+.rel-list a:hover { border-color: #0E7C72; transform: translateY(-1px); }
 .rel-list b { display: block; font-weight: 600; font-size: 15px; line-height: 1.35; }
-.rel-list span { display: block; font-size: 13.5px; color: #5A6370; margin-top: 3px; }
-.rel-list em { display: block; font-style: normal; font-size: 13px; color: #476B56; font-weight: 500; margin-top: 8px; }
+.rel-list span { display: block; font-size: 13.5px; color: #657083; margin-top: 3px; }
+.rel-list em { display: block; font-style: normal; font-size: 13px; color: #0E7C72; font-weight: 500; margin-top: 8px; }
 @media print { .rel { display: none !important; } }
 </style>
+<link rel="stylesheet" href="../assets/btr-theme.css">
 </head>
 <body>
 <div class="wrap">
@@ -832,9 +833,9 @@ legend.q { font-family: var(--font-display); font-size: clamp(26px, 4.5vw, 32px)
     ctx.lineTo(x, y + R[0]); ctx.quadraticCurveTo(x, y, x + R[0], y); ctx.closePath();
   }
   async function makeCard() {
-    try { await Promise.all(['italic 400 40px "Lora"', '400 40px "Lora"', '400 30px "DM Sans"', '500 30px "DM Sans"', '600 30px "DM Sans"'].map((f) => document.fonts.load(f))); } catch (_) {}
+    try { await Promise.all(['400 40px "Bricolage Grotesque"', '400 40px "Bricolage Grotesque"', '400 30px "DM Sans"', '500 30px "DM Sans"', '600 30px "DM Sans"'].map((f) => document.fonts.load(f))); } catch (_) {}
     const W = 1080, P = 90, inner = W - P * 2;
-    const C = { bg: "#FDFAF6", ink: "#2A2F35", muted: "#5A6370", sage: "#476B56", warm: "#C4714A" };
+    const C = { bg: "#FFFFFF", ink: "#0F1B2D", muted: "#657083", sage: "#0E7C72", warm: "#1F3A5F" };
     const q = quoteById(current.quote);
     const m = document.createElement("canvas").getContext("2d");
     const blocks = [];
@@ -842,11 +843,11 @@ legend.q { font-family: var(--font-display); font-size: clamp(26px, 4.5vw, 32px)
     add('600 26px "DM Sans"', C.muted, "MY DAILY NOURISHMENT", 34, 8, true);
     add('400 28px "DM Sans"', C.muted, new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" }), 38, 44);
     add('500 30px "DM Sans"', C.sage, "Today I need: " + current.names.join(" · "), 42, 40);
-    add('italic 400 50px "Lora"', C.ink, "“" + current.mantra + "”", 68, 56);
+    add('400 50px "Bricolage Grotesque"', C.ink, "“" + current.mantra + "”", 68, 56);
     if (q) {
       blocks.push({ rule: true, gap: 34 });
       add('600 24px "DM Sans"', C.muted, "WORDS TO CARRY", 32, 14, true);
-      add('italic 400 40px "Lora"', C.ink, q.text, 56, 16);
+      add('400 40px "Bricolage Grotesque"', C.ink, q.text, 56, 16);
       add('400 26px "DM Sans"', C.muted, q.by + ", " + q.from, 36, 52);
     }
     if (current.plan.length) {
@@ -854,7 +855,7 @@ legend.q { font-family: var(--font-display); font-size: clamp(26px, 4.5vw, 32px)
       const items = current.plan.map((a) => ({ done: current.done.includes(a), lines: wrapLines(m, a, inner - 132) }));
       blocks.push({ items, h: 92 + 26 + items.reduce((n, it) => n + it.lines.length * 42 + 22, 0) + 8, gap: 40 });
     }
-    add('italic 400 30px "Lora"', C.muted, "However much of this you do is enough.", 40, 0);
+    add('400 30px "Bricolage Grotesque"', C.muted, "However much of this you do is enough.", 40, 0);
     let H = P + 20;
     blocks.forEach((b) => { H += (b.rule ? 2 : b.items ? b.h : b.lines.length * b.lh) + b.gap; });
     H += P + 40;

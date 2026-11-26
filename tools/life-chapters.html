@@ -17,13 +17,13 @@
 @font-face { font-family: "DM Sans"; src: url("../resources/assets/fonts/dm-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 
 :root {
-  --font-display: "Lora", Georgia, "Times New Roman", serif;
+  --font-display: "Bricolage Grotesque", "DM Sans", -apple-system, sans-serif;
   --font-body: "DM Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-  --bg: #FDFAF6; --surface: #FFFFFF; --ink: #2A2F35; --muted: #5A6370; --line: #E8DDD0;
-  --accent: #476B56; --accent-ink: #FFFFFF; --accent-soft: #EEF4F0;
-  --warm: #C4714A; --warm-ink: #9A5232; --warm-soft: #FBF0EA; --sand: #F5EFE6; --focus: #3D4A5C;
+  --bg: #FFFFFF; --surface: #FFFFFF; --ink: #0F1B2D; --muted: #657083; --line: #DFE3E9;
+  --accent: #0E7C72; --accent-ink: #FFFFFF; --accent-soft: #E3F2F0;
+  --warm: #1F3A5F; --warm-ink: #0B6158; --warm-soft: #E9EDF3; --sand: #F3F5F8; --focus: #0F1B2D;
   --radius: 20px;
-  --shadow: 0 1px 2px rgba(42,47,53,.04), 0 10px 30px rgba(42,47,53,.06);
+  --shadow: 0 1px 2px rgba(15,27,45,.04), 0 10px 30px rgba(15,27,45,.06);
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -49,7 +49,7 @@ h1 em, .q em { color: var(--warm); font-style: italic; }
 .progress li.on { background: var(--accent); }
 .ground-btn { appearance: none; font: inherit; font-size: 13.5px; cursor: pointer; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--accent); white-space: nowrap; transition: border-color .2s; }
 .ground-btn:hover { border-color: var(--accent); }
-.grounding { display: flex; gap: 14px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #CFE0D4; border-radius: 16px; padding: 14px 16px; margin: 0 0 22px; }
+.grounding { display: flex; gap: 14px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #BFE0DC; border-radius: 16px; padding: 14px 16px; margin: 0 0 22px; }
 .grounding strong { display: block; color: var(--accent); font-weight: 600; }
 .grounding p { margin: 0; font-size: 14.5px; }
 .grounding .x { appearance: none; background: none; border: 0; font-size: 22px; line-height: 1; color: var(--muted); cursor: pointer; margin-left: auto; padding: 0 4px; }
@@ -79,8 +79,8 @@ h1 em, .q em { color: var(--warm); font-style: italic; }
 .field { margin-top: 16px; }
 .field > label { display: block; font-weight: 500; margin-bottom: 8px; }
 textarea, input[type=text] { width: 100%; font: inherit; font-size: 16px; line-height: 1.6; padding: 13px 15px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); resize: vertical; }
-textarea:focus, input[type=text]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(71,107,86,.15); }
-::placeholder { color: #8C939C; }
+textarea:focus, input[type=text]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(14,124,114,.15); }
+::placeholder { color: #8A95A5; }
 
 .chipset { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
 .chip { appearance: none; font: inherit; font-size: 14.5px; cursor: pointer; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; min-height: 40px; color: var(--ink); transition: all .2s; }
@@ -156,7 +156,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 
 /* ---- shared by Small Steps, Kind Boundaries, Gentle Start-Up ---- */
 .privacy-line { font-size: 13.5px; color: var(--muted); margin: -20px 0 28px; }
-.session-banner { display: flex; gap: 12px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #CFE0D4; border-radius: 16px; padding: 14px 16px; margin: -12px 0 28px; font-size: 14.5px; }
+.session-banner { display: flex; gap: 12px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #BFE0DC; border-radius: 16px; padding: 14px 16px; margin: -12px 0 28px; font-size: 14.5px; }
 .session-banner b { display: block; color: var(--accent); font-weight: 600; }
 .session-banner p { margin: 0; }
 .explain { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin: 0 0 18px; }
@@ -167,10 +167,10 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .callout strong { color: var(--accent); }
 .callout.warm { background: var(--warm-soft); }
 .callout.warm strong { color: var(--warm-ink); }
-.script { background: #F2F8F3; border: 1px solid #CFE0D4; border-radius: 18px; padding: 20px 22px; margin: 6px 0 0; }
+.script { background: #EEF7F6; border: 1px solid #BFE0DC; border-radius: 18px; padding: 20px 22px; margin: 6px 0 0; }
 .script .k { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 8px; }
 .script p.say { font-family: var(--font-display); font-size: 20px; line-height: 1.5; margin: 0; }
-.script textarea { width: 100%; font: inherit; font-family: var(--font-display); font-size: 19px; line-height: 1.5; padding: 12px 14px; border: 1px solid #CFE0D4; border-radius: 12px; background: #fff; color: var(--ink); resize: vertical; min-height: 120px; }
+.script textarea { width: 100%; font: inherit; font-family: var(--font-display); font-size: 19px; line-height: 1.5; padding: 12px 14px; border: 1px solid #BFE0DC; border-radius: 12px; background: #fff; color: var(--ink); resize: vertical; min-height: 120px; }
 .tone { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 12px; }
 .card-sec { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
 .card-sec h3 { margin: 0 0 6px; font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
@@ -180,7 +180,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .tag-row span { font-size: 13px; background: var(--sand); border-radius: 999px; padding: 4px 12px; }
 .print-head { display: none; }
 .erase-row { margin-top: 14px; font-size: 14px; }
-.vbtn { appearance: none; font: inherit; font-size: 14.5px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; background: #fff; border: 1px solid #CFE0D4; color: var(--accent); border-radius: 999px; padding: 9px 16px; min-height: 42px; }
+.vbtn { appearance: none; font: inherit; font-size: 14.5px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; background: #fff; border: 1px solid #BFE0DC; color: var(--accent); border-radius: 999px; padding: 9px 16px; min-height: 42px; }
 .vbtn:disabled { opacity: .45; cursor: not-allowed; }
 @media print {
   .print-head { display: block !important; border-bottom: 1px solid #ccc; padding-bottom: 8px; margin-bottom: 14px; font-size: 10pt; color: #444; }
@@ -192,10 +192,10 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .photo-tip { margin: 0 0 12px; font-size: 14.5px; color: var(--muted); }
 .photo-box img { display: block; width: 100%; max-width: 360px; height: auto; border-radius: 14px; border: 1px solid var(--line); margin: 0 auto; -webkit-touch-callout: default; }
 @media print { .photo-box { display: none !important; } }
-.opt.bal { background: #F2F8F3; border-color: #CFE0D4; align-items: center; }
-.opt.bal b { font-weight: 500; font-family: var(--font-display); font-size: 17px; color: #2F4A3A; }
-.opt.bal:hover { border-color: var(--accent); background: #EAF3EC; }
-.opt.bal[aria-pressed="true"] { background: #DDEDE1; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(71,107,86,.12); }
+.opt.bal { background: #EEF7F6; border-color: #BFE0DC; align-items: center; }
+.opt.bal b { font-weight: 500; font-family: var(--font-display); font-size: 17px; color: #0B4F49; }
+.opt.bal:hover { border-color: var(--accent); background: #E3F2F0; }
+.opt.bal[aria-pressed="true"] { background: #D3ECE8; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(14,124,114,.12); }
 .opt[disabled] { opacity: .45; cursor: not-allowed; }
 
 .tl { list-style: none; margin: 0; padding: 0; position: relative; }
@@ -215,7 +215,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .thread b { color: var(--accent); }
 .restory { display: grid; gap: 10px; margin: 14px 0 0; }
 .restory .old { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(90,99,112,.35); }
-.restory .new { background: #F2F8F3; border: 1px solid #CFE0D4; border-radius: 14px; padding: 14px 16px; font-family: var(--font-display); font-style: italic; font-size: 19px; line-height: 1.5; }
+.restory .new { background: #EEF7F6; border: 1px solid #BFE0DC; border-radius: 14px; padding: 14px 16px; font-family: var(--font-display); font-style: italic; font-size: 19px; line-height: 1.5; }
 .ch-story { margin: 6px 0 2px; font-family: var(--font-display); font-style: italic; font-size: 15.5px; line-height: 1.55; color: var(--ink); }
 .ch-editor textarea, #stage textarea[data-field="nextStory"] { min-height: 84px; font-size: 15.5px; }
 /* ---- the book ---- */
@@ -248,7 +248,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .pg-meta { text-align: center; color: var(--muted); font-size: 13.5px; margin: 0 0 18px; display: flex; gap: 8px; align-items: center; justify-content: center; min-height: 18px; }
 .tone-ribbon { display: inline-block; width: 26px; height: 6px; border-radius: 3px; }
 .pg-story { font-family: var(--font-display); font-size: 16.5px; line-height: 1.75; color: #3A3530; margin: 0 0 16px; }
-.pg-story.faint { color: #A99C8C; font-style: italic; text-align: center; }
+.pg-story.faint { color: #8A95A5; font-style: italic; text-align: center; }
 .dropcap { float: left; font-size: 46px; line-height: .9; padding: 4px 6px 0 0; color: var(--accent); font-family: var(--font-display); }
 .pg-carried { font-size: 14px; color: #4A4540; margin: 0 0 10px; }
 .pg-carried span { display: block; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #9A8A76; margin-bottom: 2px; }
@@ -263,9 +263,9 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .toc-dot { width: 10px; height: 10px; border-radius: 50%; }
 .toc-dot.open { border: 1.5px dashed var(--accent); }
 .toc-next .toc-t { font-style: italic; color: var(--accent); }
-.toc-note { margin: auto 0 0; text-align: center; font-size: 12.5px; color: #A99C8C; font-style: italic; }
+.toc-note { margin: auto 0 0; text-align: center; font-size: 12.5px; color: #8A95A5; font-style: italic; }
 .blank-lines { display: grid; gap: 22px; margin: 18px 0 0; }
-.blank-lines i { display: block; border-bottom: 1px solid #E6DACA; }
+.blank-lines i { display: block; border-bottom: 1px solid #DFE3E9; }
 .bpage.next .pg-title { margin-bottom: 18px; }
 .pg-tbc { margin: auto 0 4px; text-align: center; font-family: var(--font-display); font-style: italic; color: var(--accent); font-size: 15px; }
 .book-nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 22px 0 0; font-size: 13.5px; color: var(--muted); }
@@ -291,9 +291,9 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .feedback-line a { color: var(--accent); font-weight: 500; }
 
 /* ---- share with your therapist (session mode) ---- */
-.share-th { margin: 24px 0 4px; background: #fff; border: 1px solid #CFE0D4; border-radius: 20px; padding: 20px 22px 16px; box-shadow: 0 1px 2px rgba(42,47,53,.04), 0 10px 30px rgba(42,47,53,.06); text-align: left; }
+.share-th { margin: 24px 0 4px; background: #fff; border: 1px solid #BFE0DC; border-radius: 20px; padding: 20px 22px 16px; box-shadow: 0 1px 2px rgba(15,27,45,.04), 0 10px 30px rgba(15,27,45,.06); text-align: left; }
 .share-th .st-h { margin: 0 0 2px; font-family: var(--font-display); font-size: 22px; }
-.share-th .st-h b { font-weight: 400; font-style: italic; color: #476B56; }
+.share-th .st-h b { font-weight: 400; font-style: italic; color: #0E7C72; }
 .share-th .st-sub { margin: 0 0 14px; color: var(--muted); font-size: 14.5px; }
 .share-th .st-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .share-th .st-tip { margin: 12px 0 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
@@ -304,6 +304,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
   body.printing-summary #print-summary { display: block !important; font: 12pt/1.6 Georgia, serif; white-space: pre-wrap; color: #222; }
 }
 </style>
+<link rel="stylesheet" href="../assets/btr-theme.css">
 </head>
 <body>
 <div class="wrap">
@@ -430,16 +431,16 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
   function rrect(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r); ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h); ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r); ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y); ctx.closePath(); }
   /* spec: { eyebrow, title, blocks: [{ h, text } | { h, quote } | { h, list: [] } | { timeline: [{ dot, title, sub, dashed }] }], footer } */
   async function makeCard(spec) {
-    try { await Promise.all(['italic 400 40px "Lora"', '400 40px "Lora"', '400 30px "DM Sans"', '600 30px "DM Sans"'].map((f) => document.fonts.load(f))); } catch (_) {}
+    try { await Promise.all(['400 40px "Bricolage Grotesque"', '400 40px "Bricolage Grotesque"', '400 30px "DM Sans"', '600 30px "DM Sans"'].map((f) => document.fonts.load(f))); } catch (_) {}
     const W = 1080, P = 90, inner = W - P * 2;
-    const C = { bg: "#FDFAF6", ink: "#2A2F35", muted: "#5A6370", sage: "#476B56", soft: "#EEF4F0", line: "#E8DDD0" };
+    const C = { bg: "#FFFFFF", ink: "#0F1B2D", muted: "#657083", sage: "#0E7C72", soft: "#E3F2F0", line: "#DFE3E9" };
     const m = document.createElement("canvas").getContext("2d"), ops = [];
     const text = (font, color, str, lh, gap, opts = {}) => { m.font = font; const lines = wrapLines(m, str, inner - (opts.indent || 0) - (opts.box ? 64 : 0)); ops.push({ k: "text", font, color, lines, lh, gap, ...opts }); };
     if (spec.eyebrow) text('600 26px "DM Sans"', C.muted, spec.eyebrow.toUpperCase(), 34, 12, { spacing: true });
-    if (spec.title) text('400 56px "Lora"', C.ink, spec.title, 66, 44);
+    if (spec.title) text('400 56px "Bricolage Grotesque"', C.ink, spec.title, 66, 44);
     (spec.blocks || []).forEach((b) => {
       if (b.h) text('600 24px "DM Sans"', C.sage, b.h.toUpperCase(), 32, 12, { spacing: true });
-      if (b.quote) text('italic 400 38px "Lora"', C.ink, b.quote, 52, 40, { box: true });
+      if (b.quote) text('400 38px "Bricolage Grotesque"', C.ink, b.quote, 52, 40, { box: true });
       if (b.text) text('400 30px "DM Sans"', C.ink, b.text, 42, 40);
       if (b.list) { b.list.forEach((li, i) => text('400 29px "DM Sans"', C.ink, "• " + li, 40, i === b.list.length - 1 ? 40 : 8)); }
       if (b.timeline) b.timeline.forEach((it, i) => {
@@ -494,7 +495,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 
   /* ================== CONTENT (edit freely) ================== */
   const TITLE_IDEAS = ["Early years", "Growing up", "Finding my place", "Leaving home", "A new country", "Starting over", "Building", "The hard years", "Falling apart", "Finding my way", "Becoming a parent", "Coming back to myself"];
-  const TONES = [["joyful", "#E3A95C"], ["hopeful", "#8FB59A"], ["proud", "#C4714A"], ["tender", "#D9A1A0"], ["quiet", "#A9B7C4"], ["uncertain", "#B6A98F"], ["lonely", "#8E9DB3"], ["hard", "#7D6F86"], ["chaotic", "#B07A63"], ["brave", "#476B56"]];
+  const TONES = [["joyful", "#E3A95C"], ["hopeful", "#8FB59A"], ["proud", "#1F3A5F"], ["tender", "#D9A1A0"], ["quiet", "#A9B7C4"], ["uncertain", "#B6A98F"], ["lonely", "#8E9DB3"], ["hard", "#7D6F86"], ["chaotic", "#B07A63"], ["brave", "#0E7C72"]];
   const CARRIED = ["resilience", "adaptability", "independence", "humor", "faith", "caring for others", "courage", "my voice", "patience", "hard work", "curiosity", "knowing how to begin again"];
   const HELPED = ["a person who believed in me", "family", "friends", "faith or spirituality", "my own determination", "humor", "nature", "creativity", "a community", "therapy or support", "time"];
   const OLD_STORIES = ["I'm always behind", "I have to do it all alone", "I'm not enough", "I don't really belong anywhere", "Things always fall apart", "I'm too much", "I have to earn my worth"];
@@ -523,7 +524,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
   const STEPS = 5;
   $("progress").innerHTML = "<li></li>".repeat(STEPS);
   const chTitle = (c) => (c.own.trim() || c.title || "Untitled chapter");
-  const toneColor = (t) => (TONES.find(([n]) => n === t) || [0, "#476B56"])[1];
+  const toneColor = (t) => (TONES.find(([n]) => n === t) || [0, "#0E7C72"])[1];
   const named = () => d.chapters.filter((c) => c.own.trim() || c.title);
   function thread() {
     const count = {}; d.chapters.forEach((c) => c.carried.forEach((x) => { count[x] = (count[x] || 0) + 1; }));
@@ -642,7 +643,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
   };
   const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
   /* ================== THE BOOK ================== */
-  const COVERS = [["Sage", "#476B56"], ["Terracotta", "#B4623D"], ["Navy", "#2F4560"], ["Plum", "#6B4A63"], ["Sand", "#B79F7E"]];
+  const COVERS = [["Sage", "#0E7C72"], ["Terracotta", "#B4623D"], ["Navy", "#2F4560"], ["Plum", "#6B4A63"], ["Sand", "#B79F7E"]];
   const WORDS = ["One", "Two", "Three", "Four", "Five", "Six", "Seven"];
   const ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII"];
   const coverColor = () => (COVERS.find(([n]) => n === d.cover) || COVERS[0])[1];
@@ -651,7 +652,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
     const chs = draft ? d.chapters : named(), P = [];
     const t = (c) => c.own.trim() || c.title;
     P.push({ key: "cover", cls: "cover", html: `<div class="cv-band"></div><div class="cv-frame"><p class="cv-orn">❦</p><h3 class="cv-title">${esc(bTitle())}</h3>${d.author.trim() ? `<p class="cv-by">by ${esc(d.author.trim())}</p>` : `<p class="cv-by">a life in chapters</p>`}<p class="cv-orn sm">✦</p></div>` });
-    P.push({ key: "toc", html: `<p class="pg-kicker">Contents</p><ol class="toc">${chs.map((c, i) => `<li><span class="toc-n">${ROMAN[i]}</span><span class="toc-t${t(c) ? "" : " faint"}">${t(c) ? esc(t(c)) : "Untitled chapter"}</span><span class="toc-dot" style="background:${c.tone ? toneColor(c.tone) : "#E6DACA"}"></span></li>`).join("")}
+    P.push({ key: "toc", html: `<p class="pg-kicker">Contents</p><ol class="toc">${chs.map((c, i) => `<li><span class="toc-n">${ROMAN[i]}</span><span class="toc-t${t(c) ? "" : " faint"}">${t(c) ? esc(t(c)) : "Untitled chapter"}</span><span class="toc-dot" style="background:${c.tone ? toneColor(c.tone) : "#DFE3E9"}"></span></li>`).join("")}
         <li class="toc-next"><span class="toc-n">${ROMAN[chs.length] || "∞"}</span><span class="toc-t${nextTitle() ? "" : " faint"}">${nextTitle() ? esc(nextTitle()) : "The chapter you're beginning"}</span><span class="toc-dot open"></span></li></ol>
         ${threadLine() || newStory() ? `<p class="toc-note">Author's note · at the back</p>` : ""}
         ${therapist && !draft ? `<p class="toc-note" style="margin-top:6px">For a session with ${esc(therapist.name)} · ${new Date().toLocaleDateString()}</p>` : ""}` });

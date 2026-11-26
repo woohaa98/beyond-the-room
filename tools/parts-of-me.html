@@ -17,13 +17,13 @@
 @font-face { font-family: "DM Sans"; src: url("../resources/assets/fonts/dm-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 
 :root {
-  --font-display: "Lora", Georgia, "Times New Roman", serif;
+  --font-display: "Bricolage Grotesque", "DM Sans", -apple-system, sans-serif;
   --font-body: "DM Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-  --bg: #FDFAF6; --surface: #FFFFFF; --ink: #2A2F35; --muted: #5A6370; --line: #E8DDD0;
-  --accent: #476B56; --accent-ink: #FFFFFF; --accent-soft: #EEF4F0;
-  --warm: #C4714A; --warm-ink: #9A5232; --warm-soft: #FBF0EA; --sand: #F5EFE6; --focus: #3D4A5C;
+  --bg: #FFFFFF; --surface: #FFFFFF; --ink: #0F1B2D; --muted: #657083; --line: #DFE3E9;
+  --accent: #0E7C72; --accent-ink: #FFFFFF; --accent-soft: #E3F2F0;
+  --warm: #1F3A5F; --warm-ink: #0B6158; --warm-soft: #E9EDF3; --sand: #F3F5F8; --focus: #0F1B2D;
   --radius: 20px;
-  --shadow: 0 1px 2px rgba(42,47,53,.04), 0 10px 30px rgba(42,47,53,.06);
+  --shadow: 0 1px 2px rgba(15,27,45,.04), 0 10px 30px rgba(15,27,45,.06);
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -49,7 +49,7 @@ h1 em, .q em { color: var(--warm); font-style: italic; }
 .progress li.on { background: var(--accent); }
 .ground-btn { appearance: none; font: inherit; font-size: 13.5px; cursor: pointer; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--accent); white-space: nowrap; transition: border-color .2s; }
 .ground-btn:hover { border-color: var(--accent); }
-.grounding { display: flex; gap: 14px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #CFE0D4; border-radius: 16px; padding: 14px 16px; margin: 0 0 22px; }
+.grounding { display: flex; gap: 14px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #BFE0DC; border-radius: 16px; padding: 14px 16px; margin: 0 0 22px; }
 .grounding strong { display: block; color: var(--accent); font-weight: 600; }
 .grounding p { margin: 0; font-size: 14.5px; }
 .grounding .x { appearance: none; background: none; border: 0; font-size: 22px; line-height: 1; color: var(--muted); cursor: pointer; margin-left: auto; padding: 0 4px; }
@@ -75,7 +75,7 @@ h1 em, .q em { color: var(--warm); font-style: italic; }
 .relfig { margin: 0 0 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 16px 14px; box-shadow: var(--shadow); }
 .relfig.final { box-shadow: none; background: #FFFCF5; }
 .relfig figcaption { text-align: center; font-size: 14px; color: var(--muted); margin-top: 2px; }
-.thanks-moment { position: relative; text-align: center; margin: 0 0 6px; padding: 26px 20px 22px; border-radius: 22px; background: radial-gradient(120% 90% at 50% 0%, #FFF6DF, #FFFBF2 55%, #FFFDF8); border: 1px solid #F0DDB0; box-shadow: 0 10px 34px rgba(224,181,94,.18); }
+.thanks-moment { position: relative; text-align: center; margin: 0 0 6px; padding: 26px 20px 22px; border-radius: 22px; background: radial-gradient(120% 90% at 50% 0%, #FFF6DF, #FFFBF2 55%, #FFFFFF); border: 1px solid #F0DDB0; box-shadow: 0 10px 34px rgba(224,181,94,.18); }
 .tm-label { margin: 0 0 10px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #A07F3E; }
 .tm-words { margin: 0 auto 16px; max-width: 22ch; font-family: var(--font-display); font-style: italic; font-size: clamp(24px, 5.4vw, 32px); line-height: 1.35; color: #5C4413; }
 .tm-words span { display: inline-block; opacity: 0; animation: word .9s ease forwards; }
@@ -119,8 +119,8 @@ h1 em, .q em { color: var(--warm); font-style: italic; }
 .field { margin-top: 16px; }
 .field > label { display: block; font-weight: 500; margin-bottom: 8px; }
 textarea, input[type=text] { width: 100%; font: inherit; font-size: 16px; line-height: 1.6; padding: 13px 15px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); resize: vertical; }
-textarea:focus, input[type=text]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(71,107,86,.15); }
-::placeholder { color: #8C939C; }
+textarea:focus, input[type=text]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(14,124,114,.15); }
+::placeholder { color: #8A95A5; }
 
 .chipset { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
 .chip { appearance: none; font: inherit; font-size: 14.5px; cursor: pointer; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; min-height: 40px; color: var(--ink); transition: all .2s; }
@@ -178,10 +178,10 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .message-card .mc-text { margin: 0; font-family: var(--font-display); font-style: italic; font-size: 19px; line-height: 1.5; }
 .mc-text .s { transition: background-color .3s, color .3s; border-radius: 6px; padding: 0 2px; }
 .mc-text .s.on { background: #fff; color: var(--accent); box-shadow: 0 0 0 3px #fff; }
-.voice { margin-top: 16px; padding-top: 14px; border-top: 1px solid #CFE0D4; }
+.voice { margin-top: 16px; padding-top: 14px; border-top: 1px solid #BFE0DC; }
 .mver { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
 .voice-btns { display: flex; flex-wrap: wrap; gap: 8px; }
-.vbtn { appearance: none; font: inherit; font-size: 14.5px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; background: #fff; border: 1px solid #CFE0D4; color: var(--accent); border-radius: 999px; padding: 9px 16px; min-height: 42px; transition: all .2s; }
+.vbtn { appearance: none; font: inherit; font-size: 14.5px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; background: #fff; border: 1px solid #BFE0DC; color: var(--accent); border-radius: 999px; padding: 9px 16px; min-height: 42px; transition: all .2s; }
 .vbtn:hover:not(:disabled) { border-color: var(--accent); }
 .vbtn[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
 .vbtn:disabled { opacity: .45; cursor: not-allowed; }
@@ -189,7 +189,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 .voice-cue { min-height: 1.5em; margin: 10px 0 0; font-family: var(--font-display); font-style: italic; color: var(--accent); }
 .voice-note { font-size: 13.5px; color: var(--muted); margin: 8px 0 0; }
 .voice-pick { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; font-size: 14px; }
-.voice-pick select { font: inherit; font-size: 14.5px; padding: 7px 10px; border: 1px solid #CFE0D4; border-radius: 10px; background: #fff; color: var(--ink); max-width: 100%; }
+.voice-pick select { font: inherit; font-size: 14.5px; padding: 7px 10px; border: 1px solid #BFE0DC; border-radius: 10px; background: #fff; color: var(--ink); max-width: 100%; }
 .voice-pick .btn-text { padding: 6px 4px; }
 .voice-help { margin-top: 8px; font-size: 13.5px; color: var(--muted); }
 .voice-help summary { cursor: pointer; text-decoration: underline; text-underline-offset: 3px; padding: 4px 0; }
@@ -221,14 +221,14 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
   .card { box-shadow: none; border: 0; padding: 0; }
 }
 .feedback-line a { color: var(--accent); font-weight: 500; }
-.session-banner { display: flex; gap: 12px; align-items: flex-start; background: #EEF4F0; border: 1px solid #CFE0D4; border-radius: 16px; padding: 14px 16px; margin: -12px 0 28px; font-size: 14.5px; }
-.session-banner b { display: block; color: #476B56; font-weight: 600; }
+.session-banner { display: flex; gap: 12px; align-items: flex-start; background: #E3F2F0; border: 1px solid #BFE0DC; border-radius: 16px; padding: 14px 16px; margin: -12px 0 28px; font-size: 14.5px; }
+.session-banner b { display: block; color: #0E7C72; font-weight: 600; }
 .session-banner p { margin: 0; }
 
 /* ---- share with your therapist (session mode) ---- */
-.share-th { margin: 24px 0 4px; background: #fff; border: 1px solid #CFE0D4; border-radius: 20px; padding: 20px 22px 16px; box-shadow: 0 1px 2px rgba(42,47,53,.04), 0 10px 30px rgba(42,47,53,.06); text-align: left; }
+.share-th { margin: 24px 0 4px; background: #fff; border: 1px solid #BFE0DC; border-radius: 20px; padding: 20px 22px 16px; box-shadow: 0 1px 2px rgba(15,27,45,.04), 0 10px 30px rgba(15,27,45,.06); text-align: left; }
 .share-th .st-h { margin: 0 0 2px; font-family: var(--font-display); font-size: 22px; }
-.share-th .st-h b { font-weight: 400; font-style: italic; color: #476B56; }
+.share-th .st-h b { font-weight: 400; font-style: italic; color: #0E7C72; }
 .share-th .st-sub { margin: 0 0 14px; color: var(--muted); font-size: 14.5px; }
 .share-th .st-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .share-th .st-tip { margin: 12px 0 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
@@ -241,17 +241,18 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
 </style>
 <style>
 .rel { margin-top: 48px; }
-.rel-eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #5A6370; margin: 0 0 6px; }
-.rel h2 { font-family: "Lora", Georgia, serif; font-weight: 400; font-size: 24px; line-height: 1.2; margin: 0 0 6px; color: #2A2F35; }
-.rel-sub { font-size: 14.5px; color: #5A6370; margin: 0 0 16px; }
+.rel-eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #657083; margin: 0 0 6px; }
+.rel h2 { font-family: "Bricolage Grotesque", "DM Sans", -apple-system, sans-serif; font-weight: 400; font-size: 24px; line-height: 1.2; margin: 0 0 6px; color: #0F1B2D; }
+.rel-sub { font-size: 14.5px; color: #657083; margin: 0 0 16px; }
 .rel-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-.rel-list a { display: block; height: 100%; text-decoration: none; color: #2A2F35; background: #FFFFFF; border: 1px solid #E8DDD0; border-radius: 16px; padding: 14px 16px; transition: border-color .2s, transform .2s; }
-.rel-list a:hover { border-color: #476B56; transform: translateY(-1px); }
+.rel-list a { display: block; height: 100%; text-decoration: none; color: #0F1B2D; background: #FFFFFF; border: 1px solid #DFE3E9; border-radius: 16px; padding: 14px 16px; transition: border-color .2s, transform .2s; }
+.rel-list a:hover { border-color: #0E7C72; transform: translateY(-1px); }
 .rel-list b { display: block; font-weight: 600; font-size: 15px; line-height: 1.35; }
-.rel-list span { display: block; font-size: 13.5px; color: #5A6370; margin-top: 3px; }
-.rel-list em { display: block; font-style: normal; font-size: 13px; color: #476B56; font-weight: 500; margin-top: 8px; }
+.rel-list span { display: block; font-size: 13.5px; color: #657083; margin-top: 3px; }
+.rel-list em { display: block; font-style: normal; font-size: 13px; color: #0E7C72; font-weight: 500; margin-top: 8px; }
 @media print { .rel { display: none !important; } }
 </style>
+<link rel="stylesheet" href="../assets/btr-theme.css">
 </head>
 <body>
 <div class="wrap">
@@ -382,7 +383,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
       return `<g class="fam${on ? " on" : ""}${isC ? " fore" : ""}">
         <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${isC ? 34 : 30}" fill="${isC ? "#fff" : F.soft}" stroke="${F.color}" stroke-width="${isC ? 2.5 : 1.2}"/>
         <text x="${x.toFixed(1)}" y="${(y + 8).toFixed(1)}" text-anchor="middle" font-size="${isC ? 26 : 22}">${isC ? (ICONS[chosen.id] || "✏️") : F.icon}</text>
-        ${isC ? `<text x="${x.toFixed(1)}" y="${ly}" text-anchor="middle" font-size="14" fill="#2A2F35" font-family="Lora, serif" font-style="italic">${esc(name)}</text>`
+        ${isC ? `<text x="${x.toFixed(1)}" y="${ly}" text-anchor="middle" font-size="14" fill="#0F1B2D" font-family="Bricolage Grotesque, DM Sans, sans-serif" font-style="italic">${esc(name)}</text>`
               : `<text x="${x.toFixed(1)}" y="${ly}" text-anchor="middle" font-size="10.5" letter-spacing="1.6" fill="#6B7380" font-family="DM Sans, sans-serif">${esc(name.toUpperCase())}</text>`}
       </g>`;
     }).join("");
@@ -395,7 +396,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
       <circle cx="${cx}" cy="${cy}" r="78" fill="url(#selfhalo)" class="self-glow"/>
       <circle cx="${cx}" cy="${cy}" r="48" fill="url(#selfcore)" stroke="#E0B55E" stroke-width="2"/>
       <circle cx="${cx}" cy="${cy}" r="42" fill="none" stroke="#EFD59B" stroke-width="1"/>
-      <text x="${cx}" y="${cy + 3}" text-anchor="middle" font-size="24" fill="#7A5A1E" font-family="Lora, serif" font-style="italic">Self</text>
+      <text x="${cx}" y="${cy + 3}" text-anchor="middle" font-size="24" fill="#7A5A1E" font-family="Bricolage Grotesque, DM Sans, sans-serif" font-style="italic">Self</text>
       <text x="${cx}" y="${cy + 19}" text-anchor="middle" font-size="7" letter-spacing=".5" fill="#A07F3E" font-family="DM Sans, sans-serif">CALM · CURIOUS · KIND</text>
       ${fams}
     </svg>`;
@@ -428,15 +429,15 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
       <circle cx="${sx.toFixed(1)}" cy="78" r="66" fill="url(#rhalo)" class="self-glow" style="transform-origin:${sx.toFixed(1)}px 78px"/>
       ${o.glow ? `<circle cx="${px.toFixed(1)}" cy="78" r="62" fill="url(#pglow)" class="self-glow" style="transform-origin:${px.toFixed(1)}px 78px"/>` : ""}
       ${line}
-      <circle cx="${px.toFixed(1)}" cy="78" r="40" fill="${overlap ? F.soft : o.glow ? "#FFFBF0" : "#fff"}" stroke="${o.glow ? "#E0B55E" : F.color}" stroke-width="${o.glow ? 2.6 : 2.2}" opacity="${overlap ? .9 : 1}"/>
+      <circle cx="${px.toFixed(1)}" cy="78" r="40" fill="${overlap ? F.soft : o.glow ? "#FFFFFF" : "#fff"}" stroke="${o.glow ? "#E0B55E" : F.color}" stroke-width="${o.glow ? 2.6 : 2.2}" opacity="${overlap ? .9 : 1}"/>
       <circle cx="${sx.toFixed(1)}" cy="78" r="44" fill="url(#rcore)" stroke="#E0B55E" stroke-width="2" opacity="${overlap ? .85 : 1}"/>
-      <text x="${(overlap ? sx - 14 : sx).toFixed(1)}" y="84" text-anchor="middle" font-size="19" fill="#7A5A1E" font-family="Lora, serif" font-style="italic">Self</text>
+      <text x="${(overlap ? sx - 14 : sx).toFixed(1)}" y="84" text-anchor="middle" font-size="19" fill="#7A5A1E" font-family="Bricolage Grotesque, DM Sans, sans-serif" font-style="italic">Self</text>
       <text x="${(overlap ? px + 16 : px).toFixed(1)}" y="87" text-anchor="middle" font-size="24">${ICONS[d.part] || "✏️"}</text>
       ${sendFx}
       ${o.guard ? `<text x="${(px + 30).toFixed(1)}" y="${56}" text-anchor="middle" font-size="15">🛡️</text>` : ""}
-      <text x="${(overlap ? cx + 40 : px).toFixed(1)}" y="140" text-anchor="middle" font-size="13" fill="#2A2F35" font-family="Lora, serif" font-style="italic">${esc(lbl)}</text>
+      <text x="${(overlap ? cx + 40 : px).toFixed(1)}" y="140" text-anchor="middle" font-size="13" fill="#0F1B2D" font-family="Bricolage Grotesque, DM Sans, sans-serif" font-style="italic">${esc(lbl)}</text>
       ${overlap ? "" : `<text x="${sx.toFixed(1)}" y="140" text-anchor="middle" font-size="10" letter-spacing="1.2" fill="#A07F3E" font-family="DM Sans, sans-serif">YOUR SELF</text>`}
-      ${o.caption ? `<text x="180" y="164" text-anchor="middle" font-size="12" fill="#5A6370" font-family="DM Sans, sans-serif">${esc(o.caption)}</text>` : ""}
+      ${o.caption ? `<text x="180" y="164" text-anchor="middle" font-size="12" fill="#657083" font-family="DM Sans, sans-serif">${esc(o.caption)}</text>` : ""}
     </svg>`;
   }
   function blendSVG(b) {
@@ -968,26 +969,26 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--acce
     out.push(line); return out;
   }
   async function makeLockScreen() {
-    try { await Promise.all(['italic 400 60px "Lora"', '600 30px "DM Sans"', '400 30px "DM Sans"'].map((f) => document.fonts.load(f))); } catch (_) {}
+    try { await Promise.all(['400 60px "Bricolage Grotesque"', '600 30px "DM Sans"', '400 30px "DM Sans"'].map((f) => document.fonts.load(f))); } catch (_) {}
     const W = 1080, H = 1920, cv = document.createElement("canvas"); cv.width = W; cv.height = H;
     const ctx = cv.getContext("2d");
-    const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, "#EEF4F0"); g.addColorStop(1, "#FDFAF6");
+    const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, "#E3F2F0"); g.addColorStop(1, "#FFFFFF");
     ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
     const text = currentMessage();
-    let size = 64; ctx.font = `italic 400 ${size}px "Lora"`;
+    let size = 64; ctx.font = `500 ${size}px "Bricolage Grotesque"`;
     let lines = wrapLines(ctx, text, W - 200);
-    while (lines.length * size * 1.45 > 900 && size > 38) { size -= 4; ctx.font = `italic 400 ${size}px "Lora"`; lines = wrapLines(ctx, text, W - 200); }
+    while (lines.length * size * 1.45 > 900 && size > 38) { size -= 4; ctx.font = `500 ${size}px "Bricolage Grotesque"`; lines = wrapLines(ctx, text, W - 200); }
     const lh = size * 1.45, block = lines.length * lh;
     let y = Math.max(720, 760 + (900 - block) / 2);
     ctx.textAlign = "center"; ctx.textBaseline = "top";
-    ctx.font = '600 28px "DM Sans"'; ctx.fillStyle = "#476B56";
+    ctx.font = '600 28px "DM Sans"'; ctx.fillStyle = "#0E7C72";
     if ("letterSpacing" in ctx) ctx.letterSpacing = "5px";
     ctx.fillText(("To my " + partName().replace(/^The /, "")).toUpperCase(), W / 2, y - 90);
     if ("letterSpacing" in ctx) ctx.letterSpacing = "0px";
-    ctx.fillStyle = "#C4714A"; ctx.fillRect(W / 2 - 40, y - 40, 80, 3);
-    ctx.font = `italic 400 ${size}px "Lora"`; ctx.fillStyle = "#2A2F35";
+    ctx.fillStyle = "#1F3A5F"; ctx.fillRect(W / 2 - 40, y - 40, 80, 3);
+    ctx.font = `500 ${size}px "Bricolage Grotesque"`; ctx.fillStyle = "#0F1B2D";
     lines.forEach((ln, i) => ctx.fillText(ln, W / 2, y + i * lh));
-    ctx.font = '400 26px "DM Sans"'; ctx.fillStyle = "#5A6370";
+    ctx.font = '400 26px "DM Sans"'; ctx.fillStyle = "#657083";
     ctx.fillText("Parts of Me · beyondtheroomtherapy.com", W / 2, H - 150);
     return new Promise((res) => cv.toBlob(res, "image/png"));
   }

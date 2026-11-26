@@ -1,0 +1,13 @@
+/* Beyond the Room theme for the tools, resources, toolkit and privacy pages.
+   Loaded last so it sets the shared type and button style. Self-hosted fonts only. */
+@font-face { font-family: "Bricolage Grotesque"; src: url("../fonts/bricolage-grotesque-latin-500-normal.woff2") format("woff2"); font-weight: 400 500; font-display: swap; }
+@font-face { font-family: "Bricolage Grotesque"; src: url("../fonts/bricolage-grotesque-latin-700-normal.woff2") format("woff2"); font-weight: 600 700; font-display: swap; }
+:root { --radius: 12px; }
+html { font-synthesis: none; }
+h1, h2, h3, .q, .section-title { letter-spacing: -0.01em; }
+:is(h1, h2, h3, h4, .q, .section-title, .btr-title, legend) em { font-style: normal !important; color: #0E7C72 !important; }
+.clin-hero :is(h1, h2) em, .dark :is(h1, h2) em { color: #5FC4B8 !important; }
+.btn, .btn-primary, .btn-secondary, .btn-ghost, a.btn-primary, a.btn-secondary { border-radius: 8px !important; }
+.btn-primary, a.btn-primary { background: #0F1B2D !important; border-color: #0F1B2D !important; color: #fff !important; box-shadow: none !important; }
+.btn-primary:hover, a.btn-primary:hover { background: #1B2C45 !important; }
+.nav-links a.nav-cta { background: #0F1B2D !important; border-color: #0F1B2D !important; border-radius: 8px !important; color: #fff !important; }
