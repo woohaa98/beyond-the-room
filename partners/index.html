@@ -308,6 +308,9 @@ footer a { color: var(--ink-2); }
   .draw { animation: none; stroke-dashoffset: 0; } .fade { animation: none; opacity: 1; }
   .moving { display: none; }
 }
+.mono.photo { object-fit: cover; padding: 0; background: #E9EDF3; filter: grayscale(1); }
+.mini-founder .mono.photo { width: 44px; height: 44px; border-radius: 50%; }
+.founder .mono.photo { width: 96px; height: 96px; border-radius: 50%; }
 </style>
 </head>
 <body>
@@ -564,7 +567,7 @@ footer a { color: var(--ink-2); }
 <section class="block" id="founder">
   <div class="wrap">
     <div class="founder">
-      <span class="mono" aria-hidden="true">WK</span>
+      <img class="mono photo" src="../assets/woohee-kwak.jpg" alt="Woohee (Elise) Kwak" width="76" height="76" loading="lazy">
       <div>
         <h3>Created by Woohee (Elise) Kwak</h3>
         <p>Counselor-in-training (M.Ed., Clinical Mental Health Counseling) and intern therapist in Seattle. Previously a product leader at Microsoft for nearly 20 years, building customer voice, sentiment, personalization, and experimentation platforms at scale.</p>
