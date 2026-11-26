@@ -28,3 +28,4 @@ h1, h2, h3, .q, .section-title { letter-spacing: -0.01em; }
 .finder-theme { border-radius: 6px !important; }
 .finder-theme span { display: none; }
 .clin-hero .eyebrow, .dark .eyebrow, .tb-eyebrow, footer .eyebrow { color: #7FD3C9 !important; }
+.nav-links a { border-radius: 6px !important; }

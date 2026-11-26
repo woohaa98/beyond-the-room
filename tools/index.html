@@ -1104,6 +1104,31 @@
     padding: 4px 10px;
   }
 
+
+  /* Browse by approach (taxonomy filters). Nothing is stored or sent. */
+  .browse { max-width: 1100px; margin: 0 auto 28px; padding: 28px 0 0; border-top: 1px solid var(--divider); }
+  .browse-head h2 { font-family: "Bricolage Grotesque", "DM Sans", sans-serif; font-size: 1.6rem; margin: 0 0 6px; color: #0F1B2D; }
+  .browse-head p { margin: 0 0 18px; color: #3B4656; max-width: 62ch; }
+  .browse-approaches { display: flex; flex-wrap: wrap; gap: 8px; }
+  .browse-approaches button { font: inherit; font-size: .93rem; cursor: pointer; background: #fff; color: #0F1B2D; border: 1px solid #DFE3E9; border-radius: 6px; padding: 9px 14px; display: inline-flex; gap: 8px; align-items: baseline; }
+  .browse-approaches button small { color: #657083; font-size: .8rem; }
+  .browse-approaches button:hover { border-color: #0F1B2D; }
+  .browse-approaches button[aria-pressed="true"] { background: #0F1B2D; border-color: #0F1B2D; color: #fff; }
+  .browse-approaches button[aria-pressed="true"] small { color: #AFBACA; }
+  .browse-includes { min-height: 1.4em; margin: 10px 0 0; font-size: .9rem; color: #0B6158; }
+  .browse-filters { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: flex-end; margin-top: 16px; }
+  .browse-filters label { display: grid; gap: 5px; font-size: .86rem; font-weight: 600; color: #3B4656; }
+  .browse-filters select { font: inherit; font-weight: 400; font-size: .93rem; padding: 8px 10px; border: 1px solid #DFE3E9; border-radius: 6px; background: #fff; color: #0F1B2D; min-width: 200px; }
+  .browse-filters .browse-check { display: flex; gap: 8px; align-items: center; font-weight: 500; padding-bottom: 9px; }
+  .browse-check input { width: 18px; height: 18px; accent-color: #0E7C72; }
+  .browse-status { display: flex; gap: 16px; align-items: center; margin-top: 18px; }
+  .browse-status p { margin: 0; font-size: .9rem; color: #657083; }
+  #f-reset { font: inherit; font-size: .9rem; background: none; border: 0; padding: 0; color: #0F1B2D; border-bottom: 1.5px solid #0E7C72; cursor: pointer; }
+  .browse-empty { margin: 16px 0 0; padding: 16px 18px; border: 1px dashed #DFE3E9; border-radius: 8px; color: #3B4656; }
+  .tool-approach { display: block; margin: 4px 0 0; font-size: .84rem; color: #657083; }
+  .tool-card[hidden] { display: none !important; }
+  .tool-card[data-n]::before { content: attr(data-n) !important; }
+  @media (max-width: 600px) { .browse-filters select { min-width: 0; width: 100%; } .browse-filters label { width: 100%; } }
 </style>
 <link rel="stylesheet" href="../assets/btr-theme.css">
 </head>
@@ -1172,6 +1197,40 @@
     <div class="finder-result" id="finder-result" aria-live="polite" hidden></div>
   </div>
 
+  <div class="browse" id="browse" hidden>
+    <div class="browse-head">
+      <h2 id="browse-h">Browse by approach</h2>
+      <p>For therapists choosing a tool to send. Filter by the approach you work in, what your client is working on, or how much time they have.</p>
+    </div>
+    <div class="browse-approaches" role="group" aria-labelledby="browse-h" id="f-approach"></div>
+    <p class="browse-includes" id="f-includes"></p>
+    <div class="browse-filters">
+      <label>Client is working on
+        <select id="f-concern"><option value="">Anything</option></select>
+      </label>
+      <label>Time
+        <select id="f-time">
+          <option value="">Any length</option>
+          <option value="short">Under 5 minutes</option>
+          <option value="mid">5 to 10 minutes</option>
+          <option value="long">More than 10 minutes</option>
+        </select>
+      </label>
+      <label>Who it's for
+        <select id="f-format">
+          <option value="">Anyone</option>
+          <option value="individual">One person</option>
+          <option value="couples">Couples</option>
+        </select>
+      </label>
+      <label class="browse-check"><input type="checkbox" id="f-summary"> Ends with a summary the client can share</label>
+    </div>
+    <div class="browse-status">
+      <p id="f-count" aria-live="polite"></p>
+      <button type="button" id="f-reset" hidden>Clear filters</button>
+    </div>
+    <p class="browse-empty" id="f-empty" hidden>No tools match all of these yet. Try clearing one filter. New tools are added over time.</p>
+  </div>
   <div class="tools-grid">
 
     <div id="tool-values" class="tool-card tc reveal">
@@ -1384,6 +1443,69 @@
     out.innerHTML = '<p>Try <b>' + t[0] + '</b>. ' + t[2] + '</p><a class="go" href="' + t[1] + '">Open ' + t[0] + ' \u2192</a>' + (t[3] ? '<p class="note">' + t[3] + '</p>' : '');
     out.hidden = false;
   });
+})();
+</script>
+<script src="../assets/tool-catalog.js"></script>
+<script>
+/* Browse by approach: filters the cards on this page. Choices live only in the page address. Nothing is stored or sent. */
+(function () {
+  var C = window.BTR_CATALOG, box = document.getElementById("browse");
+  if (!C || !box) return;
+  var byKey = function (list) { var m = {}; list.forEach(function (x) { m[x.key] = x; }); return m; };
+  var A = byKey(C.approaches), K = byKey(C.concerns);
+  var cards = [], n = 0;
+  C.tools.forEach(function (t) {
+    var el = document.getElementById(t.card); if (!el) return;
+    n++; el.setAttribute("data-n", (n < 10 ? "0" : "") + n);
+    var tag = el.querySelector(".tool-tag");
+    var ap = document.createElement("span"); ap.className = "tool-approach";
+    ap.textContent = t.approaches.map(function (k) { return A[k].label; }).join(" · ");
+    if (tag) tag.insertAdjacentElement("afterend", ap);
+    cards.push({ t: t, el: el });
+  });
+  var state = { approach: "", concern: "", time: "", format: "", summary: false };
+  var q = new URLSearchParams(location.search);
+  ["approach", "concern", "time", "format"].forEach(function (k) { if (q.get(k)) state[k] = q.get(k); });
+  state.summary = q.get("summary") === "1";
+  var row = document.getElementById("f-approach");
+  var count = function (k) { return C.tools.filter(function (t) { return !k || t.approaches.indexOf(k) > -1; }).length; };
+  [{ key: "", label: "All approaches" }].concat(C.approaches).forEach(function (a) {
+    var b = document.createElement("button"); b.type = "button"; b.setAttribute("data-approach", a.key);
+    b.innerHTML = a.label.replace(/&/g, "&amp;") + " <small>" + count(a.key) + "</small>";
+    row.appendChild(b);
+  });
+  var sel = document.getElementById("f-concern");
+  C.concerns.forEach(function (c) {
+    if (!C.tools.some(function (t) { return t.concerns.indexOf(c.key) > -1; })) return;
+    var o = document.createElement("option"); o.value = c.key; o.textContent = c.label; sel.appendChild(o);
+  });
+  var tf = document.getElementById("f-time"), ff = document.getElementById("f-format"), sf = document.getElementById("f-summary");
+  var inTime = function (m) { return !state.time || (state.time === "short" ? m < 5 : state.time === "mid" ? m >= 5 && m <= 10 : m > 10); };
+  function render() {
+    row.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-approach") === state.approach ? "true" : "false"); });
+    sel.value = state.concern; tf.value = state.time; ff.value = state.format; sf.checked = state.summary;
+    document.getElementById("f-includes").textContent = state.approach && A[state.approach] ? "Includes " + A[state.approach].includes + "." : "";
+    var shown = 0;
+    cards.forEach(function (c) {
+      var t = c.t, ok = (!state.approach || t.approaches.indexOf(state.approach) > -1) && (!state.concern || t.concerns.indexOf(state.concern) > -1) && inTime(t.mins) && (!state.format || t.format === state.format) && (!state.summary || t.summary);
+      c.el.hidden = !ok; if (ok) shown++;
+    });
+    var any = state.approach || state.concern || state.time || state.format || state.summary;
+    document.getElementById("f-count").textContent = any ? "Showing " + shown + " of " + cards.length + " tools" : cards.length + " tools";
+    document.getElementById("f-reset").hidden = !any;
+    document.getElementById("f-empty").hidden = shown > 0;
+    var p = new URLSearchParams();
+    ["approach", "concern", "time", "format"].forEach(function (k) { if (state[k]) p.set(k, state[k]); });
+    if (state.summary) p.set("summary", "1");
+    try { history.replaceState(null, "", location.pathname + (p.toString() ? "?" + p : "") + location.hash); } catch (e) {}
+  }
+  row.addEventListener("click", function (e) { var b = e.target.closest("button[data-approach]"); if (!b) return; var k = b.getAttribute("data-approach"); state.approach = state.approach === k ? "" : k; render(); });
+  sel.addEventListener("change", function () { state.concern = sel.value; render(); });
+  tf.addEventListener("change", function () { state.time = tf.value; render(); });
+  ff.addEventListener("change", function () { state.format = ff.value; render(); });
+  sf.addEventListener("change", function () { state.summary = sf.checked; render(); });
+  document.getElementById("f-reset").addEventListener("click", function () { state = { approach: "", concern: "", time: "", format: "", summary: false }; render(); });
+  box.hidden = false; render();
 })();
 </script>
 </body>
