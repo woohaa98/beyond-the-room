@@ -319,6 +319,19 @@ footer a { color: var(--ink-2); }
 .mini-founder { display: flex; gap: 14px; align-items: center; margin-top: 26px; color: #AFBACA; font-size: .95rem; }
 .mini-founder .mono { width: 44px; height: 44px; font-size: 15px; }
 .mini-founder a { color: #7FD3C8; }
+.ladder { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.ladder li { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 18px 16px; display: grid; gap: 10px; align-content: start; }
+.ladder .lv { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--terra-wash); color: var(--terra-ink); font-family: var(--serif); font-weight: 700; font-size: .95rem; }
+.ladder h3 { font-size: 1.08rem; margin: 0 0 4px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.ladder p { margin: 0; color: var(--ink-2); font-size: .92rem; }
+@media (max-width: 960px) { .ladder { grid-template-columns: 1fr; } .ladder li { grid-template-columns: 30px 1fr; align-items: start; } }
+.hero-diff { margin: 10px 0 0; font-size: .95rem; }
+.hero-diff a, .diff-link a { color: var(--terra-ink); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
+.diff3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.diff3 > div { background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--terra); border-radius: 12px; padding: 18px 20px; }
+.diff3 h3 { font-size: 1.12rem; margin: 0 0 6px; } .diff3 p { margin: 0; color: var(--ink-2); }
+.diff-link { margin: 22px 0 0; font-size: 1rem; }
+@media (max-width: 860px) { .diff3 { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -335,6 +348,7 @@ footer a { color: var(--ink-2); }
       <li><a href="#tools">Tools</a></li>
       <li><a href="#plans">Practice plans</a></li>
       <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#commons">Open commons</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="partners/">For partners</a></li>
       <li><a class="nav-cta" href="#pilot">Join the pilot</a></li>
@@ -354,7 +368,8 @@ footer a { color: var(--ink-2); }
         <a class="btn btn-primary" href="#tools">Try the free tools</a>
         <a class="btn btn-ghost" href="#pilot">Join the early pilot</a>
       </div>
-      <p class="hero-note">13 tools · Free · No accounts · No client data collected · Built by a counselor</p>
+      <p class="hero-note">13 tools · Free and open · No accounts · No client data collected · Built by a counselor</p>
+      <p class="hero-diff"><a href="partners/#different">Used other tools before? See how this is different →</a></p>
     </div>
     <div class="hero-art" aria-hidden="true">
       <svg viewBox="0 0 540 250">
@@ -531,8 +546,24 @@ footer a { color: var(--ink-2); }
     </div>
   </div>
 </section>
+<!-- DIFF BAND -->
+<section class="block alt" id="different">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">How it's different</p>
+      <h2>Not a chatbot, not a worksheet library, <em>not a platform</em>.</h2>
+      <p class="lede">If you've tried AI therapy apps, worksheet sites, or homework platforms, here's what changes.</p>
+    </div>
+    <div class="diff3">
+      <div><h3>You stay at the center</h3><p>No chatbot talks to your client. You choose the purpose, the tools, and the timeframe.</p></div>
+      <div><h3>Free, open, and yours to change</h3><p>No subscription or paid tier. Adapt any tool, or remix it with AI, and share it back.</p></div>
+      <div><h3>Interactive, and private</h3><p>Visual, guided practice instead of static sheets. No accounts, and answers stay on your client's device.</p></div>
+    </div>
+    <p class="diff-link"><a href="partners/#different">See the full side-by-side comparison →</a></p>
+  </div>
+</section>
 <!-- FRAMEWORK -->
-<section class="block alt" id="framework">
+<section class="block" id="framework">
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">Make it yours</p>
@@ -566,17 +597,36 @@ footer a { color: var(--ink-2); }
 </section>
 
 
+<!-- COMMONS -->
+<section class="block alt" id="commons">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">An open commons</p>
+      <h2>Built by therapists, <em>shared by all</em>.</h2>
+      <p class="lede">Beyond the Room is free and open, not a company's library. Every tool is a single file therapists can use as is, adapt in their own words, or remix with an AI assistant, then share back so the whole community benefits.</p>
+    </div>
+    <ol class="ladder">
+      <li><span class="lv">1</span><div><h3>Use <span class="live">Live today</span></h3><p>Every tool, free, with no account.</p></div></li>
+      <li><span class="lv">2</span><div><h3>Give feedback <span class="live">Live today</span></h3><p>Tell us what helped and what didn't. Therapist feedback shapes every update.</p></div></li>
+      <li><span class="lv">3</span><div><h3>Adapt the words <span class="future">Next</span></h3><p>Change wording, examples, language, or cultural framing, with no code.</p></div></li>
+      <li><span class="lv">4</span><div><h3>Remix with AI <span class="future">Coming</span></h3><p>A remix kit with shared safety rules, so an AI assistant can help you build on a tool without breaking its privacy promises.</p></div></li>
+      <li><span class="lv">5</span><div><h3>Contribute back <span class="future">Coming</span></h3><p>Submit your version to the shared library. Tools are peer-reviewed by clinicians and credit their authors.</p></div></li>
+    </ol>
+    <div class="hero-actions" style="margin-top:26px"><a class="btn btn-ghost" href="mailto:hello@beyondtheroomtherapy.com?subject=Beyond%20the%20Room%3A%20tool%20feedback&amp;body=Tool%3A%0A%0AWhat%20helped%3A%0A%0AWhat%20could%20be%20better%3A%0A%0A(Please%20leave%20out%20any%20client%20details.)">Share feedback on a tool</a></div>
+  </div>
+</section>
 <!-- FAQ -->
 <section class="block" id="faq">
   <div class="wrap">
     <div class="head"><p class="eyebrow">Questions</p><h2>Common <em>questions</em>.</h2></div>
     <div class="faq">
-      <details><summary>Is it free?</summary><p>Yes. All of the tools and worksheets are free to use with your clients.</p></details>
+      <details><summary>Is it free? Will it stay free?</summary><p>Yes. The tools and worksheets are free to use with your clients, and Beyond the Room is built as an open commons so they stay that way.</p></details>
+      <details><summary>How is this different from other therapy tools?</summary><p>AI therapy apps put a chatbot in front of your client; worksheet libraries and homework platforms usually mean static sheets, paid tiers, or client data stored on their servers. Beyond the Room keeps you at the center, is free and open for therapists to adapt and share, and keeps your client's answers on their own device. <a href="partners/#different">See the full comparison</a>.</p></details>
       <details><summary>Do my clients need an account or an app?</summary><p>No. Each tool opens in any web browser on a phone or computer. There's nothing to download and no sign-up.</p></details>
       <details><summary>Where does my client's information go?</summary><p>Nowhere. Answers stay in the client's own browser, and some tools save progress there so they can come back. A summary leaves the device only if your client chooses to email, print, or copy it. They can erase everything with one tap.</p></details>
       <details><summary>How does the summary reach me?</summary><p>When you send a link with your name and work email, the summary opens in your client's own email app, addressed to you, for them to review and send. Or they can save a PDF and bring it to session. Regular email isn't fully private, and the tools tell clients so.</p></details>
       <details><summary>Is this therapy, or crisis support?</summary><p>No. The tools support reflection and skill practice between sessions, alongside your care. They aren't a substitute for therapy and aren't for emergencies. Tools that touch distress point to 988.</p></details>
-      <details><summary>Can I adapt a tool or suggest a new one?</summary><p>Adapting tools in your own words is the next step on the roadmap, and early pilot therapists help shape it. You're also welcome to send feedback on any tool today.</p></details>
+      <details><summary>Can I adapt a tool, or build my own with AI?</summary><p>That's where this is headed. Each tool is a single file, so a therapist can adapt it with an AI assistant. A remix kit with shared privacy and safety rules is coming, and versions shared back to the library are peer-reviewed by clinicians. Today you can send feedback on any tool, and pilot therapists help shape what comes next.</p></details>
     </div>
   </div>
 </section>
