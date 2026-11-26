@@ -325,6 +325,13 @@ footer a { color: var(--ink-2); }
 .ladder h3 { font-size: 1.08rem; margin: 0 0 4px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .ladder p { margin: 0; color: var(--ink-2); font-size: .92rem; }
 @media (max-width: 960px) { .ladder { grid-template-columns: 1fr; } .ladder li { grid-template-columns: 30px 1fr; align-items: start; } }
+.hero-diff { margin: 10px 0 0; font-size: .95rem; }
+.hero-diff a, .diff-link a { color: var(--terra-ink); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
+.diff3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.diff3 > div { background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--terra); border-radius: 12px; padding: 18px 20px; }
+.diff3 h3 { font-size: 1.12rem; margin: 0 0 6px; } .diff3 p { margin: 0; color: var(--ink-2); }
+.diff-link { margin: 22px 0 0; font-size: 1rem; }
+@media (max-width: 860px) { .diff3 { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -362,6 +369,7 @@ footer a { color: var(--ink-2); }
         <a class="btn btn-ghost" href="#pilot">Join the early pilot</a>
       </div>
       <p class="hero-note">13 tools · Free and open · No accounts · No client data collected · Built by a counselor</p>
+      <p class="hero-diff"><a href="partners/#different">Used other tools before? See how this is different →</a></p>
     </div>
     <div class="hero-art" aria-hidden="true">
       <svg viewBox="0 0 540 250">
@@ -538,8 +546,24 @@ footer a { color: var(--ink-2); }
     </div>
   </div>
 </section>
+<!-- DIFF BAND -->
+<section class="block alt" id="different">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">How it's different</p>
+      <h2>Not a chatbot, not a worksheet library, <em>not a platform</em>.</h2>
+      <p class="lede">If you've tried AI therapy apps, worksheet sites, or homework platforms, here's what changes.</p>
+    </div>
+    <div class="diff3">
+      <div><h3>You stay at the center</h3><p>No chatbot talks to your client. You choose the purpose, the tools, and the timeframe.</p></div>
+      <div><h3>Free, open, and yours to change</h3><p>No subscription or paid tier. Adapt any tool, or remix it with AI, and share it back.</p></div>
+      <div><h3>Interactive, and private</h3><p>Visual, guided practice instead of static sheets. No accounts, and answers stay on your client's device.</p></div>
+    </div>
+    <p class="diff-link"><a href="partners/#different">See the full side-by-side comparison →</a></p>
+  </div>
+</section>
 <!-- FRAMEWORK -->
-<section class="block alt" id="framework">
+<section class="block" id="framework">
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">Make it yours</p>
@@ -574,7 +598,7 @@ footer a { color: var(--ink-2); }
 
 
 <!-- COMMONS -->
-<section class="block" id="commons">
+<section class="block alt" id="commons">
   <div class="wrap">
     <div class="head">
       <p class="eyebrow">An open commons</p>
@@ -592,11 +616,12 @@ footer a { color: var(--ink-2); }
   </div>
 </section>
 <!-- FAQ -->
-<section class="block alt" id="faq">
+<section class="block" id="faq">
   <div class="wrap">
     <div class="head"><p class="eyebrow">Questions</p><h2>Common <em>questions</em>.</h2></div>
     <div class="faq">
       <details><summary>Is it free? Will it stay free?</summary><p>Yes. The tools and worksheets are free to use with your clients, and Beyond the Room is built as an open commons so they stay that way.</p></details>
+      <details><summary>How is this different from other therapy tools?</summary><p>AI therapy apps put a chatbot in front of your client; worksheet libraries and homework platforms usually mean static sheets, paid tiers, or client data stored on their servers. Beyond the Room keeps you at the center, is free and open for therapists to adapt and share, and keeps your client's answers on their own device. <a href="partners/#different">See the full comparison</a>.</p></details>
       <details><summary>Do my clients need an account or an app?</summary><p>No. Each tool opens in any web browser on a phone or computer. There's nothing to download and no sign-up.</p></details>
       <details><summary>Where does my client's information go?</summary><p>Nowhere. Answers stay in the client's own browser, and some tools save progress there so they can come back. A summary leaves the device only if your client chooses to email, print, or copy it. They can erase everything with one tap.</p></details>
       <details><summary>How does the summary reach me?</summary><p>When you send a link with your name and work email, the summary opens in your client's own email app, addressed to you, for them to review and send. Or they can save a PDF and bring it to session. Regular email isn't fully private, and the tools tell clients so.</p></details>
