@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 346" width="600" height="346" id="dg-perf">
+  <title>Two voices: the perfectionist loop and the inner guide</title>
+  <style>
+    #dg-perf text { font-family: "DM Sans", Helvetica, Arial, sans-serif; fill: #0F1B2D; }
+    #dg-perf .h { font-size: 15.5px; font-weight: 600; }
+    #dg-perf .q { font-family: Bricolage Grotesque, DM Sans, sans-serif; font-style: italic; font-size: 16px; }
+    #dg-perf .s { font-size: 13px; fill: #657083; }
+    #dg-perf .lab { font-size: 11.5px; font-weight: 600; letter-spacing: 1.6px; }
+    #dg-perf .loop { font-family: Bricolage Grotesque, DM Sans, sans-serif; font-style: italic; font-size: 13.5px; fill: #0B6158; }
+  </style>
+  <defs>
+    <marker id="dgp-t" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#1F3A5F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="dgp-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#0E7C72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- shared starting point -->
+  <rect x="180" y="6" width="240" height="54" rx="14" fill="#F3F5F8"/>
+  <text x="300" y="29" text-anchor="middle" class="h">A moment that matters</text>
+  <text x="300" y="48" text-anchor="middle" class="s">a task, a choice, being seen</text>
+
+  <path d="M240 61 C 240 80, 262 80, 262 98" fill="none" stroke="#1F3A5F" stroke-width="1.8" marker-end="url(#dgp-t)"/>
+  <path d="M360 61 C 360 80, 338 80, 338 98" fill="none" stroke="#0E7C72" stroke-width="1.8" marker-end="url(#dgp-g)"/>
+
+  <text x="24" y="92" class="lab" style="fill:#0B6158">THE PERFECTIONIST VOICE</text>
+  <text x="576" y="92" text-anchor="end" class="lab" style="fill:#0E7C72">YOUR INNER GUIDE</text>
+
+  <!-- left lane -->
+  <rect x="20" y="102" width="260" height="56" rx="14" fill="#E9EDF3" stroke="#9FB3CC" stroke-width="1.4"/>
+  <text x="150" y="126" text-anchor="middle" class="q" style="fill:#1F3A5F">“It has to be flawless.”</text>
+  <text x="150" y="146" text-anchor="middle" class="s">my worth rides on the result</text>
+
+  <rect x="20" y="172" width="260" height="56" rx="14" fill="#fff" stroke="#9FB3CC" stroke-width="1.4"/>
+  <text x="150" y="196" text-anchor="middle" class="h">Fear-driven effort</text>
+  <text x="150" y="216" text-anchor="middle" class="s">over-prepare, put off, or avoid</text>
+
+  <rect x="20" y="242" width="260" height="56" rx="14" fill="#fff" stroke="#9FB3CC" stroke-width="1.4"/>
+  <text x="150" y="266" text-anchor="middle" class="h">“Not good enough”</text>
+  <text x="150" y="286" text-anchor="middle" class="s">wins discounted, mistakes magnified</text>
+
+  <g stroke="#1F3A5F" stroke-width="1.8" fill="none">
+    <path d="M150 159V169" marker-end="url(#dgp-t)"/>
+    <path d="M150 229V239" marker-end="url(#dgp-t)"/>
+  </g>
+  <!-- the loop back -->
+  <path d="M150 299 V316 H8 V33 H174" fill="none" stroke="#9FB3CC" stroke-width="1.8" stroke-dasharray="5 5" marker-end="url(#dgp-t)"/>
+  <text x="150" y="336" text-anchor="middle" class="loop">and the bar rises again</text>
+
+  <!-- right lane -->
+  <rect x="320" y="102" width="260" height="56" rx="14" fill="#E3F2F0" stroke="#4FA89E" stroke-width="1.4"/>
+  <text x="450" y="126" text-anchor="middle" class="q" style="fill:#0B4F49">“What matters to me here?”</text>
+  <text x="450" y="146" text-anchor="middle" class="s">values, not verdicts</text>
+
+  <rect x="320" y="172" width="260" height="56" rx="14" fill="#fff" stroke="#4FA89E" stroke-width="1.4"/>
+  <text x="450" y="196" text-anchor="middle" class="h">A good-enough step</text>
+  <text x="450" y="216" text-anchor="middle" class="s">done with care, not fear</text>
+
+  <rect x="320" y="242" width="260" height="56" rx="14" fill="#0E7C72"/>
+  <text x="450" y="266" text-anchor="middle" class="h" style="fill:#fff">Learning and freedom</text>
+  <text x="450" y="286" text-anchor="middle" class="s" style="fill:#E8F4F2">mistakes become information</text>
+
+  <g stroke="#0E7C72" stroke-width="1.8" fill="none">
+    <path d="M450 159V169" marker-end="url(#dgp-g)"/>
+    <path d="M450 229V239" marker-end="url(#dgp-g)"/>
+  </g>
+  <text x="450" y="336" text-anchor="middle" class="loop" style="fill:#0E7C72">“I'm enough while I grow.”</text>
+</svg>
