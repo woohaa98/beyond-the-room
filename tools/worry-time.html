@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Worry Time · Beyond the Room</title>
+<meta name="description" content="For anxious, looping worry: park each worry in a jar as it comes up, then return at a set worry time to see what faded and sort what's left. Based on CBT worry postponement.">
+<!-- Privacy: no analytics, tracking, or data requests. Progress saves only in this browser (localStorage). Nothing is sent. -->
+<link rel="preload" href="../resources/assets/fonts/lora-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../resources/assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Lora"; src: url("../resources/assets/fonts/lora-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Lora"; src: url("../resources/assets/fonts/lora-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Lora"; src: url("../resources/assets/fonts/lora-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "DM Sans"; src: url("../resources/assets/fonts/dm-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "DM Sans"; src: url("../resources/assets/fonts/dm-sans-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "DM Sans"; src: url("../resources/assets/fonts/dm-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+
+:root {
+  --font-display: "Bricolage Grotesque", "DM Sans", -apple-system, sans-serif;
+  --font-body: "DM Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --bg: #FFFFFF; --surface: #FFFFFF; --ink: #0F1B2D; --muted: #657083; --line: #DFE3E9;
+  --accent: #0E7C72; --accent-ink: #FFFFFF; --accent-soft: #E3F2F0;
+  --warm: #1F3A5F; --warm-ink: #0B6158; --warm-soft: #E9EDF3; --sand: #F3F5F8; --focus: #0F1B2D;
+  --radius: 20px;
+  --shadow: 0 1px 2px rgba(15,27,45,.04), 0 10px 30px rgba(15,27,45,.06);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 6px; }
+[hidden] { display: none !important; }
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 28px 20px 56px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 14px; }
+.topbar a { text-decoration: none; color: var(--muted); transition: color .2s; }
+.topbar a:hover { color: var(--ink); }
+.brand { font-family: var(--font-display); font-size: 20px; color: var(--ink) !important; font-weight: 500; }
+
+.eyebrow { font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--muted); margin: 0 0 14px; }
+h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(34px, 6vw, 48px); line-height: 1.1; margin: 0 0 14px; letter-spacing: -.01em; }
+h1 em, .q em { color: var(--warm); font-style: italic; }
+.lede { color: var(--muted); max-width: 56ch; margin: 0 0 32px; }
+
+.toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 0 0 22px; }
+.progress { display: flex; gap: 6px; margin: 0; padding: 0; list-style: none; flex: 1; }
+.progress li { height: 4px; flex: 1; border-radius: 4px; background: var(--line); transition: background .3s; }
+.progress li.on { background: var(--accent); }
+.ground-btn { appearance: none; font: inherit; font-size: 13.5px; cursor: pointer; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--accent); white-space: nowrap; transition: border-color .2s; }
+.ground-btn:hover { border-color: var(--accent); }
+.grounding { display: flex; gap: 14px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #BFE0DC; border-radius: 8px; padding: 14px 16px; margin: 0 0 22px; }
+.grounding strong { display: block; color: var(--accent); font-weight: 600; }
+.grounding p { margin: 0; font-size: 14.5px; }
+.grounding .x { appearance: none; background: none; border: 0; font-size: 22px; line-height: 1; color: var(--muted); cursor: pointer; margin-left: auto; padding: 0 4px; }
+
+.step-label { font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--muted); margin: 0 0 10px; }
+.q { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 4.5vw, 32px); line-height: 1.2; margin: 0 0 6px; outline: none; }
+.hint { color: var(--muted); font-size: 14.5px; margin: 0 0 22px; max-width: 58ch; }
+
+.options { display: grid; gap: 10px; }
+.options.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 560px) { .options.two { grid-template-columns: 1fr; } }
+.opt {
+  appearance: none; font: inherit; color: inherit; text-align: left; cursor: pointer; width: 100%;
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 15px 18px;
+  transition: border-color .2s, background-color .2s;
+}
+.opt:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.opt[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.opt .icon { font-size: 20px; line-height: 1.2; }
+.opt b { display: block; font-weight: 600; font-size: 15.5px; }
+.opt small { display: block; color: var(--muted); font-size: 14px; margin-top: 1px; }
+.opt.dashed { border-style: dashed; }
+.group-name { font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--muted); margin: 18px 0 8px; }
+.group-name:first-child { margin-top: 0; }
+
+.field { margin-top: 16px; }
+.field > label { display: block; font-weight: 500; margin-bottom: 8px; }
+textarea, input[type=text] { width: 100%; font: inherit; font-size: 16px; line-height: 1.6; padding: 13px 15px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); resize: vertical; }
+textarea:focus, input[type=text]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(14,124,114,.15); }
+::placeholder { color: #8A95A5; }
+
+.chipset { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+.chip { appearance: none; font: inherit; font-size: 14.5px; cursor: pointer; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; min-height: 40px; color: var(--ink); transition: all .2s; }
+.chip:hover { border-color: var(--accent); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* mood gauge */
+.mood { margin-top: 26px; padding: 20px 20px 18px; background: var(--sand); border-radius: 8px; }
+.mood-top { display: flex; align-items: center; gap: 14px; }
+.mood-face { font-size: 44px; line-height: 1; width: 56px; height: 56px; display: grid; place-items: center; background: #fff; border-radius: 50%; flex: none; transition: transform .25s; }
+.mood-k { margin: 0; font-weight: 500; }
+.mood-num { margin: 0; font-size: 15px; color: var(--muted); }
+.mood-num output { font-family: var(--font-display); font-size: 26px; color: var(--ink); }
+.mood-num b { color: var(--ink); font-weight: 600; }
+.mood-range { -webkit-appearance: none; appearance: none; width: 100%; height: 12px; border-radius: 999px; margin: 20px 0 6px; background: linear-gradient(90deg, #8E5B49 0%, #1F3A5F 22%, #D9B98F 45%, #9DB8A4 70%, #0E7C72 100%); cursor: pointer; }
+.mood-range::-webkit-slider-thumb { -webkit-appearance: none; width: 30px; height: 30px; border-radius: 50%; background: #fff; border: 3px solid var(--ink); box-shadow: 0 2px 6px rgba(0,0,0,.18); }
+.mood-range::-moz-range-thumb { width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 3px solid var(--ink); box-shadow: 0 2px 6px rgba(0,0,0,.18); }
+.mood-range:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+.mood-scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 4px 0 0; padding: 0; list-style: none; }
+.mood-scale button { appearance: none; font: inherit; cursor: pointer; background: transparent; border: 1px solid transparent; border-radius: 10px; padding: 6px 2px; display: grid; justify-items: center; gap: 2px; color: var(--muted); font-size: 12.5px; line-height: 1.25; }
+.mood-scale button span { font-size: 22px; }
+.mood-scale button:hover { background: rgba(255,255,255,.6); }
+.mood-scale button[aria-pressed="true"] { background: #fff; border-color: var(--line); color: var(--ink); font-weight: 600; }
+.mood-desc { margin: 14px 0 0; background: #fff; border-radius: 12px; padding: 12px 14px; font-size: 15px; }
+.mood-say { margin: 10px 0 0; display: flex; gap: 10px; align-items: flex-start; font-family: var(--font-display); font-style: italic; font-size: 17px; line-height: 1.5; color: var(--accent); }
+.mood-say::before { content: ""; flex: none; width: 4px; align-self: stretch; border-radius: 4px; background: var(--accent); opacity: .5; }
+.mood-tip { margin: 10px 0 0; font-size: 13.5px; color: var(--muted); }
+.mood-crisis { margin: 10px 0 0; font-size: 14px; background: var(--warm-soft); border-radius: 12px; padding: 10px 14px; }
+.mood-crisis a { color: var(--warm-ink); font-weight: 600; }
+.note { margin: 22px 0 0; background: linear-gradient(160deg, #F3F7F4 0%, #F8FAFC 100%); border: 1px solid #DCE8DF; border-radius: 8px; padding: 20px 22px 16px; }
+.note-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.note h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-style: italic; font-size: 22px; color: var(--accent); }
+.note p { margin: 0 0 10px; font-family: var(--font-display); font-size: 18px; line-height: 1.6; color: var(--ink); }
+.note .note-tip { font-family: var(--font-body); font-size: 13px; color: var(--muted); margin: 4px 0 0; }
+.vbtn[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+.moods { display: grid; gap: 10px; margin-top: 6px; }
+.mood-btn { appearance: none; font: inherit; text-align: left; cursor: pointer; display: flex; gap: 14px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; color: var(--ink); transition: border-color .2s, background .2s; }
+.mood-btn:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.mood-btn[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.mood-btn .mi { font-size: 30px; line-height: 1; width: 44px; text-align: center; flex: none; }
+.mood-btn b { display: block; font-weight: 600; }
+.mood-btn small { display: block; color: var(--muted); font-size: 14px; }
+#mood-say .mood-say { margin-top: 16px; }
+.pull-chips .chip { display: inline-flex; gap: 6px; align-items: center; text-align: left; }
+.more-ideas { margin-top: 18px; }
+.more-ideas > summary { cursor: pointer; font-weight: 600; color: var(--accent); padding: 6px 0; }
+.own-words { margin-top: 16px; }
+.own-words input { width: 100%; margin-top: 6px; }
+/* notice the pull */
+.pull { margin-top: 26px; border: 1px solid var(--line); border-radius: 8px; padding: 20px; background: #fff; }
+.pull h3 { font-family: var(--font-display); font-weight: 400; font-size: 21px; margin: 0 0 4px; }
+.pull > p { margin: 0 0 14px; color: var(--muted); font-size: 15px; }
+.pull .chipset { display: flex; flex-wrap: wrap; gap: 8px; }
+.pull .chip { display: inline-flex; gap: 6px; align-items: center; text-align: left; }
+.loops { display: grid; gap: 10px; margin-top: 18px; }
+.loop { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; border-radius: 12px; padding: 10px 12px; font-size: 14px; }
+.loop b { flex-basis: 100%; font-size: 12px; letter-spacing: 0; text-transform: none; }
+.loop span.n { background: #fff; border-radius: 8px; padding: 4px 10px; }
+.loop i { font-style: normal; opacity: .7; }
+.loop.down { background: var(--warm-soft); } .loop.down b { color: var(--warm-ink); }
+.loop.up { background: var(--accent-soft); } .loop.up b { color: var(--accent); }
+.loop.down .you { outline: 2px solid var(--warm); }
+.loop.up .you { outline: 2px solid var(--accent); font-weight: 600; }
+.pairs { margin-top: 12px; background: var(--accent-soft); border-radius: 12px; padding: 12px 14px; }
+.pairs-k { margin: 0 0 8px; font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--accent); font-weight: 600; }
+.pairs ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.pairs li { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.2fr); gap: 10px; align-items: center; font-size: 14px; }
+.pairs .from { color: var(--muted); }
+.pairs .to { background: #fff; border-radius: 8px; padding: 4px 10px; color: var(--ink); font-weight: 500; }
+.pairs i { font-style: normal; color: var(--accent); }
+@media (max-width: 520px) { .pairs li { grid-template-columns: 1fr; gap: 2px; } .pairs i { display: none; } .pairs .to { justify-self: start; } }
+.pull-feedback { margin: 14px 0 0; font-size: 15px; }
+.cat .sugg { display: inline-block; margin-left: 8px; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 2px 10px; vertical-align: middle; }
+.scale { margin-top: 26px; padding: 18px 20px; background: var(--sand); border-radius: 8px; }
+.scale label { font-weight: 500; display: block; margin-bottom: 8px; }
+.scale input[type=range] { width: 100%; accent-color: var(--accent); }
+.scale .ends { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); }
+.scale output { font-family: var(--font-display); font-size: 20px; color: var(--accent); }
+.note { background: var(--warm-soft); border-radius: 8px; padding: 14px 16px; font-size: 14.5px; margin: 14px 0 0; }
+.note strong { color: var(--warm-ink); }
+
+.prompt-card { background: var(--sand); border-radius: 8px; padding: 18px 20px; font-family: var(--font-display); font-style: italic; font-size: 19px; line-height: 1.45; margin: 0 0 14px; }
+.subcount { font-size: 13.5px; color: var(--muted); margin: 0 0 8px; }
+.reflection { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--warm); background: var(--surface); border-radius: 0 14px 14px 0; padding: 14px 18px; margin: 16px 0 0; box-shadow: var(--shadow); }
+.reflection .mark { color: var(--warm); font-size: 18px; line-height: 1.5; }
+.reflection p { margin: 0; font-family: var(--font-display); font-size: 17px; line-height: 1.55; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 28px; }
+.btn { appearance: none; border: 1px solid transparent; border-radius: 999px; cursor: pointer; font: 500 15px/1 var(--font-body); padding: 15px 26px; min-height: 48px; transition: background-color .2s, color .2s, border-color .2s, opacity .2s, transform .2s; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover:not(:disabled) { transform: translateY(-1px); }
+.btn-primary:disabled { opacity: .45; cursor: not-allowed; }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--ink); }
+.btn-text { background: none; border: 0; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; padding: 15px 6px; }
+.btn-text:hover { color: var(--ink); }
+.status { font-size: 14px; color: var(--muted); }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: calc(var(--radius) + 6px); box-shadow: var(--shadow); padding: clamp(24px, 6vw, 44px); }
+.welcome-list { margin: 0 0 18px; padding-left: 20px; }
+.welcome-list li { margin-bottom: 6px; }
+.safety { background: var(--warm-soft); border-radius: 8px; padding: 14px 16px; font-size: 14.5px; margin: 0 0 20px; }
+.safety strong { color: var(--warm-ink); }
+.check { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; font-weight: 500; }
+.check input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--accent); flex: none; }
+
+.part-pill { display: inline-block; background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 500; margin: 0 0 16px; }
+.summary { display: grid; gap: 12px; margin: 6px 0 0; }
+.summary div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.summary div:last-child { border-bottom: 0; }
+.summary dt { font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--muted); padding-top: 2px; }
+.summary dd { margin: 0; white-space: pre-wrap; }
+@media (max-width: 520px) { .summary div { grid-template-columns: 1fr; gap: 2px; } }
+.pick-hint { font-size: 14px; color: var(--muted); margin: 0 0 10px; }
+.answers { margin-bottom: 6px; }
+.own-words { margin: 8px 0 0; }
+.own-words summary { cursor: pointer; font-size: 14px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; padding: 6px 0; list-style: none; }
+.own-words summary::-webkit-details-marker { display: none; }
+.own-words[open] summary { margin-bottom: 8px; }
+.message-card { margin: 22px 0 0; background: var(--accent-soft); border-radius: 8px; padding: 18px 20px; }
+.message-card .mc-label { margin: 0 0 6px; font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--accent); font-weight: 600; }
+.message-card .mc-text { margin: 0; font-family: var(--font-display); font-style: italic; font-size: 19px; line-height: 1.5; }
+.closing-line { font-family: var(--font-display); font-style: italic; font-size: 20px; text-align: center; color: var(--muted); margin: 28px 0 0; }
+
+.disclaimer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.disclaimer p { margin: 0 0 6px; }
+
+.fade-in { animation: fadeUp .5s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-delay: 0s !important; transition-duration: .001ms !important; }
+}
+@media print {
+  body { background: #fff; }
+  .topbar, header, .toolbar, .grounding, .actions, .disclaimer, .no-print { display: none !important; }
+  .card { box-shadow: none; border: 0; padding: 0; }
+}
+
+
+
+/* ---- shared by Small Steps, Kind Boundaries, Gentle Start-Up ---- */
+.privacy-line { font-size: 13.5px; color: var(--muted); margin: -20px 0 28px; }
+.session-banner { display: flex; gap: 12px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #BFE0DC; border-radius: 8px; padding: 14px 16px; margin: -12px 0 28px; font-size: 14.5px; }
+.session-banner b { display: block; color: var(--accent); font-weight: 600; }
+.session-banner p { margin: 0; }
+.explain { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin: 0 0 18px; }
+.explain div { background: var(--sand); border-radius: 8px; padding: 14px 16px; }
+.explain b { display: block; font-family: var(--font-display); font-weight: 500; font-size: 17px; margin-bottom: 2px; }
+.explain span { font-size: 14px; color: var(--muted); }
+.callout { background: var(--accent-soft); border-radius: 8px; padding: 14px 18px; margin: 16px 0 0; font-size: 15px; }
+.callout strong { color: var(--accent); }
+.callout.warm { background: var(--warm-soft); }
+.callout.warm strong { color: var(--warm-ink); }
+.script { background: #EEF7F6; border: 1px solid #BFE0DC; border-radius: 8px; padding: 20px 22px; margin: 6px 0 0; }
+.script .k { font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--accent); font-weight: 600; margin: 0 0 8px; }
+.script p.say { font-family: var(--font-display); font-size: 20px; line-height: 1.5; margin: 0; }
+.script textarea { width: 100%; font: inherit; font-family: var(--font-display); font-size: 19px; line-height: 1.5; padding: 12px 14px; border: 1px solid #BFE0DC; border-radius: 12px; background: #fff; color: var(--ink); resize: vertical; min-height: 120px; }
+.tone { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 12px; }
+.card-sec { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
+.card-sec h3 { margin: 0 0 6px; font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--muted); font-weight: 600; }
+.card-sec p { margin: 0; }
+.card-sec ul { margin: 0; padding-left: 20px; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag-row span { font-size: 13px; background: var(--sand); border-radius: 999px; padding: 4px 12px; }
+.print-head { display: none; }
+.erase-row { margin-top: 14px; font-size: 14px; }
+.vbtn { appearance: none; font: inherit; font-size: 14.5px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; background: #fff; border: 1px solid #BFE0DC; color: var(--accent); border-radius: 999px; padding: 9px 16px; min-height: 42px; }
+.vbtn:disabled { opacity: .45; cursor: not-allowed; }
+@media print {
+  .print-head { display: block !important; border-bottom: 1px solid #ccc; padding-bottom: 8px; margin-bottom: 14px; font-size: 10pt; color: #444; }
+  .print-head b { display: block; font-size: 13pt; color: #000; }
+  .session-banner, .erase-row, .rel, .privacy-line, .no-print { display: none !important; }
+}
+
+/* ---- Small Steps ---- */
+.cycle2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0 0 6px; }
+@media (max-width: 600px) { .cycle2 { grid-template-columns: 1fr; } }
+.cycle2 > div { border-radius: 8px; padding: 16px 18px; }
+.cycle2 .down { background: var(--warm-soft); }
+.cycle2 .up { background: var(--accent-soft); }
+.cycle2 h3 { margin: 0 0 8px; font-size: 12.5px; letter-spacing: 0; text-transform: none; font-weight: 600; }
+.cycle2 .down h3 { color: var(--warm-ink); } .cycle2 .up h3 { color: var(--accent); }
+.cycle2 ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.cycle2 li { background: rgba(255,255,255,.75); border-radius: 10px; padding: 8px 12px; font-size: 14.5px; position: relative; }
+.cycle2 li:not(:last-child)::after { content: "↓"; position: absolute; left: 50%; bottom: -12px; transform: translateX(-50%); font-size: 12px; z-index: 1; }
+.cycle2 .down li:not(:last-child)::after { color: var(--warm-ink); } .cycle2 .up li:not(:last-child)::after { color: var(--accent); }
+.cat { margin: 0 0 18px; }
+.cat h3 { display: flex; gap: 8px; align-items: baseline; margin: 0 0 8px; font-size: 15px; font-weight: 600; }
+.cat h3 small { font-weight: 400; color: var(--muted); font-size: 13.5px; }
+.acts { display: grid; gap: 8px; }
+.act { appearance: none; font: inherit; color: inherit; text-align: left; cursor: pointer; display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 11px 14px; transition: border-color .2s, background-color .2s; }
+.act:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.act .plus { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; font-size: 14px; color: var(--accent); line-height: 1; }
+.act[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.act[aria-pressed="true"] .plus { background: var(--accent); border-color: var(--accent); color: #fff; }
+.act .eff { font-size: 12px; color: var(--muted); background: var(--sand); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+.count-note { font-size: 14px; color: var(--muted); margin: 6px 0 0; }
+.act[disabled] { opacity: .45; cursor: not-allowed; }
+.energy { display: grid; gap: 8px; }
+.plan-item { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; }
+.plan-item h3 { margin: 0 0 10px; font-size: 16px; font-weight: 600; }
+.plan-item .row { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 8px; align-items: center; margin-top: 8px; }
+@media (max-width: 480px) { .plan-item .row { grid-template-columns: 1fr; gap: 4px; } }
+.plan-item .row > span { font-size: 13px; color: var(--muted); }
+.plan-item .chipset { gap: 6px; }
+.plan-item .chip { min-height: 36px; padding: 6px 12px; font-size: 13.5px; }
+.today { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.today li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 12px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+.today .box { width: 22px; height: 22px; border: 2px solid var(--accent); border-radius: 6px; margin-top: 2px; }
+.today b { font-weight: 600; display: block; }
+.today small { color: var(--muted); font-size: 13.5px; }
+.encourage { margin: 18px 0 0; font-family: var(--font-display); font-style: italic; font-size: 21px; line-height: 1.45; color: var(--ink); }
+.notice { margin-top: 16px; background: var(--accent-soft); border-radius: 8px; padding: 14px 16px; font-size: 15px; }
+.notice b { color: var(--accent); }
+.photo-box { margin-top: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px; box-shadow: var(--shadow); }
+.photo-tip { margin: 0 0 12px; font-size: 14.5px; color: var(--muted); }
+.photo-box img { display: block; width: 100%; max-width: 360px; height: auto; border-radius: 8px; border: 1px solid var(--line); margin: 0 auto; -webkit-touch-callout: default; }
+.remind { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 14.5px; }
+.remind input[type="time"] { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+@media print { .photo-box, .remind { display: none !important; } }
+.feedback-line a { color: var(--accent); font-weight: 500; }
+
+/* ---- share with your therapist (session mode) ---- */
+.share-th { margin: 24px 0 4px; background: #fff; border: 1px solid #BFE0DC; border-radius: 8px; padding: 20px 22px 16px; box-shadow: 0 1px 2px rgba(15,27,45,.04), 0 10px 30px rgba(15,27,45,.06); text-align: left; }
+.share-th .st-h { margin: 0 0 2px; font-family: var(--font-display); font-size: 22px; }
+.share-th .st-h b { font-weight: 400; font-style: italic; color: #0E7C72; }
+.share-th .st-sub { margin: 0 0 14px; color: var(--muted); font-size: 14.5px; }
+.share-th .st-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.share-th .st-tip { margin: 12px 0 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
+#print-summary { display: none; }
+@media print {
+  .share-th { display: none !important; }
+  body.printing-summary > *:not(#print-summary) { display: none !important; }
+  body.printing-summary #print-summary { display: block !important; font: 12pt/1.6 Georgia, serif; white-space: pre-wrap; color: #222; }
+}
+</style>
+<style>
+/* Worry Time */
+.how { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0 0 28px; border-top: 2px solid var(--ink); }
+.how div { padding: 14px 16px 4px 0; }
+.how b { display: block; font-family: var(--font-display); font-size: 26px; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+.how span { display: block; font-weight: 600; font-size: 15px; }
+.how small { display: block; color: var(--muted); font-size: 13.5px; line-height: 1.45; }
+@media (max-width: 560px) { .how { grid-template-columns: 1fr; } .how div { display: grid; grid-template-columns: 40px 1fr; column-gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--line); } .how b { grid-row: span 2; } }
+.jar-home { display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center; }
+@media (max-width: 560px) { .jar-home { grid-template-columns: 1fr; justify-items: center; text-align: center; } .jar-home .actions { justify-content: center; } }
+.jar { width: 200px; height: 230px; display: block; }
+.jar .glass { fill: #F3F7FA; stroke: #0F1B2D; stroke-width: 2.5; }
+.jar .lid { fill: #0F1B2D; }
+.jar .slip { stroke: #0F1B2D; stroke-width: 1.2; }
+.jar text { font: 700 34px "Bricolage Grotesque", "DM Sans", sans-serif; fill: #0F1B2D; text-anchor: middle; }
+.jar text.s { font: 500 12px "DM Sans", sans-serif; fill: #657083; }
+.jar-wrap { position: relative; width: 200px; }
+.drop { position: absolute; left: 62px; top: -40px; width: 76px; height: 28px; background: #FFF7E0; border: 1.2px solid #0F1B2D; border-radius: 3px; animation: drop .9s cubic-bezier(.5,0,.6,1) forwards; }
+@keyframes drop { 0% { transform: translateY(0) rotate(-8deg); opacity: 1; } 70% { opacity: 1; } 100% { transform: translateY(170px) rotate(6deg); opacity: 0; } }
+.big-n { font-family: var(--font-display); font-size: 40px; line-height: 1; margin: 0; }
+.appt { margin-top: 22px; display: flex; gap: 14px; align-items: center; padding: 16px 18px; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 8px; background: #fff; }
+.appt svg { width: 36px; height: 36px; flex: none; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; }
+.appt p { margin: 0; }
+.appt b { font-weight: 600; }
+.appt small { color: var(--muted); font-size: 13.5px; }
+.appt .btn-text { margin-left: auto; white-space: nowrap; }
+.start-here { margin-top: 22px; padding: 18px 20px; border-radius: 8px; background: var(--accent-soft); }
+.start-here p { margin: 0 0 12px; }
+.slip-big { position: relative; background: #FFFBEF; border: 1px solid #E8DFC3; border-radius: 6px; padding: 22px 24px; margin: 8px 0 18px; box-shadow: 0 1px 0 #E8DFC3, 0 8px 22px rgba(15,27,45,.06); font-family: var(--font-display); font-size: 22px; line-height: 1.4; transform: rotate(-.6deg); }
+.slip-big small { display: block; font-family: var(--font-body); font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+.slip-big.gone { animation: floatAway .7s ease forwards; }
+@keyframes floatAway { to { transform: translateY(-40px) rotate(-4deg); opacity: 0; } }
+.counter { font-size: 13.5px; color: var(--muted); margin: 0 0 6px; }
+.fade-viz { display: flex; gap: 6px; flex-wrap: wrap; margin: 12px 0 18px; }
+.fade-viz span { width: 38px; height: 26px; border-radius: 3px; border: 1.2px solid #0F1B2D; background: #FFF7E0; }
+.fade-viz span.faded { border-style: dashed; border-color: #AFBACA; background: transparent; }
+.stat { font-family: var(--font-display); font-size: clamp(30px, 6vw, 44px); line-height: 1.1; margin: 0 0 8px; }
+.stat em { font-style: normal; color: var(--accent); }
+.timer { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,.96); backdrop-filter: blur(4px); padding: 10px 0; margin: -6px 0 18px; border-bottom: 1px solid var(--line); }
+.timer svg { width: 44px; height: 44px; transform: rotate(-90deg); }
+.timer circle { fill: none; stroke-width: 4; }
+.timer .track { stroke: var(--line); }
+.timer .ring { stroke: var(--accent); stroke-linecap: round; transition: stroke-dashoffset 1s linear; }
+.timer .t { font-family: var(--font-display); font-size: 22px; font-variant-numeric: tabular-nums; }
+.timer small { color: var(--muted); font-size: 13px; display: block; }
+.timer .btn-text { margin-left: auto; }
+.timer.over .ring { stroke: #1F3A5F; }
+.stream { position: relative; height: 150px; border-radius: 8px; overflow: hidden; background: linear-gradient(180deg, #E3F2F0 0%, #CDE8E4 100%); margin: 10px 0 16px; }
+.stream svg.water { position: absolute; inset: 0; width: 200%; height: 100%; animation: flow 14s linear infinite; }
+.stream svg.water path { fill: none; stroke: #fff; stroke-width: 2; opacity: .7; }
+@keyframes flow { to { transform: translateX(-50%); } }
+.leaf { position: absolute; left: 6%; top: 38px; display: flex; align-items: center; gap: 8px; max-width: 70%; }
+.leaf svg { width: 64px; height: 40px; flex: none; }
+.leaf span { background: rgba(255,255,255,.92); border-radius: 6px; padding: 6px 10px; font-size: 14px; line-height: 1.35; box-shadow: 0 2px 8px rgba(15,27,45,.08); }
+.leaf.go { animation: drift 9s ease-in forwards; }
+@keyframes drift { 0% { transform: translate(0, 0) rotate(0); opacity: 1; } 30% { transform: translate(30%, 10px) rotate(4deg); } 60% { transform: translate(70%, -6px) rotate(-3deg); opacity: 1; } 100% { transform: translate(160%, 8px) rotate(6deg); opacity: 0; } }
+.noticing { font-family: var(--font-display); font-size: 19px; line-height: 1.45; margin: 0 0 6px; }
+.choice2 { display: grid; gap: 10px; }
+.steps-list { list-style: none; margin: 12px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.steps-list li { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.steps-list .box { width: 16px; height: 16px; border: 2px solid var(--accent); border-radius: 3px; flex: none; transform: translateY(3px); }
+.steps-list small { color: var(--muted); display: block; font-size: 13.5px; }
+.week { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 16px 0 0; }
+.week div { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+.week b { display: block; font-family: var(--font-display); font-size: 28px; line-height: 1.1; }
+.week small { color: var(--muted); font-size: 13px; }
+.erase-box { margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.btn-erase { appearance: none; font: inherit; font-size: 14px; cursor: pointer; background: #fff; color: #8E2F2F; border: 1px solid #E5C9C9; border-radius: 6px; padding: 8px 14px; }
+.btn-erase:hover { border-color: #8E2F2F; }
+.ocd-note { margin-top: 16px; font-size: 14px; color: var(--muted); }
+.ocd-note a { color: var(--ink); }
+.refocus { margin-top: 18px; }
+@media (prefers-reduced-motion: reduce) { .drop, .slip-big.gone, .leaf.go, .stream svg.water { animation: none !important; } .leaf.go { opacity: .3; } }
+@media print { .timer, .erase-box { display: none !important; } }
+</style>
+<link rel="stylesheet" href="../assets/btr-theme.css">
+</head>
+<body>
+<div class="wrap">
+  <nav class="topbar" aria-label="Site">
+    <a class="brand" href="../">Beyond the Room</a>
+    <a href="./">← All tools</a>
+  </nav>
+  <main id="main">
+    <header>
+      <p class="eyebrow">Beyond the Room · Anxiety &amp; Worry</p>
+      <h1>Worry Time</h1>
+      <p class="lede">Worries can follow you all day. Instead of fighting them or giving in, give them an appointment. Park each worry in your jar as it comes up, then come back at a set time to sort through what's left. Many will have faded by then. 30 seconds to park a worry, about 15 minutes for worry time.</p>
+      <p class="privacy-line">Your progress saves on this device. Nothing is sent anywhere unless you choose to share it.</p>
+    </header>
+    <div class="session-banner" id="session-banner" role="note" hidden>
+      <div><b>Shared by your therapist, <span class="th-name"></span></b><p>Use this between sessions. After a worry time, you can email your summary to <span class="th-name"></span> or save it as a PDF for your next session. Nothing is sent anywhere unless you choose to share it.</p></div></div>
+    <section id="stage"></section>
+  </main>
+  <footer class="disclaimer">
+    <p>Based on worry postponement (stimulus control for worry), a cognitive behavioral technique studied for generalized anxiety, with a leaves-on-a-stream exercise from Acceptance and Commitment Therapy. A self-guided practice, not a substitute for care.</p>
+    <p>If you're having thoughts of harming yourself, in the U.S. call or text 988, or call 911.</p>
+    <p>Your progress saves only in this browser, on this device. Nothing is sent anywhere. Use "Erase my answers" to clear it.</p>
+    <p class="feedback-line">These tools are evolving, and your feedback helps shape them. <a href="mailto:hello@beyondtheroomtherapy.com?subject=Feedback%20on%20Worry%20Time&amp;body=What%20helped%3A%0A%0AWhat%20was%20confusing%20or%20could%20be%20better%3A%0A%0A%28Please%20leave%20out%20personal%20or%20health%20details.%29%0A">Share feedback</a> (please leave out personal or health details).</p>
+  </footer>
+</div>
+<script>
+(() => {
+  "use strict";
+  const SESSION_KEY = "wk-worry-time-session";
+  const STORE_KEY = "btr-worry-time";
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* session mode (?from=Name&reply=email), as in the other tools */
+  let therapist = null;
+  (function () {
+    const q = new URLSearchParams(location.search), from = (q.get("from") || "").trim().slice(0, 60);
+    try {
+      if (from) {
+        const t = { name: from.toLowerCase() === "elise" ? "Elise Kwak" : from, reply: "" };
+        const r = (q.get("reply") || "").trim().slice(0, 120);
+        if (r && /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(r)) t.reply = r; else if (from.toLowerCase() === "elise") t.reply = "elise@selfspaceseattle.com";
+        sessionStorage.setItem(SESSION_KEY, JSON.stringify(t)); therapist = t;
+      } else { const raw = sessionStorage.getItem(SESSION_KEY); if (raw) therapist = JSON.parse(raw); }
+    } catch (_) { if (from) therapist = { name: from, reply: "" }; }
+    if (therapist && therapist.name) { $("session-banner").hidden = false; document.querySelectorAll(".th-name").forEach((el) => { el.textContent = therapist.name; }); }
+    else therapist = null;
+  })();
+
+  /* ---------- saved on this device only (localStorage), and the tool works without it ---------- */
+  const fresh = () => ({ setup: null, jar: [], log: [] });
+  let S = fresh();
+  try { const raw = localStorage.getItem(STORE_KEY); if (raw) { const v = JSON.parse(raw); S = Object.assign(fresh(), v); } } catch (_) {}
+  const save = () => { try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch (_) {} };
+  const hasSaved = () => !!(S.setup || S.jar.length || S.log.length);
+
+  /* ---------- share: leaves this device only through the person's own email app or printer ---------- */
+  const shareBox = () => {
+    if (!therapist) return `<div class="share-th no-print">
+      <p class="st-h">Bring this to your <b>therapy session</b></p>
+      <p class="st-sub">Your worry time summary, ready to explore with your therapist.</p>
+      <div class="st-row"><button type="button" class="btn btn-primary" data-share="email">Email It</button><button type="button" class="btn btn-ghost" data-share="print">Print or Save as PDF</button></div>
+      <p class="st-tip"><b>Email It</b> opens your own email app with your summary written in, so you can send it to your therapist or anyone you choose. You can read or change anything before you send it. Email isn't fully private, so only share what you're comfortable sending that way.</p>
+    </div>`;
+    const first = therapist.name.split(" ")[0];
+    return `<div class="share-th no-print">
+      <p class="st-h">Share this with <b>${esc(therapist.name)}</b></p>
+      <p class="st-sub">Your worry time summary, ready to explore together in your next session.</p>
+      <div class="st-row"><button type="button" class="btn btn-primary" data-share="email">Email It to ${esc(first)}</button><button type="button" class="btn btn-ghost" data-share="print">Print or Save as PDF</button></div>
+      <p class="st-tip"><b>Email It</b> opens your own email app with your summary written in${therapist.reply ? `, addressed to ${esc(therapist.reply)}` : `; add ${esc(first)}'s email address`}. You can read or change anything before you send it. Email isn't fully private, so only share what you're comfortable sending that way.</p>
+    </div>`;
+  };
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-share]"); if (!b) return;
+    if (b.dataset.share === "email") window.location.href = `mailto:${therapist && therapist.reply ? encodeURIComponent(therapist.reply) : ""}?subject=${encodeURIComponent("My worry time" + (therapist ? " · for our session" : " · for my therapy session"))}&body=${encodeURIComponent(textSummary())}`;
+    else printNow();
+  });
+  function copyText(text) {
+    const done = (m) => { const s = $("copy-status"); if (s) s.textContent = m; };
+    const fb = () => { const ta = document.createElement("textarea"); ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); done("Copied."); } catch (_) { done("Couldn't copy."); } ta.remove(); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(() => done("Copied."), fb); else fb();
+  }
+  function emailMe() { window.location.href = "mailto:?subject=" + encodeURIComponent("My worry time") + "&body=" + encodeURIComponent(textSummary()); const s = $("copy-status"); if (s) s.textContent = "Your email app should open. Add your own address and send."; }
+  function printNow() { const ph = $("ph-line"); if (ph) ph.textContent = (therapist ? `For a session with ${therapist.name} · ` : "") + new Date().toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" }); window.print(); }
+
+  /* ================== CONTENT (clinical review: Elise) ================== */
+  const PLACES = ["Kitchen table", "A chair I don't relax in", "My desk", "On a walk"];
+  const LENGTHS = [10, 15, 20];
+  const WHEN = ["Today", "Tomorrow", "This week"];
+  const REFOCUS = ["Name 3 things I can see", "Feel my feet on the floor", "Go back to what I was doing", "Take one slow breath"];
+  const AFTER = ["Take a short walk", "Make a cup of tea", "Tidy one small thing", "Message someone I like", "Stretch for 2 minutes"];
+
+  /* ================== STATE ================== */
+  let mode = "home";        // home | setup | park | parked | session
+  let sess = null;          // { phase, i, start, len, items: [{id,text,fade,outcome,step,when}] }
+  let timerId = null;
+  const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  const fmtTime = (hhmm) => { if (!hhmm) return ""; const [h, m] = hhmm.split(":").map(Number); const d = new Date(); d.setHours(h, m, 0, 0); return d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" }); };
+  const label = (t) => `<p class="step-label">${t}</p>`;
+
+  /* ---------- the jar (drawn on this device) ---------- */
+  function jarSvg(n) {
+    const slips = []; const show = Math.min(n, 18);
+    const fills = ["#FFF7E0", "#E3F2F0", "#E9EDF3", "#FFFFFF"];
+    for (let i = 0; i < show; i++) {
+      const row = Math.floor(i / 3), col = i % 3;
+      const x = 46 + col * 38 + (row % 2 ? 12 : 0), y = 190 - row * 17, r = ((i * 37) % 17) - 8;
+      slips.push(`<rect class="slip" x="${x}" y="${y}" width="34" height="14" rx="2" fill="${fills[i % 4]}" transform="rotate(${r} ${x + 17} ${y + 7})"/>`);
+    }
+    return `<svg class="jar" viewBox="0 0 200 230" role="img" aria-label="Worry jar with ${n} parked ${n === 1 ? "worry" : "worries"}">
+      <rect class="lid" x="52" y="14" width="96" height="16" rx="4"/>
+      <path class="glass" d="M60 30h80v10c0 6 24 14 24 36v118c0 14-10 24-24 24H60c-14 0-24-10-24-24V76c0-22 24-30 24-36z"/>
+      ${slips.join("")}
+      <text x="100" y="${n ? 108 : 128}">${n}</text><text class="s" x="100" y="${n ? 128 : 148}">${n === 1 ? "worry parked" : "worries parked"}</text>
+    </svg>`;
+  }
+  const clock = '<svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="14"/><path d="M18 10v8l5 4"/></svg>';
+  const leafSvg = '<svg viewBox="0 0 64 40" aria-hidden="true"><path d="M4 22C14 4 44 2 60 10 50 30 22 38 4 22z" fill="#7DBF8A" stroke="#2F6B3F" stroke-width="1.5"/><path d="M6 22C24 18 40 14 58 11" stroke="#2F6B3F" stroke-width="1.2" fill="none"/></svg>';
+
+  /* ---------- weekly numbers from the on-device log ---------- */
+  function week() {
+    const since = Date.now() - 7 * 864e5, L = S.log.filter((x) => x.at >= since);
+    return { sessions: L.length, looked: L.reduce((n, x) => n + x.looked, 0), faded: L.reduce((n, x) => n + x.faded, 0), steps: L.reduce((n, x) => n + x.steps.length, 0) };
+  }
+
+  /* ================== VIEWS ================== */
+  function vHome() {
+    const n = S.jar.length, w = week();
+    return `
+      <div class="how" aria-label="How it works">
+        <div><b>01</b><span>Notice</span><small>A worry shows up during your day.</small></div>
+        <div><b>02</b><span>Park it</span><small>Write it down and put it in your jar, for later.</small></div>
+        <div><b>03</b><span>Return</span><small>At worry time, see what faded and sort what's left.</small></div>
+      </div>
+      <div class="jar-home">
+        <div class="jar-wrap" id="jar-wrap">${jarSvg(n)}</div>
+        <div>
+          <h2 class="q" tabindex="-1">${n ? "Your worry jar" : "Your jar is empty"}</h2>
+          <p class="hint">${n ? "They'll keep until your worry time. You don't have to hold them all day." : "When a worry comes up, park it here instead of working it out right then."}</p>
+          <div class="actions" style="margin-top:0">
+            <button type="button" class="btn btn-primary" data-act="park">Park a Worry</button>
+            <button type="button" class="btn btn-ghost" data-act="start" ${n ? "" : "disabled"}>Start Worry Time</button>
+          </div>
+        </div>
+      </div>
+      ${S.setup ? `<div class="appt">${clock}<p><b>Your worry time: ${esc(fmtTime(S.setup.time))}</b><br><small>${S.setup.len} minutes${S.setup.place ? " · " + esc(S.setup.place) : ""}</small></p><button type="button" class="btn-text" data-act="setup">Change</button></div>`
+        : `<div class="start-here"><p><b>Start here:</b> choose a daily time and place for worry time. Having a set appointment is what makes it easier to let worries wait.</p><button type="button" class="btn btn-primary" data-act="setup">Set My Worry Time</button></div>`}
+      ${w.sessions ? `<div class="week" aria-label="Your past 7 days"><div><b>${w.sessions}</b><small>worry ${w.sessions === 1 ? "time" : "times"} this week</small></div><div><b>${w.faded} of ${w.looked}</b><small>worries faded on their own</small></div><div><b>${w.steps}</b><small>small steps chosen</small></div></div>` : ""}
+      <p class="ocd-note">Is this for you? Worry time helps with everyday and anxious worry. If your worries feel like obsessions you have to neutralize, by checking, asking for reassurance, or repeating something, postponing can turn into a ritual. <a href="ride-the-wave.html">Ride the Wave</a> is built for that.</p>
+      ${eraseBox()}`;
+  }
+  function vSetup() {
+    const s = S.setup || { time: "18:30", len: 15, place: "" };
+    return `
+      ${label("Set up")}
+      <h2 class="q" tabindex="-1">When and where is your worry time?</h2>
+      <p class="hint">Same time each day works best. Choose a spot that isn't your bed, and a time that isn't right before sleep.</p>
+      <div class="field"><label for="w-time">Time</label><input type="time" id="w-time" value="${esc(s.time)}" style="font:inherit;font-size:17px;padding:10px 12px;border:1px solid var(--line);border-radius:8px"></div>
+      <p class="group-name" style="margin-top:20px">How long?</p>
+      <div class="chipset" role="group" aria-label="Length">${LENGTHS.map((m) => `<button type="button" class="chip" data-len="${m}" aria-pressed="${s.len === m}">${m} minutes</button>`).join("")}</div>
+      <p class="group-name" style="margin-top:14px">Where?</p>
+      <div class="chipset" role="group" aria-label="Place">${PLACES.map((p) => `<button type="button" class="chip" data-place="${esc(p)}" aria-pressed="${s.place === p}">${esc(p)}</button>`).join("")}</div>
+      <div class="field" style="margin-top:4px"><label for="w-place" style="font-weight:400;color:var(--muted);font-size:14px">Or somewhere else</label><input id="w-place" type="text" maxlength="40" value="${PLACES.includes(s.place) ? "" : esc(s.place)}" placeholder="e.g. Back porch"></div>
+      <div class="actions"><button type="button" class="btn btn-primary" data-act="save-setup">Save My Worry Time</button><button type="button" class="btn btn-text" data-act="home">Cancel</button></div>`;
+  }
+  function vPark() {
+    return `
+      ${label("Park a worry")}
+      <h2 class="q" tabindex="-1">What's the worry?</h2>
+      <p class="hint">A few words is enough. You don't need to solve it, or even think it through. Just set it down.</p>
+      <div class="field" style="margin-top:0"><label for="w-text" style="position:absolute;left:-9999px">Your worry</label><textarea id="w-text" rows="3" maxlength="200" placeholder="e.g. What if the presentation goes badly"></textarea></div>
+      <div class="actions"><button type="button" class="btn btn-primary" data-act="do-park" disabled>Park It in the Jar</button><button type="button" class="btn btn-text" data-act="home">Cancel</button></div>`;
+  }
+  function vParked() {
+    return `
+      <div class="jar-home">
+        <div class="jar-wrap" id="jar-wrap">${jarSvg(S.jar.length)}</div>
+        <div>
+          ${label("Parked")}
+          <h2 class="q" tabindex="-1">It's in the jar</h2>
+          <p class="hint">${S.setup ? `It'll keep until your worry time at ${esc(fmtTime(S.setup.time))}.` : "It'll keep until your worry time."} If it comes back before then, notice it, and remind yourself: "I've parked this. I'll come back to it later."</p>
+        </div>
+      </div>
+      <p class="group-name refocus">Now, bring your attention back. Try one:</p>
+      <div class="chipset" role="group" aria-label="Refocus">${REFOCUS.map((r) => `<button type="button" class="chip" data-refocus>${esc(r)}</button>`).join("")}</div>
+      <div class="actions"><button type="button" class="btn btn-primary" data-act="home">Done</button><button type="button" class="btn btn-ghost" data-act="park">Park Another</button></div>`;
+  }
+  function timerBar() {
+    const total = sess.len * 60, left = Math.max(0, total - Math.floor((Date.now() - sess.start) / 1000));
+    const C = 2 * Math.PI * 18, off = C * (1 - left / total);
+    const mm = Math.floor(left / 60), ss = String(left % 60).padStart(2, "0");
+    return `<div class="timer${left === 0 ? " over" : ""}" id="timer"><svg viewBox="0 0 44 44" aria-hidden="true"><circle class="track" cx="22" cy="22" r="18"/><circle class="ring" cx="22" cy="22" r="18" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"/></svg>
+      <div><span class="t" role="timer" aria-live="off">${left ? `${mm}:${ss}` : "Time's up"}</span><small>${left ? "worry time left" : "Finish the one you're on, then close the jar."}</small></div>
+      ${sess.phase !== "close" && sess.phase !== "done" ? '<button type="button" class="btn-text" data-act="to-close">Close the jar now</button>' : ""}</div>`;
+  }
+  const cur = () => sess.items[sess.i];
+  const remaining = () => sess.items.filter((x) => x.fade !== "faded");
+  function vSession() {
+    const p = sess.phase, it = sess.items;
+    if (p === "intro") return `${timerBar()}
+      ${label("Worry time")}
+      <h2 class="q" tabindex="-1">Open the jar</h2>
+      <p class="hint">You have ${it.length} parked ${it.length === 1 ? "worry" : "worries"}. First, look at each one and notice whether it still has a hold on you. Don't solve anything yet.</p>
+      <div class="actions"><button type="button" class="btn btn-primary" data-act="begin-review">Look at the First One</button></div>`;
+    if (p === "review") { const x = cur(); return `${timerBar()}
+      ${label("Step 1 of 2 · Does it still bother you?")}
+      <p class="counter">${sess.i + 1} of ${it.length}</p>
+      <div class="slip-big" id="slip">${esc(x.text)}<small>Parked ${esc(new Date(x.at).toLocaleString(undefined, { weekday: "short", hour: "numeric", minute: "2-digit" }))}</small></div>
+      <h2 class="q" tabindex="-1" style="font-size:24px">Does this still bother you right now?</h2>
+      <div class="choice2" role="group" aria-label="Does it still bother you">
+        <button type="button" class="opt" data-fade="faded"><span><b>Not really. It faded.</b><small>It doesn't feel as urgent as it did.</small></span></button>
+        <button type="button" class="opt" data-fade="some"><span><b>A little</b><small>It's still there, but quieter.</small></span></button>
+        <button type="button" class="opt" data-fade="lots"><span><b>Yes, a lot</b><small>It still has a strong hold.</small></span></button>
+      </div>`; }
+    if (p === "faded") { const f = it.filter((x) => x.fade === "faded").length, r = remaining().length; return `${timerBar()}
+      ${label("What you noticed")}
+      <p class="stat" tabindex="-1"><em>${f} of ${it.length}</em> ${f === 1 ? "worry" : "worries"} faded on ${f === 1 ? "its" : "their"} own.</p>
+      <div class="fade-viz" aria-hidden="true">${it.map((x) => `<span class="${x.fade === "faded" ? "faded" : ""}"></span>`).join("")}</div>
+      <p class="hint">${f ? "Worries often feel urgent in the moment and shrink with a little time. That's worth remembering the next time one shows up and insists on being solved right now." : "None faded this time, and that's okay. Some worries need a closer look. That's what the next part is for."}</p>
+      ${r ? `<div class="actions"><button type="button" class="btn btn-primary" data-act="begin-sort">Sort the ${r} Still Here</button></div>` : `<div class="actions"><button type="button" class="btn btn-primary" data-act="to-close">Close the Jar</button></div>`}`; }
+    if (p === "sort") { const x = cur(); return `${timerBar()}
+      ${label("Step 2 of 2 · Sort")}
+      <p class="counter">${remaining().indexOf(x) + 1} of ${remaining().length}</p>
+      <div class="slip-big" id="slip">${esc(x.text)}</div>
+      ${!x.outcome ? `<h2 class="q" tabindex="-1" style="font-size:24px">Is there something you can do about this?</h2>
+      <div class="choice2" role="group" aria-label="Can you act on it">
+        <button type="button" class="opt" data-out="act"><span><b>Yes, there's a step I can take</b><small>Something concrete, even a small one.</small></span></button>
+        <button type="button" class="opt" data-out="let"><span><b>Not really</b><small>It's out of my hands, or it's a "what if" about the future.</small></span></button>
+        <button type="button" class="opt dashed" data-out="keep"><span><b>Keep it for next worry time</b><small>Not ready to sort this one yet.</small></span></button>
+      </div>` : x.outcome === "act" ? `
+      <h2 class="q" tabindex="-1" style="font-size:24px">What's one next step?</h2>
+      <p class="hint">Small and specific beats big and vague. "Email Sam to ask about the deadline" rather than "fix work."</p>
+      <div class="field" style="margin-top:0"><label for="w-step" style="position:absolute;left:-9999px">Next step</label><input id="w-step" type="text" maxlength="100" value="${esc(x.step || "")}" placeholder="One small, doable step"></div>
+      <p class="group-name" style="margin-top:14px">When?</p>
+      <div class="chipset" role="group" aria-label="When">${WHEN.map((w) => `<button type="button" class="chip" data-when="${w}" aria-pressed="${x.when === w}">${w}</button>`).join("")}</div>
+      <div class="actions"><button type="button" class="btn btn-primary" data-act="sort-next" ${x.step ? "" : "disabled"}>${sortNextLabel()}</button><button type="button" class="btn btn-text" data-act="sort-undo">← Back</button></div>` : `
+      <h2 class="q" tabindex="-1" style="font-size:24px">Let it float by</h2>
+      <p class="hint">You can't solve a "what if" ahead of time. Instead of arguing with the thought, notice it as a thought, and let it move on its own.</p>
+      <p class="noticing">"I'm noticing the thought that ${esc(lowFirst(x.text))}."</p>
+      <div class="stream" aria-hidden="true">
+        <svg class="water" viewBox="0 0 800 150" preserveAspectRatio="none"><path d="M0 40 Q50 30 100 40 T200 40 T300 40 T400 40 T500 40 T600 40 T700 40 T800 40"/><path d="M0 95 Q50 85 100 95 T200 95 T300 95 T400 95 T500 95 T600 95 T700 95 T800 95"/><path d="M0 125 Q50 118 100 125 T200 125 T300 125 T400 125 T500 125 T600 125 T700 125 T800 125"/></svg>
+        <div class="leaf" id="leaf">${leafSvg}<span>${esc(x.text)}</span></div>
+      </div>
+      <div class="actions"><button type="button" class="btn btn-ghost" data-act="float">${x.floated ? "Let It Float By Again" : "Place It on a Leaf"}</button><button type="button" class="btn btn-primary" data-act="sort-next" ${x.floated ? "" : "disabled"}>${sortNextLabel()}</button><button type="button" class="btn btn-text" data-act="sort-undo">← Back</button></div>
+      <p class="hint" style="margin-top:10px">If it comes back later, that's normal. Notice it, and let it float by again.</p>`}`; }
+    if (p === "close") return `${timerBar()}
+      ${label("Close the jar")}
+      <h2 class="q" tabindex="-1">Worry time is over</h2>
+      <p class="hint">Close the jar for today. If a worry shows up later, park it for tomorrow. Now do something that uses your hands or body for a few minutes, to help you shift gears.</p>
+      <div class="chipset" role="group" aria-label="Shift gears">${AFTER.map((a) => `<button type="button" class="chip" data-shift="${esc(a)}" aria-pressed="${sess.shift === a}">${esc(a)}</button>`).join("")}</div>
+      <div class="actions"><button type="button" class="btn btn-primary" data-act="finish">See My Summary</button></div>`;
+    return vDone();
+  }
+  function sortNextLabel() { const r = remaining(), k = r.indexOf(cur()); return k < r.length - 1 ? "Next Worry" : "Close the Jar"; }
+  const lowFirst = (t) => { t = String(t).trim().replace(/[.?!]+$/, ""); return /^I[ ']/.test(t) ? t : t.charAt(0).toLowerCase() + t.slice(1); };
+  function vDone() {
+    const it = sess.items, f = it.filter((x) => x.fade === "faded").length;
+    const acts = it.filter((x) => x.outcome === "act" && x.step), lets = it.filter((x) => x.outcome === "let"), kept = it.filter((x) => x.outcome === "keep");
+    return `
+      <article class="card fade-in">
+        <div class="print-head"><b>Worry Time</b><span id="ph-line"></span></div>
+        ${label(new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" }))}
+        <h2 class="q" tabindex="-1">Worry time, done</h2>
+        <p class="stat" style="font-size:30px"><em>${f} of ${it.length}</em> faded on their own</p>
+        <div class="fade-viz" aria-hidden="true">${it.map((x) => `<span class="${x.fade === "faded" ? "faded" : ""}"></span>`).join("")}</div>
+        ${acts.length ? `<div class="card-sec"><h3>My next steps</h3><ul class="steps-list">${acts.map((x) => `<li><span class="box" aria-hidden="true"></span><span>${esc(x.step)}<small>${esc(x.when || "Soon")} · for: ${esc(x.text)}</small></span></li>`).join("")}</ul></div>` : ""}
+        ${lets.length ? `<div class="card-sec"><h3>Let float by</h3><p>${lets.length} ${lets.length === 1 ? "worry" : "worries"} I can't solve ahead of time</p></div>` : ""}
+        ${kept.length ? `<div class="card-sec"><h3>Still in the jar</h3><p>${kept.length} for next worry time</p></div>` : ""}
+        ${sess.shift ? `<div class="card-sec"><h3>To shift gears</h3><p>${esc(sess.shift)}</p></div>` : ""}
+        <div class="notice"><b>Between now and next worry time:</b> when a worry shows up, park it. You don't have to solve it right then.</div>
+        ${shareBox()}
+      </article>
+      <div class="actions">
+        <button type="button" class="btn btn-ghost" data-act="email">Email to Myself</button>
+        <button type="button" class="btn btn-ghost" data-act="copy">Copy</button>
+        <button type="button" class="btn btn-ghost" data-act="print">Print or Save as PDF</button>
+        <span class="status" id="copy-status" role="status" aria-live="polite"></span>
+      </div>
+      <p class="erase-row"><button type="button" class="btn-text" data-act="home">Back to my jar</button></p>`;
+  }
+  function eraseBox() {
+    return `<div class="erase-box"><span>${hasSaved() ? "Your jar, worry time, and history are saved in this browser only." : "Nothing is saved yet."}</span><button type="button" class="btn-erase" data-act="erase">Erase my answers</button><span id="erase-status" role="status" aria-live="polite"></span></div>`;
+  }
+
+  /* ================== RENDER ================== */
+  function render(focus = true) {
+    const html = mode === "home" ? vHome() : mode === "setup" ? vSetup() : mode === "park" ? vPark() : mode === "parked" ? vParked() : vSession();
+    $("stage").innerHTML = html;
+    if (focus) { window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }); const h = $("stage").querySelector("[tabindex='-1']"); if (h) h.focus({ preventScroll: true }); }
+    if (mode === "park") { const t = $("w-text"); if (t) t.focus(); }
+  }
+  function tick() {
+    if (mode !== "session" || !sess) return;
+    const t = $("timer"); if (!t) return;
+    const tmp = document.createElement("div"); tmp.innerHTML = timerBar(); t.replaceWith(tmp.firstElementChild);
+  }
+  function startTimer() { stopTimer(); timerId = setInterval(tick, 1000); }
+  function stopTimer() { if (timerId) clearInterval(timerId); timerId = null; }
+
+  function finishSession() {
+    const it = sess.items;
+    const handled = new Set(it.filter((x) => x.fade === "faded" || x.outcome === "act" || x.outcome === "let").map((x) => x.id));
+    S.jar = S.jar.filter((x) => !handled.has(x.id));
+    S.log.push({ at: Date.now(), looked: it.length, faded: it.filter((x) => x.fade === "faded").length, steps: it.filter((x) => x.outcome === "act" && x.step).map((x) => ({ step: x.step, when: x.when || "" })), letGo: it.filter((x) => x.outcome === "let").length });
+    S.log = S.log.slice(-60);
+    save(); stopTimer(); sess.phase = "done"; render();
+  }
+
+  const dateLong = () => new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
+  function textSummary() {
+    const L = ["WORRY TIME · " + dateLong(), ""];
+    if (therapist) L.push(`For a session with ${therapist.name}`, "");
+    if (sess) {
+      const it = sess.items, f = it.filter((x) => x.fade === "faded").length;
+      L.push(`${f} of ${it.length} worries faded on their own before worry time.`, "", "Worries I looked at:");
+      it.forEach((x) => { const o = x.fade === "faded" ? "faded" : x.outcome === "act" ? `next step: ${x.step}${x.when ? " (" + x.when.toLowerCase() + ")" : ""}` : x.outcome === "let" ? "let it float by" : "kept for next time"; L.push(`- ${x.text} → ${o}`); });
+      if (sess.shift) L.push("", `To shift gears: ${sess.shift}`);
+    }
+    const w = week(); if (w.sessions) L.push("", `Past 7 days: ${w.sessions} worry ${w.sessions === 1 ? "time" : "times"}, ${w.faded} of ${w.looked} worries faded, ${w.steps} steps chosen.`);
+    L.push("", "Worry Time · beyondtheroomtherapy.com/tools/worry-time.html");
+    return L.join("\n");
+  }
+
+  /* ---------- daily appointment (.ics file opened by the person's own calendar) ---------- */
+  function icsEscape(t) { return t.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n"); }
+  function fold(line) { const out = []; while (line.length > 74) { out.push(line.slice(0, 74)); line = " " + line.slice(74); } out.push(line); return out.join("\r\n"); }
+  function saveIcs() {
+    const s = S.setup; if (!s) return;
+    const [hh, mm] = s.time.split(":").map(Number);
+    const start = new Date(); start.setHours(hh, mm, 0, 0); if (start < new Date()) start.setDate(start.getDate() + 1);
+    const p2 = (n) => String(n).padStart(2, "0");
+    const local = `${start.getFullYear()}${p2(start.getMonth() + 1)}${p2(start.getDate())}T${p2(hh)}${p2(mm)}00`;
+    const now = new Date(), stamp = `${now.getUTCFullYear()}${p2(now.getUTCMonth() + 1)}${p2(now.getUTCDate())}T${p2(now.getUTCHours())}${p2(now.getUTCMinutes())}00Z`;
+    const body = `Open your worry jar and sort what's left. ${s.len} minutes${s.place ? ", at " + s.place : ""}.\n\nhttps://beyondtheroomtherapy.com/tools/worry-time.html`;
+    const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//beyondtheroomtherapy.com//Worry Time//EN", "CALSCALE:GREGORIAN", "BEGIN:VEVENT",
+      `UID:${Date.now()}-${Math.random().toString(36).slice(2)}@beyondtheroomtherapy.com`, `DTSTAMP:${stamp}`, `DTSTART:${local}`, `DURATION:PT${s.len}M`, "RRULE:FREQ=DAILY;COUNT=14",
+      `SUMMARY:${icsEscape("Worry time")}`, `DESCRIPTION:${icsEscape(body)}`, s.place ? `LOCATION:${icsEscape(s.place)}` : "",
+      "BEGIN:VALARM", "ACTION:DISPLAY", "TRIGGER:PT0M", `DESCRIPTION:${icsEscape("Worry time")}`, "END:VALARM",
+      "END:VEVENT", "END:VCALENDAR"].filter(Boolean).map(fold).join("\r\n");
+    const url = URL.createObjectURL(new Blob([lines], { type: "text/calendar" }));
+    const a = document.createElement("a"); a.href = url; a.download = "worry-time.ics"; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+  }
+
+  /* ================== EVENTS ================== */
+  let setupDraft = null;
+  $("stage").addEventListener("input", (e) => {
+    const t = e.target;
+    if (t.id === "w-text") { $("stage").querySelector('[data-act="do-park"]').disabled = !t.value.trim(); }
+    if (t.id === "w-place") { setupDraft.place = t.value.trim(); $("stage").querySelectorAll("[data-place]").forEach((b) => b.setAttribute("aria-pressed", "false")); }
+    if (t.id === "w-time") setupDraft.time = t.value;
+    if (t.id === "w-step") { cur().step = t.value.trim(); const n = $("stage").querySelector('[data-act="sort-next"]'); if (n) n.disabled = !cur().step; }
+  });
+  $("stage").addEventListener("keydown", (e) => { if (e.target.id === "w-text" && e.key === "Enter" && !e.shiftKey && e.target.value.trim()) { e.preventDefault(); $("stage").querySelector('[data-act="do-park"]').click(); } });
+  $("stage").addEventListener("click", (e) => {
+    const t = e.target;
+    const ln = t.closest("[data-len]"); if (ln) { setupDraft.len = +ln.dataset.len; $("stage").querySelectorAll("[data-len]").forEach((b) => b.setAttribute("aria-pressed", b === ln)); return; }
+    const pl = t.closest("[data-place]"); if (pl) { setupDraft.place = pl.dataset.place; $("w-place").value = ""; $("stage").querySelectorAll("[data-place]").forEach((b) => b.setAttribute("aria-pressed", b === pl)); return; }
+    const rf = t.closest("[data-refocus]"); if (rf) { $("stage").querySelectorAll("[data-refocus]").forEach((b) => b.setAttribute("aria-pressed", b === rf)); return; }
+    const fd = t.closest("[data-fade]"); if (fd) {
+      cur().fade = fd.dataset.fade;
+      const go = () => { if (sess.i < sess.items.length - 1) { sess.i++; render(false); } else { sess.phase = "faded"; render(); } };
+      if (fd.dataset.fade === "faded" && !reduceMotion) { $("slip").classList.add("gone"); setTimeout(go, 650); } else go();
+      return;
+    }
+    const oc = t.closest("[data-out]"); if (oc) { cur().outcome = oc.dataset.out; if (oc.dataset.out === "keep") { nextSort(); } else render(false); return; }
+    const wh = t.closest("[data-when]"); if (wh) { cur().when = cur().when === wh.dataset.when ? "" : wh.dataset.when; $("stage").querySelectorAll("[data-when]").forEach((b) => b.setAttribute("aria-pressed", cur().when === b.dataset.when)); return; }
+    const sh = t.closest("[data-shift]"); if (sh) { sess.shift = sess.shift === sh.dataset.shift ? "" : sh.dataset.shift; $("stage").querySelectorAll("[data-shift]").forEach((b) => b.setAttribute("aria-pressed", sess.shift === b.dataset.shift)); return; }
+    const btn = t.closest("[data-act]"), a = btn?.dataset.act; if (!a) return;
+    if (a === "home") { mode = "home"; sess = null; stopTimer(); render(); }
+    else if (a === "setup") { setupDraft = Object.assign({ time: "18:30", len: 15, place: "" }, S.setup || {}); mode = "setup"; render(); }
+    else if (a === "save-setup") { S.setup = { time: $("w-time").value || "18:30", len: setupDraft.len, place: setupDraft.place }; save(); mode = "home"; render(); showCal(); }
+    else if (a === "park") { mode = "park"; render(); }
+    else if (a === "do-park") {
+      const v = $("w-text").value.trim(); if (!v) return;
+      S.jar.push({ id: uid(), text: v.slice(0, 200), at: Date.now() }); save(); mode = "parked"; render();
+      if (!reduceMotion) { const w = $("jar-wrap"); const s = document.createElement("div"); s.className = "drop"; s.setAttribute("aria-hidden", "true"); w.appendChild(s); setTimeout(() => s.remove(), 950); }
+    }
+    else if (a === "start") {
+      if (!S.jar.length) return;
+      sess = { phase: "intro", i: 0, start: Date.now(), len: (S.setup && S.setup.len) || 15, items: S.jar.map((x) => Object.assign({}, x, { fade: "", outcome: "", step: "", when: "", floated: false })), shift: "" };
+      mode = "session"; render(); startTimer();
+    }
+    else if (a === "begin-review") { sess.phase = "review"; sess.i = 0; render(); }
+    else if (a === "begin-sort") { sess.phase = "sort"; sess.i = sess.items.indexOf(remaining()[0]); render(); }
+    else if (a === "sort-undo") { cur().outcome = ""; cur().step = ""; cur().when = ""; cur().floated = false; render(false); }
+    else if (a === "sort-next") nextSort();
+    else if (a === "float") {
+      cur().floated = true; const lf = $("leaf"); lf.classList.remove("go"); void lf.offsetWidth; lf.classList.add("go");
+      $("stage").querySelector('[data-act="sort-next"]').disabled = false; btn.textContent = "Let It Float By Again";
+    }
+    else if (a === "to-close") { sess.phase = "close"; render(); }
+    else if (a === "finish") finishSession();
+    else if (a === "ics") saveIcs();
+    else if (a === "erase") {
+      try { localStorage.removeItem(STORE_KEY); } catch (_) {}
+      S = fresh(); sess = null; mode = "home"; render(false);
+      $("erase-status").textContent = "Erased. Nothing from this tool is stored on this device now.";
+    }
+    else if (a === "print") printNow();
+    else if (a === "copy") copyText(textSummary());
+    else if (a === "email") emailMe();
+  });
+  function nextSort() {
+    const r = remaining(), k = r.indexOf(cur());
+    if (k < r.length - 1) { sess.i = sess.items.indexOf(r[k + 1]); render(false); } else { sess.phase = "close"; render(); }
+  }
+  function showCal() {
+    const box = document.createElement("div"); box.className = "notice no-print"; box.style.marginTop = "14px";
+    box.innerHTML = `<b>Saved.</b> Want a reminder? <button type="button" class="btn-text" data-act="ics">Add a daily worry time to my calendar</button><br><small style="color:var(--muted)">Creates a 14-day reminder file for your own calendar app. Your calendar keeps it, not this site.</small>`;
+    const ap = $("stage").querySelector(".appt"); if (ap) ap.after(box);
+  }
+  render(false);
+})();
+</script>
+</body>
+</html>

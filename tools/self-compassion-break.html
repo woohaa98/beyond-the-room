@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Self-Compassion Break · Beyond the Room</title>
+<meta name="description" content="When you're being hard on yourself: notice the hurt, remember you're not alone, and offer yourself the kindness you'd give a friend. Based on Kristin Neff's self-compassion break.">
+<!-- Privacy: no analytics, tracking, or data requests. Nothing is saved. -->
+<link rel="preload" href="../resources/assets/fonts/lora-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../resources/assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Lora"; src: url("../resources/assets/fonts/lora-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Lora"; src: url("../resources/assets/fonts/lora-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Lora"; src: url("../resources/assets/fonts/lora-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "DM Sans"; src: url("../resources/assets/fonts/dm-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "DM Sans"; src: url("../resources/assets/fonts/dm-sans-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "DM Sans"; src: url("../resources/assets/fonts/dm-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+
+:root {
+  --font-display: "Bricolage Grotesque", "DM Sans", -apple-system, sans-serif;
+  --font-body: "DM Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --bg: #FFFFFF; --surface: #FFFFFF; --ink: #0F1B2D; --muted: #657083; --line: #DFE3E9;
+  --accent: #0E7C72; --accent-ink: #FFFFFF; --accent-soft: #E3F2F0;
+  --warm: #1F3A5F; --warm-ink: #0B6158; --warm-soft: #E9EDF3; --sand: #F3F5F8; --focus: #0F1B2D;
+  --radius: 20px;
+  --shadow: 0 1px 2px rgba(15,27,45,.04), 0 10px 30px rgba(15,27,45,.06);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 6px; }
+[hidden] { display: none !important; }
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 28px 20px 56px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 14px; }
+.topbar a { text-decoration: none; color: var(--muted); transition: color .2s; }
+.topbar a:hover { color: var(--ink); }
+.brand { font-family: var(--font-display); font-size: 20px; color: var(--ink) !important; font-weight: 500; }
+
+.eyebrow { font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--muted); margin: 0 0 14px; }
+h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(34px, 6vw, 48px); line-height: 1.1; margin: 0 0 14px; letter-spacing: -.01em; }
+h1 em, .q em { color: var(--warm); font-style: italic; }
+.lede { color: var(--muted); max-width: 56ch; margin: 0 0 32px; }
+
+.toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 0 0 22px; }
+.progress { display: flex; gap: 6px; margin: 0; padding: 0; list-style: none; flex: 1; }
+.progress li { height: 4px; flex: 1; border-radius: 4px; background: var(--line); transition: background .3s; }
+.progress li.on { background: var(--accent); }
+.ground-btn { appearance: none; font: inherit; font-size: 13.5px; cursor: pointer; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--accent); white-space: nowrap; transition: border-color .2s; }
+.ground-btn:hover { border-color: var(--accent); }
+.grounding { display: flex; gap: 14px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #BFE0DC; border-radius: 8px; padding: 14px 16px; margin: 0 0 22px; }
+.grounding strong { display: block; color: var(--accent); font-weight: 600; }
+.grounding p { margin: 0; font-size: 14.5px; }
+.grounding .x { appearance: none; background: none; border: 0; font-size: 22px; line-height: 1; color: var(--muted); cursor: pointer; margin-left: auto; padding: 0 4px; }
+
+.step-label { font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--muted); margin: 0 0 10px; }
+.q { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 4.5vw, 32px); line-height: 1.2; margin: 0 0 6px; outline: none; }
+.hint { color: var(--muted); font-size: 14.5px; margin: 0 0 22px; max-width: 58ch; }
+
+.options { display: grid; gap: 10px; }
+.options.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 560px) { .options.two { grid-template-columns: 1fr; } }
+.opt {
+  appearance: none; font: inherit; color: inherit; text-align: left; cursor: pointer; width: 100%;
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 15px 18px;
+  transition: border-color .2s, background-color .2s;
+}
+.opt:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.opt[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.opt .icon { font-size: 20px; line-height: 1.2; }
+.opt b { display: block; font-weight: 600; font-size: 15.5px; }
+.opt small { display: block; color: var(--muted); font-size: 14px; margin-top: 1px; }
+.opt.dashed { border-style: dashed; }
+.group-name { font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--muted); margin: 18px 0 8px; }
+.group-name:first-child { margin-top: 0; }
+
+.field { margin-top: 16px; }
+.field > label { display: block; font-weight: 500; margin-bottom: 8px; }
+textarea, input[type=text] { width: 100%; font: inherit; font-size: 16px; line-height: 1.6; padding: 13px 15px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); resize: vertical; }
+textarea:focus, input[type=text]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(14,124,114,.15); }
+::placeholder { color: #8A95A5; }
+
+.chipset { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+.chip { appearance: none; font: inherit; font-size: 14.5px; cursor: pointer; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; min-height: 40px; color: var(--ink); transition: all .2s; }
+.chip:hover { border-color: var(--accent); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* mood gauge */
+.mood { margin-top: 26px; padding: 20px 20px 18px; background: var(--sand); border-radius: 8px; }
+.mood-top { display: flex; align-items: center; gap: 14px; }
+.mood-face { font-size: 44px; line-height: 1; width: 56px; height: 56px; display: grid; place-items: center; background: #fff; border-radius: 50%; flex: none; transition: transform .25s; }
+.mood-k { margin: 0; font-weight: 500; }
+.mood-num { margin: 0; font-size: 15px; color: var(--muted); }
+.mood-num output { font-family: var(--font-display); font-size: 26px; color: var(--ink); }
+.mood-num b { color: var(--ink); font-weight: 600; }
+.mood-range { -webkit-appearance: none; appearance: none; width: 100%; height: 12px; border-radius: 999px; margin: 20px 0 6px; background: linear-gradient(90deg, #8E5B49 0%, #1F3A5F 22%, #D9B98F 45%, #9DB8A4 70%, #0E7C72 100%); cursor: pointer; }
+.mood-range::-webkit-slider-thumb { -webkit-appearance: none; width: 30px; height: 30px; border-radius: 50%; background: #fff; border: 3px solid var(--ink); box-shadow: 0 2px 6px rgba(0,0,0,.18); }
+.mood-range::-moz-range-thumb { width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 3px solid var(--ink); box-shadow: 0 2px 6px rgba(0,0,0,.18); }
+.mood-range:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+.mood-scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 4px 0 0; padding: 0; list-style: none; }
+.mood-scale button { appearance: none; font: inherit; cursor: pointer; background: transparent; border: 1px solid transparent; border-radius: 10px; padding: 6px 2px; display: grid; justify-items: center; gap: 2px; color: var(--muted); font-size: 12.5px; line-height: 1.25; }
+.mood-scale button span { font-size: 22px; }
+.mood-scale button:hover { background: rgba(255,255,255,.6); }
+.mood-scale button[aria-pressed="true"] { background: #fff; border-color: var(--line); color: var(--ink); font-weight: 600; }
+.mood-desc { margin: 14px 0 0; background: #fff; border-radius: 12px; padding: 12px 14px; font-size: 15px; }
+.mood-say { margin: 10px 0 0; display: flex; gap: 10px; align-items: flex-start; font-family: var(--font-display); font-style: italic; font-size: 17px; line-height: 1.5; color: var(--accent); }
+.mood-say::before { content: ""; flex: none; width: 4px; align-self: stretch; border-radius: 4px; background: var(--accent); opacity: .5; }
+.mood-tip { margin: 10px 0 0; font-size: 13.5px; color: var(--muted); }
+.mood-crisis { margin: 10px 0 0; font-size: 14px; background: var(--warm-soft); border-radius: 12px; padding: 10px 14px; }
+.mood-crisis a { color: var(--warm-ink); font-weight: 600; }
+.note { margin: 22px 0 0; background: linear-gradient(160deg, #F3F7F4 0%, #F8FAFC 100%); border: 1px solid #DCE8DF; border-radius: 8px; padding: 20px 22px 16px; }
+.note-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.note h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-style: italic; font-size: 22px; color: var(--accent); }
+.note p { margin: 0 0 10px; font-family: var(--font-display); font-size: 18px; line-height: 1.6; color: var(--ink); }
+.note .note-tip { font-family: var(--font-body); font-size: 13px; color: var(--muted); margin: 4px 0 0; }
+.vbtn[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+.moods { display: grid; gap: 10px; margin-top: 6px; }
+.mood-btn { appearance: none; font: inherit; text-align: left; cursor: pointer; display: flex; gap: 14px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; color: var(--ink); transition: border-color .2s, background .2s; }
+.mood-btn:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.mood-btn[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.mood-btn .mi { font-size: 30px; line-height: 1; width: 44px; text-align: center; flex: none; }
+.mood-btn b { display: block; font-weight: 600; }
+.mood-btn small { display: block; color: var(--muted); font-size: 14px; }
+#mood-say .mood-say { margin-top: 16px; }
+.pull-chips .chip { display: inline-flex; gap: 6px; align-items: center; text-align: left; }
+.more-ideas { margin-top: 18px; }
+.more-ideas > summary { cursor: pointer; font-weight: 600; color: var(--accent); padding: 6px 0; }
+.own-words { margin-top: 16px; }
+.own-words input { width: 100%; margin-top: 6px; }
+/* notice the pull */
+.pull { margin-top: 26px; border: 1px solid var(--line); border-radius: 8px; padding: 20px; background: #fff; }
+.pull h3 { font-family: var(--font-display); font-weight: 400; font-size: 21px; margin: 0 0 4px; }
+.pull > p { margin: 0 0 14px; color: var(--muted); font-size: 15px; }
+.pull .chipset { display: flex; flex-wrap: wrap; gap: 8px; }
+.pull .chip { display: inline-flex; gap: 6px; align-items: center; text-align: left; }
+.loops { display: grid; gap: 10px; margin-top: 18px; }
+.loop { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; border-radius: 12px; padding: 10px 12px; font-size: 14px; }
+.loop b { flex-basis: 100%; font-size: 12px; letter-spacing: 0; text-transform: none; }
+.loop span.n { background: #fff; border-radius: 8px; padding: 4px 10px; }
+.loop i { font-style: normal; opacity: .7; }
+.loop.down { background: var(--warm-soft); } .loop.down b { color: var(--warm-ink); }
+.loop.up { background: var(--accent-soft); } .loop.up b { color: var(--accent); }
+.loop.down .you { outline: 2px solid var(--warm); }
+.loop.up .you { outline: 2px solid var(--accent); font-weight: 600; }
+.pairs { margin-top: 12px; background: var(--accent-soft); border-radius: 12px; padding: 12px 14px; }
+.pairs-k { margin: 0 0 8px; font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--accent); font-weight: 600; }
+.pairs ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.pairs li { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.2fr); gap: 10px; align-items: center; font-size: 14px; }
+.pairs .from { color: var(--muted); }
+.pairs .to { background: #fff; border-radius: 8px; padding: 4px 10px; color: var(--ink); font-weight: 500; }
+.pairs i { font-style: normal; color: var(--accent); }
+@media (max-width: 520px) { .pairs li { grid-template-columns: 1fr; gap: 2px; } .pairs i { display: none; } .pairs .to { justify-self: start; } }
+.pull-feedback { margin: 14px 0 0; font-size: 15px; }
+.cat .sugg { display: inline-block; margin-left: 8px; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 2px 10px; vertical-align: middle; }
+.scale { margin-top: 26px; padding: 18px 20px; background: var(--sand); border-radius: 8px; }
+.scale label { font-weight: 500; display: block; margin-bottom: 8px; }
+.scale input[type=range] { width: 100%; accent-color: var(--accent); }
+.scale .ends { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); }
+.scale output { font-family: var(--font-display); font-size: 20px; color: var(--accent); }
+.note { background: var(--warm-soft); border-radius: 8px; padding: 14px 16px; font-size: 14.5px; margin: 14px 0 0; }
+.note strong { color: var(--warm-ink); }
+
+.prompt-card { background: var(--sand); border-radius: 8px; padding: 18px 20px; font-family: var(--font-display); font-style: italic; font-size: 19px; line-height: 1.45; margin: 0 0 14px; }
+.subcount { font-size: 13.5px; color: var(--muted); margin: 0 0 8px; }
+.reflection { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--warm); background: var(--surface); border-radius: 0 14px 14px 0; padding: 14px 18px; margin: 16px 0 0; box-shadow: var(--shadow); }
+.reflection .mark { color: var(--warm); font-size: 18px; line-height: 1.5; }
+.reflection p { margin: 0; font-family: var(--font-display); font-size: 17px; line-height: 1.55; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 28px; }
+.btn { appearance: none; border: 1px solid transparent; border-radius: 999px; cursor: pointer; font: 500 15px/1 var(--font-body); padding: 15px 26px; min-height: 48px; transition: background-color .2s, color .2s, border-color .2s, opacity .2s, transform .2s; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover:not(:disabled) { transform: translateY(-1px); }
+.btn-primary:disabled { opacity: .45; cursor: not-allowed; }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--ink); }
+.btn-text { background: none; border: 0; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; padding: 15px 6px; }
+.btn-text:hover { color: var(--ink); }
+.status { font-size: 14px; color: var(--muted); }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: calc(var(--radius) + 6px); box-shadow: var(--shadow); padding: clamp(24px, 6vw, 44px); }
+.welcome-list { margin: 0 0 18px; padding-left: 20px; }
+.welcome-list li { margin-bottom: 6px; }
+.safety { background: var(--warm-soft); border-radius: 8px; padding: 14px 16px; font-size: 14.5px; margin: 0 0 20px; }
+.safety strong { color: var(--warm-ink); }
+.check { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; font-weight: 500; }
+.check input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--accent); flex: none; }
+
+.part-pill { display: inline-block; background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 500; margin: 0 0 16px; }
+.summary { display: grid; gap: 12px; margin: 6px 0 0; }
+.summary div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.summary div:last-child { border-bottom: 0; }
+.summary dt { font-size: 13px; letter-spacing: 0; text-transform: none; color: var(--muted); padding-top: 2px; }
+.summary dd { margin: 0; white-space: pre-wrap; }
+@media (max-width: 520px) { .summary div { grid-template-columns: 1fr; gap: 2px; } }
+.pick-hint { font-size: 14px; color: var(--muted); margin: 0 0 10px; }
+.answers { margin-bottom: 6px; }
+.own-words { margin: 8px 0 0; }
+.own-words summary { cursor: pointer; font-size: 14px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; padding: 6px 0; list-style: none; }
+.own-words summary::-webkit-details-marker { display: none; }
+.own-words[open] summary { margin-bottom: 8px; }
+.message-card { margin: 22px 0 0; background: var(--accent-soft); border-radius: 8px; padding: 18px 20px; }
+.message-card .mc-label { margin: 0 0 6px; font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--accent); font-weight: 600; }
+.message-card .mc-text { margin: 0; font-family: var(--font-display); font-style: italic; font-size: 19px; line-height: 1.5; }
+.closing-line { font-family: var(--font-display); font-style: italic; font-size: 20px; text-align: center; color: var(--muted); margin: 28px 0 0; }
+
+.disclaimer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.disclaimer p { margin: 0 0 6px; }
+
+.fade-in { animation: fadeUp .5s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-delay: 0s !important; transition-duration: .001ms !important; }
+}
+@media print {
+  body { background: #fff; }
+  .topbar, header, .toolbar, .grounding, .actions, .disclaimer, .no-print { display: none !important; }
+  .card { box-shadow: none; border: 0; padding: 0; }
+}
+
+
+
+/* ---- shared by Small Steps, Kind Boundaries, Gentle Start-Up ---- */
+.privacy-line { font-size: 13.5px; color: var(--muted); margin: -20px 0 28px; }
+.session-banner { display: flex; gap: 12px; align-items: flex-start; background: var(--accent-soft); border: 1px solid #BFE0DC; border-radius: 8px; padding: 14px 16px; margin: -12px 0 28px; font-size: 14.5px; }
+.session-banner b { display: block; color: var(--accent); font-weight: 600; }
+.session-banner p { margin: 0; }
+.explain { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin: 0 0 18px; }
+.explain div { background: var(--sand); border-radius: 8px; padding: 14px 16px; }
+.explain b { display: block; font-family: var(--font-display); font-weight: 500; font-size: 17px; margin-bottom: 2px; }
+.explain span { font-size: 14px; color: var(--muted); }
+.callout { background: var(--accent-soft); border-radius: 8px; padding: 14px 18px; margin: 16px 0 0; font-size: 15px; }
+.callout strong { color: var(--accent); }
+.callout.warm { background: var(--warm-soft); }
+.callout.warm strong { color: var(--warm-ink); }
+.script { background: #EEF7F6; border: 1px solid #BFE0DC; border-radius: 8px; padding: 20px 22px; margin: 6px 0 0; }
+.script .k { font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--accent); font-weight: 600; margin: 0 0 8px; }
+.script p.say { font-family: var(--font-display); font-size: 20px; line-height: 1.5; margin: 0; }
+.script textarea { width: 100%; font: inherit; font-family: var(--font-display); font-size: 19px; line-height: 1.5; padding: 12px 14px; border: 1px solid #BFE0DC; border-radius: 12px; background: #fff; color: var(--ink); resize: vertical; min-height: 120px; }
+.tone { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 12px; }
+.card-sec { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
+.card-sec h3 { margin: 0 0 6px; font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--muted); font-weight: 600; }
+.card-sec p { margin: 0; }
+.card-sec ul { margin: 0; padding-left: 20px; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag-row span { font-size: 13px; background: var(--sand); border-radius: 999px; padding: 4px 12px; }
+.print-head { display: none; }
+.erase-row { margin-top: 14px; font-size: 14px; }
+.vbtn { appearance: none; font: inherit; font-size: 14.5px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; background: #fff; border: 1px solid #BFE0DC; color: var(--accent); border-radius: 999px; padding: 9px 16px; min-height: 42px; }
+.vbtn:disabled { opacity: .45; cursor: not-allowed; }
+@media print {
+  .print-head { display: block !important; border-bottom: 1px solid #ccc; padding-bottom: 8px; margin-bottom: 14px; font-size: 10pt; color: #444; }
+  .print-head b { display: block; font-size: 13pt; color: #000; }
+  .session-banner, .erase-row, .rel, .privacy-line, .no-print { display: none !important; }
+}
+
+/* ---- Small Steps ---- */
+.cycle2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0 0 6px; }
+@media (max-width: 600px) { .cycle2 { grid-template-columns: 1fr; } }
+.cycle2 > div { border-radius: 8px; padding: 16px 18px; }
+.cycle2 .down { background: var(--warm-soft); }
+.cycle2 .up { background: var(--accent-soft); }
+.cycle2 h3 { margin: 0 0 8px; font-size: 12.5px; letter-spacing: 0; text-transform: none; font-weight: 600; }
+.cycle2 .down h3 { color: var(--warm-ink); } .cycle2 .up h3 { color: var(--accent); }
+.cycle2 ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.cycle2 li { background: rgba(255,255,255,.75); border-radius: 10px; padding: 8px 12px; font-size: 14.5px; position: relative; }
+.cycle2 li:not(:last-child)::after { content: "↓"; position: absolute; left: 50%; bottom: -12px; transform: translateX(-50%); font-size: 12px; z-index: 1; }
+.cycle2 .down li:not(:last-child)::after { color: var(--warm-ink); } .cycle2 .up li:not(:last-child)::after { color: var(--accent); }
+.cat { margin: 0 0 18px; }
+.cat h3 { display: flex; gap: 8px; align-items: baseline; margin: 0 0 8px; font-size: 15px; font-weight: 600; }
+.cat h3 small { font-weight: 400; color: var(--muted); font-size: 13.5px; }
+.acts { display: grid; gap: 8px; }
+.act { appearance: none; font: inherit; color: inherit; text-align: left; cursor: pointer; display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 11px 14px; transition: border-color .2s, background-color .2s; }
+.act:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.act .plus { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; font-size: 14px; color: var(--accent); line-height: 1; }
+.act[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.act[aria-pressed="true"] .plus { background: var(--accent); border-color: var(--accent); color: #fff; }
+.act .eff { font-size: 12px; color: var(--muted); background: var(--sand); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+.count-note { font-size: 14px; color: var(--muted); margin: 6px 0 0; }
+.act[disabled] { opacity: .45; cursor: not-allowed; }
+.energy { display: grid; gap: 8px; }
+.plan-item { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; }
+.plan-item h3 { margin: 0 0 10px; font-size: 16px; font-weight: 600; }
+.plan-item .row { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 8px; align-items: center; margin-top: 8px; }
+@media (max-width: 480px) { .plan-item .row { grid-template-columns: 1fr; gap: 4px; } }
+.plan-item .row > span { font-size: 13px; color: var(--muted); }
+.plan-item .chipset { gap: 6px; }
+.plan-item .chip { min-height: 36px; padding: 6px 12px; font-size: 13.5px; }
+.today { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.today li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 12px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+.today .box { width: 22px; height: 22px; border: 2px solid var(--accent); border-radius: 6px; margin-top: 2px; }
+.today b { font-weight: 600; display: block; }
+.today small { color: var(--muted); font-size: 13.5px; }
+.encourage { margin: 18px 0 0; font-family: var(--font-display); font-style: italic; font-size: 21px; line-height: 1.45; color: var(--ink); }
+.notice { margin-top: 16px; background: var(--accent-soft); border-radius: 8px; padding: 14px 16px; font-size: 15px; }
+.notice b { color: var(--accent); }
+.photo-box { margin-top: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px; box-shadow: var(--shadow); }
+.photo-tip { margin: 0 0 12px; font-size: 14.5px; color: var(--muted); }
+.photo-box img { display: block; width: 100%; max-width: 360px; height: auto; border-radius: 8px; border: 1px solid var(--line); margin: 0 auto; -webkit-touch-callout: default; }
+.remind { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 14.5px; }
+.remind input[type="time"] { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+@media print { .photo-box, .remind { display: none !important; } }
+.feedback-line a { color: var(--accent); font-weight: 500; }
+
+/* ---- share with your therapist (session mode) ---- */
+.share-th { margin: 24px 0 4px; background: #fff; border: 1px solid #BFE0DC; border-radius: 8px; padding: 20px 22px 16px; box-shadow: 0 1px 2px rgba(15,27,45,.04), 0 10px 30px rgba(15,27,45,.06); text-align: left; }
+.share-th .st-h { margin: 0 0 2px; font-family: var(--font-display); font-size: 22px; }
+.share-th .st-h b { font-weight: 400; font-style: italic; color: #0E7C72; }
+.share-th .st-sub { margin: 0 0 14px; color: var(--muted); font-size: 14.5px; }
+.share-th .st-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.share-th .st-tip { margin: 12px 0 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
+#print-summary { display: none; }
+@media print {
+  .share-th { display: none !important; }
+  body.printing-summary > *:not(#print-summary) { display: none !important; }
+  body.printing-summary #print-summary { display: block !important; font: 12pt/1.6 Georgia, serif; white-space: pre-wrap; color: #222; }
+}
+</style>
+<style>
+/* Self-Compassion Break */
+.map { display: flex; align-items: center; gap: 16px; margin: 0 0 26px; }
+.map svg { width: 150px; height: 130px; flex: none; overflow: visible; }
+.map circle { fill: #fff; stroke: #BFCAD8; stroke-width: 1.5; transition: fill .6s, stroke .6s, fill-opacity .6s; }
+.map circle.on { fill: #0E7C72; fill-opacity: .16; stroke: #0E7C72; }
+.map text { font: 600 8.5px "DM Sans", sans-serif; fill: #657083; text-anchor: middle; transition: fill .6s; }
+.map text.on { fill: #0B6158; }
+.map .heart { opacity: 0; transition: opacity .8s .3s; fill: #0E7C72; }
+.map.done .heart { opacity: 1; }
+.map p { margin: 0; font-size: 14px; color: var(--muted); max-width: 40ch; }
+.map p b { color: var(--ink); font-weight: 600; }
+.weights { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
+.weights button { appearance: none; font: inherit; cursor: pointer; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 12px 10px; text-align: left; color: var(--ink); }
+.weights button b { display: block; font-weight: 600; font-size: 15px; }
+.weights button small { display: block; color: var(--muted); font-size: 13px; line-height: 1.35; margin-top: 2px; }
+.weights button .bar { display: block; height: 4px; border-radius: 2px; background: var(--line); margin-top: 10px; overflow: hidden; }
+.weights button .bar i { display: block; height: 100%; background: #0F1B2D; }
+.weights button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+@media (max-width: 520px) { .weights { grid-template-columns: 1fr; } }
+.breath { display: grid; justify-items: center; gap: 10px; margin: 6px 0 22px; padding: 26px 16px 18px; background: var(--sand); border-radius: 8px; }
+.breath .orb { width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle at 50% 45%, #CDEBE7 0%, #8FCFC6 55%, #0E7C72 100%); transform: scale(.62); }
+.breath.run .orb { animation: orb 10s ease-in-out infinite; }
+@keyframes orb { 0% { transform: scale(.62); } 40% { transform: scale(1); } 100% { transform: scale(.62); } }
+.breath .cue { font-family: var(--font-display); font-size: 20px; min-height: 1.4em; margin: 0; }
+.breath .sub { font-size: 13.5px; color: var(--muted); margin: 0; }
+.say-big { font-family: var(--font-display); font-size: clamp(24px, 4.6vw, 32px); line-height: 1.25; margin: 18px 0 0; padding: 18px 0 0; border-top: 1px solid var(--line); min-height: 1.3em; color: var(--ink); }
+.say-big:empty { display: none; }
+.say-big::before { content: ""; display: block; width: 28px; height: 2px; background: var(--accent); margin-bottom: 14px; }
+.phrases { display: grid; gap: 8px; }
+.phrase { appearance: none; font: inherit; font-size: 16px; text-align: left; cursor: pointer; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 13px 16px; color: var(--ink); transition: border-color .2s, background .2s; }
+.phrase:hover { border-color: var(--accent); }
+.phrase[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); font-weight: 500; }
+.lights { position: relative; background: #0F1B2D; border-radius: 8px; padding: 22px 22px 20px; margin: 4px 0 22px; overflow: hidden; color: #DCE3EC; }
+.lights svg { display: block; width: 100%; height: 130px; }
+.lights circle { fill: #F5E6B8; opacity: .14; transition: opacity 1.2s ease, r 1.2s ease; }
+.lights.lit circle { opacity: .95; }
+.lights .you { fill: #7FD3C9; opacity: .95; }
+.lights p { margin: 12px 0 0; font-family: var(--font-display); font-size: 17px; line-height: 1.45; color: #fff; }
+.lights small { display: block; margin-top: 4px; color: #AFBACA; font-size: 13px; }
+.for-this { margin: 0 0 16px; padding: 14px 16px; border-left: 2px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0; font-size: 15.5px; }
+.touches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+.touch { appearance: none; font: inherit; cursor: pointer; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 12px; display: grid; justify-items: center; gap: 6px; color: var(--ink); font-size: 14.5px; text-align: center; }
+.touch svg { width: 44px; height: 44px; stroke: #0E7C72; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.touch[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+.touch-cue { margin: 10px 0 0; font-size: 15px; color: var(--accent); min-height: 1.4em; }
+.sub-h { font-family: var(--font-display); font-weight: 500; font-size: 19px; margin: 28px 0 6px; }
+.letter { margin-top: 14px; background: #FBFAF7; border: 1px solid var(--line); border-radius: 8px; padding: 20px 22px; }
+.letter .to { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
+.letter p.body { margin: 0; font-family: var(--font-display); font-size: 19px; line-height: 1.55; white-space: pre-wrap; }
+.examples { font-size: 14px; color: var(--muted); margin: 8px 0 0; }
+.examples summary { cursor: pointer; color: var(--ink); }
+.examples ul { margin: 8px 0 0; padding-left: 18px; }
+.reply { margin-top: 16px; padding: 16px 18px; border-radius: 8px; background: var(--sand); font-size: 15.5px; }
+.reply a { color: var(--warm-ink); font-weight: 600; }
+.three { display: grid; gap: 0; margin: 18px 0 6px; border-top: 1px solid var(--line); }
+.three div { display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.three dt { font-size: 13px; font-weight: 600; color: var(--accent); }
+.three dd { margin: 0; font-family: var(--font-display); font-size: 21px; line-height: 1.35; }
+@media (max-width: 520px) { .three div { grid-template-columns: 1fr; gap: 2px; } }
+.soft-note { margin-top: 12px; font-size: 14.5px; background: var(--warm-soft); border-radius: 8px; padding: 12px 14px; }
+.soft-note a { color: var(--warm-ink); font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { .breath.run .orb { animation: none; transform: scale(.85); } .lights circle { transition: none; } }
+</style>
+<link rel="stylesheet" href="../assets/btr-theme.css">
+</head>
+<body>
+<div class="wrap">
+  <nav class="topbar" aria-label="Site">
+    <a class="brand" href="../">Beyond the Room</a>
+    <a href="./">← All tools</a>
+  </nav>
+  <main id="main">
+    <header>
+      <p class="eyebrow">Beyond the Room · Inner Critic &amp; Shame</p>
+      <h1>Self-Compassion Break</h1>
+      <p class="lede">When something hurts, many of us get harder on ourselves. This short practice offers the kind of support you'd give a good friend: notice it, remember you're not alone, and offer yourself some kindness. About 4 minutes.</p>
+      <p class="privacy-line">Your answers stay on this device. Nothing is saved, tracked, or sent anywhere.</p>
+    </header>
+    <div class="session-banner" id="session-banner" role="note" hidden>
+      <div><b>Shared by your therapist, <span class="th-name"></span></b><p>Work through this at your own pace. At the end, you can email your summary to <span class="th-name"></span> or save it as a PDF for your next session. Nothing is sent anywhere unless you choose to share it.</p></div></div>
+    <div class="map" id="map" aria-hidden="true">
+      <svg viewBox="0 0 124 108">
+        <circle id="c0" cx="42" cy="38" r="32"/><circle id="c1" cx="82" cy="38" r="32"/><circle id="c2" cx="62" cy="70" r="32"/>
+        <text id="t0" x="30" y="32">Notice</text><text id="t1" x="95" y="32">Not alone</text><text id="t2" x="62" y="90">Kindness</text>
+        <path class="heart" d="M62 50c-3-4-9-3-9 2 0 4 9 9 9 9s9-5 9-9c0-5-6-6-9-2z"/>
+      </svg>
+      <p id="map-p">Three parts: <b>notice</b> the hurt, remember you're <b>not alone</b>, and offer yourself <b>kindness</b>.</p>
+    </div>
+    <div class="toolbar"><ol class="progress" id="progress" aria-hidden="true"></ol></div>
+    <section id="stage"></section>
+    <section class="rel" aria-labelledby="rel-h" style="margin-top:48px">
+      <p class="eyebrow" style="margin-bottom:6px">Keep going</p>
+      <h2 id="rel-h" style="font-family:var(--font-display);font-weight:400;font-size:24px;margin:0 0 12px">Related tools</h2>
+      <div class="options two">
+        <a class="opt" style="text-decoration:none" href="parts-of-me.html"><span><b>Parts of Me</b><small>Get to know the inner critic: what it does, what it fears, and what it needs.</small></span></a>
+        <a class="opt" style="text-decoration:none" href="meet-the-feeling.html"><span><b>Meet the Feeling</b><small>Name a feeling, find it in your body, and let it ease.</small></span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="disclaimer">
+    <p>Based on the self-compassion break developed by Kristin Neff, PhD, with ideas from compassion-focused therapy. A self-guided practice, not a substitute for care.</p>
+    <p>If you're having thoughts of harming yourself, in the U.S. call or text 988, or call 911.</p>
+    <p>Your answers stay on your device. Nothing is saved, tracked, or sent anywhere.</p>
+    <p class="feedback-line">These tools are evolving, and your feedback helps shape them. <a href="mailto:hello@beyondtheroomtherapy.com?subject=Feedback%20on%20Self-Compassion%20Break&amp;body=What%20helped%3A%0A%0AWhat%20was%20confusing%20or%20could%20be%20better%3A%0A%0A%28Please%20leave%20out%20personal%20or%20health%20details.%29%0A">Share feedback</a> (please leave out personal or health details).</p>
+  </footer>
+</div>
+<script>
+(() => {
+  "use strict";
+  const SESSION_KEY = "wk-self-compassion-session";
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* session mode (?from=Name&reply=email), as in the other tools */
+  let therapist = null;
+  (function () {
+    const q = new URLSearchParams(location.search), from = (q.get("from") || "").trim().slice(0, 60);
+    try {
+      if (from) {
+        const t = { name: from.toLowerCase() === "elise" ? "Elise Kwak" : from, reply: "" };
+        const r = (q.get("reply") || "").trim().slice(0, 120);
+        if (r && /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(r)) t.reply = r; else if (from.toLowerCase() === "elise") t.reply = "elise@selfspaceseattle.com";
+        sessionStorage.setItem(SESSION_KEY, JSON.stringify(t)); therapist = t;
+      } else { const raw = sessionStorage.getItem(SESSION_KEY); if (raw) therapist = JSON.parse(raw); }
+    } catch (_) { if (from) therapist = { name: from, reply: "" }; }
+    if (therapist && therapist.name) { $("session-banner").hidden = false; document.querySelectorAll(".th-name").forEach((el) => { el.textContent = therapist.name; }); }
+    else therapist = null;
+  })();
+
+  /* share with your therapist: leaves this device only through the person's own email app or printer */
+  const shareBox = () => {
+    if (!therapist) return `<div class="share-th no-print">
+      <p class="st-h">Bring this to your <b>therapy session</b></p>
+      <p class="st-sub">Your words, ready to explore together with your therapist.</p>
+      <div class="st-row"><button type="button" class="btn btn-primary" data-share="email">Email It</button><button type="button" class="btn btn-ghost" data-share="print">Print or Save as PDF</button></div>
+      <p class="st-tip"><b>Email It</b> opens your own email app with your summary written in, so you can send it to your therapist or anyone you choose. You can read or change anything before you send it. Email isn't fully private, so only share what you're comfortable sending that way.</p>
+    </div>`;
+    const first = therapist.name.split(" ")[0];
+    return `<div class="share-th no-print">
+      <p class="st-h">Share this with <b>${esc(therapist.name)}</b></p>
+      <p class="st-sub">Your words, ready to explore together in your next session.</p>
+      <div class="st-row"><button type="button" class="btn btn-primary" data-share="email">Email It to ${esc(first)}</button><button type="button" class="btn btn-ghost" data-share="print">Print or Save as PDF</button></div>
+      <p class="st-tip"><b>Email It</b> opens your own email app with your summary written in${therapist.reply ? `, addressed to ${esc(therapist.reply)}` : `; add ${esc(first)}'s email address`}. You can read or change anything before you send it. Email isn't fully private, so only share what you're comfortable sending that way.</p>
+    </div>`;
+  };
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-share]"); if (!b) return;
+    if (b.dataset.share === "email") window.location.href = `mailto:${therapist && therapist.reply ? encodeURIComponent(therapist.reply) : ""}?subject=${encodeURIComponent("My self-compassion break" + (therapist ? " · for our session" : " · for my therapy session"))}&body=${encodeURIComponent(textSummary())}`;
+    else printNow();
+  });
+  function copyText(text) {
+    const done = (m) => { const s = $("copy-status"); if (s) s.textContent = m; };
+    const fb = () => { const ta = document.createElement("textarea"); ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); done("Copied."); } catch (_) { done("Couldn't copy."); } ta.remove(); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(() => done("Copied."), fb); else fb();
+  }
+  function emailMe() {
+    window.location.href = "mailto:?subject=" + encodeURIComponent("My self-compassion break") + "&body=" + encodeURIComponent(textSummary());
+    const s = $("copy-status"); if (s) s.textContent = "Your email app should open. Add your own address and send.";
+  }
+  function printNow() {
+    const ph = $("ph-line"); if (ph) ph.textContent = (therapist ? `For a session with ${therapist.name} · ` : "") + new Date().toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+    window.print();
+  }
+
+  /* ================== CONTENT (clinical review: Elise) ================== */
+  const HARD = [
+    { id: "mistake", label: "A mistake I made", human: "Everyone makes mistakes. Getting things wrong is part of being human, and part of how we learn." },
+    { id: "criticism", label: "Criticism or conflict", human: "Being criticized stings for everyone. Wanting to be seen well by others is deeply human." },
+    { id: "left", label: "Feeling left out or rejected", human: "Wanting to belong is one of the most human needs there is. Feeling left out hurts for everyone." },
+    { id: "compare", label: "Comparing myself to others", human: "Almost everyone measures themselves against other people sometimes, and almost everyone comes up short somewhere." },
+    { id: "much", label: "Too much on my plate", human: "Many people are carrying more than they can hold right now. Feeling overwhelmed doesn't mean you're failing." },
+    { id: "body", label: "How I look or feel in my body", human: "So many people struggle with how they feel about their bodies. You're far from alone in this." },
+    { id: "other", label: "Something else", human: "Whatever this is, other people have felt something like it too." }
+  ];
+  const WEIGHT = [
+    { id: "light", label: "Light", sub: "A small sting", w: 33 },
+    { id: "medium", label: "Medium", sub: "It's on my mind", w: 66 },
+    { id: "heavy", label: "Heavy", sub: "It's a lot right now", w: 100 }
+  ];
+  const NOTICE = ["This is hard.", "This hurts.", "This is a moment of struggle.", "Ouch.", "This is stress.", "I'm having a hard time."];
+  const HUMAN = ["Other people feel this too.", "Struggle is part of being human.", "I'm not the only one.", "Everyone stumbles sometimes.", "Many people have been right here."];
+  const KIND = ["May I be kind to myself.", "I'm doing the best I can.", "May I give myself what I need.", "May I be patient with myself.", "May I accept myself as I am.", "I'm here for you."];
+  const ico = {
+    heart: '<svg viewBox="0 0 44 44"><path d="M22 34s-12-7-12-15a6.5 6.5 0 0 1 12-3.5A6.5 6.5 0 0 1 34 19c0 8-12 15-12 15z"/><path d="M15 25c3 2 7 2 10 0"/></svg>',
+    cheek: '<svg viewBox="0 0 44 44"><circle cx="20" cy="18" r="10"/><path d="M28 22c3 1 6 4 6 9M30 30c-2 3-6 5-10 5"/><path d="M16 18h.01M23 18h.01"/></svg>',
+    hands: '<svg viewBox="0 0 44 44"><path d="M10 26c4-6 10-8 14-6M34 26c-4-6-10-8-14-6"/><path d="M12 28c4 4 8 5 10 5s6-1 10-5"/><path d="M17 22l5 4 5-4"/></svg>',
+    hug: '<svg viewBox="0 0 44 44"><circle cx="22" cy="11" r="5"/><path d="M12 38V26c0-5 4-8 10-8s10 3 10 8v12"/><path d="M13 27c5 4 13 4 18 0"/></svg>',
+    skip: '<svg viewBox="0 0 44 44"><path d="M14 22h16M24 16l6 6-6 6"/></svg>'
+  };
+  const TOUCH = [
+    { id: "heart", label: "Hand on heart", cue: "Rest a hand over your heart. Feel its warmth and gentle pressure. Breathe slowly." },
+    { id: "cheek", label: "Hand on cheek", cue: "Cradle your cheek in your hand, the way you might comfort someone you love." },
+    { id: "hands", label: "Hold my own hands", cue: "Hold one hand in the other. Notice the warmth. Let yourself be held." },
+    { id: "hug", label: "Hug myself", cue: "Wrap your arms around yourself, and give a gentle squeeze." },
+    { id: "skip", label: "Skip this", cue: "That's okay. Kind words alone are enough." }
+  ];
+  const EXAMPLES = ["That sounds really painful. Of course you're upset.", "One mistake doesn't define you. You care, and that's why it stings.", "You've been carrying so much. It makes sense you're tired.", "I'm on your side, whatever happens."];
+  const AFTER = [
+    { id: "softer", label: "A little softer", say: "Notice that softening. You gave it to yourself, and you can come back to it any time you need it." },
+    { id: "same", label: "About the same", say: "That's okay. Self-compassion is a practice, not a switch. Showing up for yourself kindly counts, even when nothing seems to shift yet." },
+    { id: "stirred", label: "Tender or stirred up", say: "Sometimes kindness opens the door to old hurt. Compassion researchers call this “backdraft.” It can be a sign of something thawing, not of failing. Go gently: feel your feet on the floor and look around the room. If it feels like too much, it's okay to stop here and bring it to your therapist." },
+    { id: "fake", label: "Awkward or fake", say: "That's very common, especially at first. If part of you pushes back (“I don't deserve this,” “this is silly”), that's often a protective part trying to keep you safe. You can keep practicing anyway; the words tend to feel truer over time." }
+  ];
+
+  /* ================== STATE + VIEWS ================== */
+  const blank = () => ({ step: 0, hard: "", line: "", weight: "", notice: "", human: "", touch: "", friend: "", kind: "", after: "" });
+  let d = blank(), lastView = -1, breathTimer = null;
+  const STEPS = 5;
+  const hardOf = () => HARD.find((h) => h.id === d.hard);
+  const touchOf = () => TOUCH.find((t) => t.id === d.touch);
+  const afterOf = () => AFTER.find((a) => a.id === d.after);
+  const label = (t) => `<p class="step-label">${t}</p>`;
+  const nav = (txt, ok = true, back = true) => `<div class="actions"><button type="button" class="btn btn-primary" data-act="next" ${ok ? "" : "disabled"}>${txt}</button>${back ? '<button type="button" class="btn btn-text" data-act="back">← Back</button>' : ""}</div>`;
+  const phraseSet = (field, list, aria) => `<div class="phrases" role="group" aria-label="${aria}">${list.map((p) => `<button type="button" class="phrase" data-phrase="${field}" data-v="${esc(p)}" aria-pressed="${d[field] === p}">${esc(p)}</button>`).join("")}</div>
+      <div class="field"><label for="own-${field}">Or in my own words</label><input id="own-${field}" type="text" maxlength="90" data-own="${field}" value="${list.includes(d[field]) ? "" : esc(d[field])}" placeholder="Words that feel true for you"></div>`;
+  const lightsSvg = () => {
+    let s = 7, r = () => (s = (s * 9301 + 49297) % 233280) / 233280, out = "";
+    for (let i = 0; i < 64; i++) { const x = 8 + r() * 584, y = 8 + r() * 114, rad = 1.6 + r() * 2.4; out += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rad.toFixed(1)}" style="transition-delay:${(r() * 1.6).toFixed(2)}s"/>`; }
+    return `<svg viewBox="0 0 600 130" aria-hidden="true">${out}<circle class="you" cx="300" cy="66" r="5"/></svg>`;
+  };
+
+  const views = {
+    0: () => `
+      ${label("Step 1 of 5 · What's hard")}
+      <h2 class="q" tabindex="-1">What's hard right now?</h2>
+      <p class="hint">Choose what's closest. If you can, start with something mild or moderate rather than the hardest thing in your life. It's easier to learn this way.</p>
+      <div class="chipset" role="group" aria-label="What's hard">${HARD.map((h) => `<button type="button" class="chip" data-hard="${h.id}" aria-pressed="${d.hard === h.id}">${esc(h.label)}</button>`).join("")}</div>
+      <div class="field"><label for="line">In a few words, if you like</label><input id="line" type="text" maxlength="120" data-field="line" value="${esc(d.line)}" placeholder="e.g. I snapped at my partner this morning"></div>
+      <p class="group-name" style="margin-top:22px">How heavy does it feel?</p>
+      <div class="weights" role="group" aria-label="How heavy">${WEIGHT.map((w) => `<button type="button" data-weight="${w.id}" aria-pressed="${d.weight === w.id}"><b>${w.label}</b><small>${w.sub}</small><span class="bar"><i style="width:${w.w}%"></i></span></button>`).join("")}</div>
+      <div id="heavy-note" aria-live="polite">${d.weight === "heavy" ? heavyNote() : ""}</div>
+      ${nav("Begin", !!d.hard && !!d.weight, false)}`,
+
+    1: () => `
+      ${label("Step 2 of 5 · Notice")}
+      <h2 class="q" tabindex="-1">First, notice it, kindly</h2>
+      <p class="hint">Not fixing it, not pushing it away. Just acknowledging that this is hard. Take a few breaths with the circle if you'd like.</p>
+      <div class="breath" id="breath"><div class="orb"></div><p class="cue" id="cue" aria-live="polite">Ready when you are</p>
+        <button type="button" class="btn btn-ghost" data-act="breathe" style="min-height:40px;padding:10px 18px">${reduceMotion ? "Take three slow breaths" : "Breathe with the circle"}</button></div>
+      <p class="group-name">Which words fit this moment?</p>
+      ${phraseSet("notice", NOTICE, "Words for noticing")}
+      <p class="say-big" id="say-notice" aria-live="polite">${esc(d.notice)}</p>
+      ${nav("Continue", !!d.notice)}`,
+
+    2: () => `
+      ${label("Step 3 of 5 · Not alone")}
+      <h2 class="q" tabindex="-1">You're not the only one</h2>
+      <p class="hint">Pain can make us feel isolated, as if we're the only one. But struggling is part of the shared human experience.</p>
+      <div class="lights${d.human ? " lit" : ""}" id="lights">${lightsSvg()}
+        <p>Right now, many people are feeling something like this.</p><small>${d.human ? "You're one light among many." : "Choose the words below."}</small></div>
+      ${hardOf() ? `<p class="for-this">${esc(hardOf().human)}</p>` : ""}
+      <p class="group-name">Which words fit for you?</p>
+      ${phraseSet("human", HUMAN, "Words for common humanity")}
+      <p class="say-big" id="say-human" aria-live="polite">${esc(d.human)}</p>
+      ${nav("Continue", !!d.human)}`,
+
+    3: () => `
+      ${label("Step 4 of 5 · Kindness")}
+      <h2 class="q" tabindex="-1">Offer yourself some kindness</h2>
+      <p class="hint">Soothing touch can help your body feel cared for. It's optional, and it may feel unusual at first.</p>
+      <div class="touches" role="group" aria-label="Soothing touch">${TOUCH.map((t) => `<button type="button" class="touch" data-touch="${t.id}" aria-pressed="${d.touch === t.id}">${ico[t.id]}<span>${t.label}</span></button>`).join("")}</div>
+      <p class="touch-cue" id="touch-cue" aria-live="polite">${touchOf() ? esc(touchOf().cue) : ""}</p>
+      <h3 class="sub-h">What would you say to a close friend?</h3>
+      <p class="hint">Imagine someone you care about came to you with exactly this. What would you say to them?</p>
+      <div class="field" style="margin-top:0"><label for="friend" class="sr" style="position:absolute;left:-9999px">Your words to a friend</label><textarea id="friend" rows="4" maxlength="600" data-field="friend" placeholder="Write it the way you'd say it to them">${esc(d.friend)}</textarea></div>
+      <details class="examples"><summary>Need a starting point?</summary><ul>${EXAMPLES.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></details>
+      <div id="letter" aria-live="polite">${letter()}</div>
+      <h3 class="sub-h">And a kind phrase for yourself</h3>
+      ${phraseSet("kind", KIND, "Kind phrases")}
+      <p class="say-big" id="say-kind" aria-live="polite">${esc(d.kind)}</p>
+      ${nav("Continue", !!d.kind)}`,
+
+    4: () => `
+      ${label("Step 5 of 5 · Check in")}
+      <h2 class="q" tabindex="-1">How does it feel now?</h2>
+      <p class="hint">Any answer is okay. There's nothing to get right.</p>
+      <div class="phrases" role="group" aria-label="How it feels now">${AFTER.map((a) => `<button type="button" class="phrase" data-after="${a.id}" aria-pressed="${d.after === a.id}">${a.label}</button>`).join("")}</div>
+      <div id="after-say" aria-live="polite">${afterSay()}</div>
+      ${nav("See My Card", !!d.after)}`,
+
+    5: () => `
+      <article class="card fade-in">
+        <div class="print-head"><b>Self-Compassion Break</b><span id="ph-line"></span></div>
+        ${label(new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" }))}
+        <h2 class="q" tabindex="-1">Words for hard moments</h2>
+        <p class="hint" style="margin-bottom:0">Your own three phrases. Come back to them any time something hurts.</p>
+        <dl class="three"><div><dt>Notice</dt><dd>${esc(d.notice)}</dd></div><div><dt>Not alone</dt><dd>${esc(d.human)}</dd></div><div><dt>Kindness</dt><dd>${esc(d.kind)}</dd></div></dl>
+        ${d.friend.trim() ? `<div class="letter"><p class="to">From you, to you</p><p class="body">${esc(d.friend.trim())}</p></div>` : ""}
+        ${touchOf() && d.touch !== "skip" ? `<div class="card-sec"><h3>Soothing touch</h3><p>${esc(touchOf().label)}</p></div>` : ""}
+        <div class="card-sec"><h3>What was hard</h3><p>${esc(hardOf() ? hardOf().label : "")}${d.line.trim() ? `: ${esc(d.line.trim())}` : ""}</p></div>
+        <div class="card-sec"><h3>Afterward</h3><p>${esc(afterOf() ? afterOf().label : "")}</p></div>
+        <div class="notice"><b>Try it in the moment.</b> Next time you notice yourself being harsh, pause and say your three phrases, silently or out loud. A hand on your heart can help.</div>
+        ${shareBox()}
+      </article>
+      <div class="actions">
+        <button type="button" class="btn btn-primary" data-act="photo">Save as Photo</button>
+        <button type="button" class="btn btn-ghost" data-act="email">Email to Myself</button>
+        <button type="button" class="btn btn-ghost" data-act="copy">Copy</button>
+        <button type="button" class="btn btn-ghost" data-act="print">Print or Save as PDF</button>
+        <span class="status" id="copy-status" role="status" aria-live="polite"></span>
+      </div>
+      <div class="photo-box" id="photo-box" hidden>
+        <p class="photo-tip" id="photo-tip">Here's your card.</p>
+        <img id="photo-img" alt="Your self-compassion phrases card.">
+        <div class="actions" style="margin-top:14px">
+          <button type="button" class="btn btn-primary" id="photo-share" hidden>Save or Email</button>
+          <a class="btn btn-ghost" id="photo-dl" download="my-self-compassion-phrases.png" style="text-decoration:none;display:inline-flex;align-items:center">Download</a>
+          <button type="button" class="btn-text" data-act="photo-close">Close</button>
+        </div>
+      </div>
+      <p class="erase-row"><button type="button" class="btn-text" data-act="back">← Back</button> · <button type="button" class="btn-text" data-act="restart">Start again</button></p>`
+  };
+  function heavyNote() { return `<p class="soft-note">That sounds like a lot. You can still continue, gently. If it starts to feel like too much, it's okay to pause, try <a href="meet-the-feeling.html">Meet the Feeling</a> to ground, or reach out to someone you trust. If you're having thoughts of hurting yourself, call or text <a href="tel:988">988</a>.</p>`; }
+  function letter() { const t = d.friend.trim(); return t ? `<div class="letter"><p class="to">Now read it again. This time, it's for you.</p><p class="body">${esc(t)}</p></div>` : ""; }
+  function afterSay() {
+    const a = afterOf(); if (!a) return "";
+    let extra = "";
+    if (a.id === "fake") extra = ` <a href="parts-of-me.html">Parts of Me</a> can help you get to know that part.`;
+    if (a.id === "stirred") extra = ` <a href="meet-the-feeling.html">Meet the Feeling</a> has a short grounding exercise. If you're having thoughts of hurting yourself, call or text <a href="tel:988">988</a>.`;
+    return `<p class="reply">${esc(a.say)}${extra}</p>`;
+  }
+
+  function setMap() {
+    const on = [d.step >= 1 && !!d.notice || d.step > 1, d.step >= 2 && !!d.human || d.step > 2, d.step >= 3 && !!d.kind || d.step > 3];
+    on.forEach((v, i) => { $("c" + i).classList.toggle("on", v); $("t" + i).classList.toggle("on", v); });
+    $("map").classList.toggle("done", on.every(Boolean));
+  }
+  function stopBreath() { if (breathTimer) { clearInterval(breathTimer); breathTimer = null; } }
+  function breathe() {
+    const box = $("breath"), cue = $("cue"); if (!box) return;
+    stopBreath(); let n = 0;
+    if (reduceMotion) { cue.textContent = "Breathe in slowly… and out, a little longer."; return; }
+    box.classList.add("run");
+    const tick = () => { if (!$("cue")) return stopBreath(); const ph = n % 2 === 0; $("cue").textContent = ph ? "Breathe in" : "And out, slowly"; n++; if (n > 6) { stopBreath(); $("cue").textContent = "Notice how you feel."; $("breath").classList.remove("run"); } };
+    tick(); breathTimer = setInterval(tick, 5000);
+  }
+  function render(focus = true) {
+    stopBreath();
+    const same = lastView === d.step; lastView = d.step;
+    $("stage").innerHTML = views[d.step]();
+    if (same) $("stage").querySelectorAll(".fade-in").forEach((el) => el.classList.remove("fade-in"));
+    $("progress").innerHTML = Array.from({ length: STEPS }, (_, i) => `<li class="${i <= d.step ? "on" : ""}"></li>`).join("");
+    $("progress").parentElement.hidden = d.step === 5;
+    setMap();
+    if (focus) { window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }); const h = $("stage").querySelector("[tabindex='-1']"); if (h) h.focus({ preventScroll: true }); }
+  }
+  function sync() {
+    const n = $("stage").querySelector('[data-act="next"]'); if (!n) return;
+    const ok = { 0: d.hard && d.weight, 1: d.notice, 2: d.human, 3: d.kind, 4: d.after }[d.step];
+    n.disabled = !ok; setMap();
+  }
+
+  const dateLong = () => new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
+  function textSummary() {
+    const L = ["SELF-COMPASSION BREAK · " + dateLong(), ""];
+    if (therapist) L.push(`For a session with ${therapist.name}`, "");
+    L.push(`What was hard: ${hardOf() ? hardOf().label : ""}${d.line.trim() ? " (" + d.line.trim() + ")" : ""}`);
+    const w = WEIGHT.find((x) => x.id === d.weight); if (w) L.push(`How heavy: ${w.label.toLowerCase()}`);
+    L.push("", "My three phrases:", `  Notice: ${d.notice}`, `  Not alone: ${d.human}`, `  Kindness: ${d.kind}`);
+    if (d.friend.trim()) L.push("", "What I'd say to a friend (and to myself):", d.friend.trim());
+    if (touchOf() && d.touch !== "skip") L.push("", `Soothing touch: ${touchOf().label}`);
+    if (afterOf()) L.push("", `Afterward: ${afterOf().label}`);
+    L.push("", "Self-Compassion Break · beyondtheroomtherapy.com/tools/self-compassion-break.html");
+    return L.join("\n");
+  }
+
+  /* ---------- Save as photo (drawn on this device; nothing is uploaded) ---------- */
+  function wrapLines(ctx, text, maxW) { const out = []; String(text).split("\n").forEach((para) => { let line = ""; para.split(/\s+/).forEach((w) => { const t = line ? line + " " + w : w; if (ctx.measureText(t).width > maxW && line) { out.push(line); line = w; } else line = t; }); out.push(line); }); return out; }
+  async function makeCard() {
+    try { await Promise.all(['400 40px "Bricolage Grotesque"', '700 40px "Bricolage Grotesque"', '400 30px "DM Sans"', '600 30px "DM Sans"'].map((f) => document.fonts.load(f))); } catch (_) {}
+    const W = 1080, H = 1350, P = 96, inner = W - P * 2;
+    const cv = document.createElement("canvas"); cv.width = W; cv.height = H;
+    const ctx = cv.getContext("2d");
+    ctx.fillStyle = "#FFFFFF"; ctx.fillRect(0, 0, W, H); ctx.fillStyle = "#0E7C72"; ctx.fillRect(0, 0, W, 14);
+    ctx.textBaseline = "top";
+    // three circles motif
+    const cx = W - P - 120, cy = P + 70;
+    [[cx - 34, cy - 18], [cx + 34, cy - 18], [cx, cy + 40]].forEach(([x, y]) => { ctx.beginPath(); ctx.arc(x, y, 58, 0, Math.PI * 2); ctx.fillStyle = "rgba(14,124,114,0.12)"; ctx.fill(); ctx.strokeStyle = "#0E7C72"; ctx.lineWidth = 3; ctx.stroke(); });
+    ctx.fillStyle = "#657083"; ctx.font = '600 26px "DM Sans"'; ctx.fillText("My self-compassion break", P, P + 20);
+    ctx.font = '400 26px "DM Sans"'; ctx.fillText(dateLong(), P, P + 60);
+    let y = P + 230;
+    [["Notice", d.notice], ["Not alone", d.human], ["Kindness", d.kind]].forEach(([k, v]) => {
+      ctx.fillStyle = "#DFE3E9"; ctx.fillRect(P, y, inner, 2); y += 30;
+      ctx.fillStyle = "#0B6158"; ctx.font = '600 26px "DM Sans"'; ctx.fillText(k, P, y); y += 44;
+      ctx.fillStyle = "#0F1B2D"; ctx.font = '400 48px "Bricolage Grotesque"';
+      wrapLines(ctx, v, inner).forEach((ln) => { ctx.fillText(ln, P, y); y += 60; }); y += 26;
+    });
+    ctx.fillStyle = "#DFE3E9"; ctx.fillRect(P, y, inner, 2); y += 40;
+    if (d.friend.trim()) {
+      ctx.fillStyle = "#657083"; ctx.font = '600 24px "DM Sans"'; ctx.fillText("From me, to me", P, y); y += 40;
+      ctx.fillStyle = "#0F1B2D"; ctx.font = '400 32px "Bricolage Grotesque"';
+      const lines = wrapLines(ctx, d.friend.trim(), inner); const max = Math.max(1, Math.floor((H - P - 70 - y) / 44));
+      lines.slice(0, max).forEach((ln, i) => { ctx.fillText(i === max - 1 && lines.length > max ? ln + " …" : ln, P, y); y += 44; });
+    }
+    ctx.font = '400 22px "DM Sans"'; ctx.fillStyle = "#657083"; ctx.fillText("Self-Compassion Break · beyondtheroomtherapy.com", P, H - P + 20);
+    return new Promise((res) => cv.toBlob(res, "image/png"));
+  }
+  let photoUrl = null;
+  async function showPhoto(btn) {
+    btn.disabled = true; btn.textContent = "Making your card…";
+    let blob = null; try { blob = await makeCard(); } catch (_) {}
+    btn.disabled = false; btn.textContent = "Save as Photo";
+    if (!blob) { $("copy-status").textContent = "Couldn't make the photo on this device. Try Copy or Print instead."; return; }
+    if (photoUrl) URL.revokeObjectURL(photoUrl);
+    photoUrl = URL.createObjectURL(blob); $("photo-img").src = photoUrl; $("photo-dl").href = photoUrl;
+    let file = null, canShare = false;
+    try { file = new File([blob], "my-self-compassion-phrases.png", { type: "image/png" }); canShare = !!(navigator.canShare && navigator.canShare({ files: [file] })); } catch (_) {}
+    $("photo-share").hidden = !canShare; $("photo-share").onclick = async () => { try { await navigator.share({ files: [file] }); } catch (_) {} };
+    $("photo-tip").textContent = canShare ? "Here's your card. Tap “Save or Email” and choose Save Image to keep it in Photos." : "Here's your card. Use Download, or press and hold (or right-click) the picture to save it.";
+    $("photo-box").hidden = false; $("photo-box").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+  }
+
+  /* ---------- events ---------- */
+  $("stage").addEventListener("input", (e) => {
+    const t = e.target;
+    if (t.dataset.field) { d[t.dataset.field] = t.value; if (t.dataset.field === "friend") $("letter").innerHTML = letter(); sync(); return; }
+    if (t.dataset.own) {
+      const f = t.dataset.own; d[f] = t.value.trim();
+      $("stage").querySelectorAll(`[data-phrase="${f}"]`).forEach((b) => b.setAttribute("aria-pressed", "false"));
+      const say = $("say-" + f); if (say) say.textContent = d[f];
+      if (f === "human") { $("lights").classList.toggle("lit", !!d[f]); }
+      sync();
+    }
+  });
+  $("stage").addEventListener("click", (e) => {
+    const t = e.target;
+    const h = t.closest("[data-hard]"); if (h) { d.hard = h.dataset.hard; $("stage").querySelectorAll("[data-hard]").forEach((b) => b.setAttribute("aria-pressed", b === h)); sync(); return; }
+    const w = t.closest("[data-weight]"); if (w) { d.weight = w.dataset.weight; $("stage").querySelectorAll("[data-weight]").forEach((b) => b.setAttribute("aria-pressed", b === w)); $("heavy-note").innerHTML = d.weight === "heavy" ? heavyNote() : ""; sync(); return; }
+    const p = t.closest("[data-phrase]"); if (p) {
+      const f = p.dataset.phrase; d[f] = p.dataset.v;
+      $("stage").querySelectorAll(`[data-phrase="${f}"]`).forEach((b) => b.setAttribute("aria-pressed", b === p));
+      const own = $("own-" + f); if (own) own.value = "";
+      const say = $("say-" + f); if (say) say.textContent = d[f];
+      if (f === "human") { const L = $("lights"); L.classList.add("lit"); L.querySelector("small").textContent = "You're one light among many."; }
+      sync(); return;
+    }
+    const tc = t.closest("[data-touch]"); if (tc) { d.touch = tc.dataset.touch; $("stage").querySelectorAll("[data-touch]").forEach((b) => b.setAttribute("aria-pressed", b === tc)); $("touch-cue").textContent = touchOf().cue; return; }
+    const af = t.closest("[data-after]"); if (af) { d.after = af.dataset.after; $("stage").querySelectorAll("[data-after]").forEach((b) => b.setAttribute("aria-pressed", b === af)); $("after-say").innerHTML = afterSay(); sync(); return; }
+    const btn = t.closest("[data-act]"), a = btn?.dataset.act; if (!a) return;
+    if (a === "next") { d.step = Math.min(d.step + 1, STEPS); render(); }
+    else if (a === "back") { d.step = Math.max(d.step - 1, 0); render(); }
+    else if (a === "breathe") breathe();
+    else if (a === "restart") { d = blank(); render(); }
+    else if (a === "photo") showPhoto(btn);
+    else if (a === "photo-close") $("photo-box").hidden = true;
+    else if (a === "print") printNow();
+    else if (a === "copy") copyText(textSummary());
+    else if (a === "email") emailMe();
+  });
+  render(false);
+})();
+</script>
+</body>
+</html>
