@@ -5,9 +5,27 @@
 :root { --radius: 12px; }
 html { font-synthesis: none; }
 h1, h2, h3, .q, .section-title { letter-spacing: -0.01em; }
-:is(h1, h2, h3, h4, .q, .section-title, .btr-title, legend) em { font-style: normal !important; color: #0E7C72 !important; }
-.clin-hero :is(h1, h2) em, .dark :is(h1, h2) em { color: #5FC4B8 !important; }
+:is(h1, h2, h3, h4, .q, .section-title, .btr-title, legend) em { font-style: normal !important; color: inherit !important; }
 .btn, .btn-primary, .btn-secondary, .btn-ghost, a.btn-primary, a.btn-secondary { border-radius: 8px !important; }
 .btn-primary, a.btn-primary { background: #0F1B2D !important; border-color: #0F1B2D !important; color: #fff !important; box-shadow: none !important; }
 .btn-primary:hover, a.btn-primary:hover { background: #1B2C45 !important; }
 .nav-links a.nav-cta { background: #0F1B2D !important; border-color: #0F1B2D !important; border-radius: 8px !important; color: #fff !important; }
+
+/* Editorial identity: numbered index, hairline rules, square corners, no emoji tiles */
+:root { --radius: 8px; }
+.eyebrow, .step-label, .btr-label { font-weight: 600 !important; color: #0B6158 !important; font-size: .88rem !important; }
+.tool-tag { font-size: .86rem !important; }
+.eyebrow::before { content: ""; display: inline-block; width: 18px; height: 2px; background: currentColor; vertical-align: middle; margin-right: 10px; }
+.tools-header, .tools-header * { text-align: left !important; margin-left: 0 !important; }
+/* tools index cards */
+.tools-grid { counter-reset: tool; }
+.tool-card { counter-increment: tool; border-radius: 8px !important; box-shadow: none !important; border: 1px solid #DFE3E9 !important; border-top: 2px solid #0F1B2D !important; }
+.tool-card::before { content: counter(tool, decimal-leading-zero); display: block !important; position: static !important; height: auto !important; background: none !important; font-family: "Bricolage Grotesque", "DM Sans", sans-serif; font-weight: 700; font-size: 2rem; line-height: 1; letter-spacing: -0.02em; color: #0E7C72; margin: 0 0 14px; }
+.tool-card .tool-icon { display: none !important; }
+.tool-tag { background: none !important; padding: 0 !important; border-radius: 0 !important; color: #0B6158 !important; font-weight: 600; }
+.tool-link { background: none !important; padding: 0 0 2px !important; border-radius: 0 !important; color: #0F1B2D !important; font-weight: 600; border-bottom: 1.5px solid #0E7C72 !important; }
+.finder { border-radius: 8px !important; box-shadow: none !important; }
+.finder-theme { border-radius: 6px !important; }
+.finder-theme span { display: none; }
+.clin-hero .eyebrow, .dark .eyebrow, .tb-eyebrow, footer .eyebrow { color: #7FD3C9 !important; }
+.nav-links a { border-radius: 6px !important; }
