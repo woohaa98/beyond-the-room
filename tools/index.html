@@ -1129,6 +1129,9 @@
   .tool-card[hidden] { display: none !important; }
   .tool-card[data-n]::before { content: attr(data-n) !important; }
   @media (max-width: 600px) { .browse-filters select { min-width: 0; width: 100%; } .browse-filters label { width: 100%; } }
+  /* One aligned column on wide screens */
+  .finder { max-width: 1100px; }
+  @media (min-width: 1221px) { nav { padding-left: calc((100vw - 1100px) / 2); padding-right: calc((100vw - 1100px) / 2); } }
 </style>
 <link rel="stylesheet" href="../assets/btr-theme.css">
 </head>
