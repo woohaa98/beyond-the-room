@@ -35,6 +35,8 @@ How Beyond the Room tools are grouped so therapists can find one to send. The da
 | Life Chapters | Narrative, meaning & strengths | Narrative Therapy | identity | 8 | yes | one |
 | Best Possible Self | Narrative, meaning & strengths | Positive psychology | hope, values | 7 | yes | one |
 | Drop the Rope | Acceptance & mindfulness | ACT willingness | avoidance, emotions | 6 | yes | one |
+| Self-Compassion Break | Parts work & self-compassion | Self-compassion (Neff), compassion-focused | inner critic, emotions | 4 | yes | one |
+| Worry Time | CBT & behavioral; Acceptance & mindfulness | Worry postponement, defusion | anxiety, thinking | 15 | yes | one |
 | Roots & Messages | Couples & family systems | Genogram, family systems | family, identity | 12 | yes | one |
 
 ## Adding a tool

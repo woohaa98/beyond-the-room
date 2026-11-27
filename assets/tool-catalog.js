@@ -5,10 +5,10 @@
    Definitions and review notes live in TAXONOMY.md. */
 (function () {
   var APPROACHES = [
-    { key: "cbt",       label: "CBT & behavioral",            includes: "Cognitive Behavioral Therapy, Behavioral Activation, Exposure & Response Prevention" },
+    { key: "cbt",       label: "CBT & behavioral",            includes: "Cognitive Behavioral Therapy, Behavioral Activation, Exposure & Response Prevention, worry postponement" },
     { key: "act",       label: "Acceptance & mindfulness",    includes: "Acceptance & Commitment Therapy, mindfulness, RAIN" },
     { key: "dbt",       label: "DBT skills",                  includes: "Dialectical Behavior Therapy skills" },
-    { key: "parts",     label: "Parts work & self-compassion", includes: "Internal Family Systems-informed, self-compassion" },
+    { key: "parts",     label: "Parts work & self-compassion", includes: "Internal Family Systems-informed, self-compassion, compassion-focused" },
     { key: "systems",   label: "Couples & family systems",    includes: "Gottman Method, family systems, genograms" },
     { key: "meaning",   label: "Narrative, meaning & strengths", includes: "Narrative Therapy, meaning-centered, positive psychology" }
   ];
@@ -48,6 +48,8 @@
     { id: "life-chapters",        card: "tool-chapters",   approaches: ["meaning"],         modalities: ["Narrative Therapy"],                          concerns: ["identity"],                mins: 8,  summary: true,  format: "individual" },
     { id: "best-possible-self",   card: "tool-bps",        approaches: ["meaning"],         modalities: ["Positive psychology"],                        concerns: ["hope", "values"],          mins: 7,  summary: true,  format: "individual" },
     { id: "drop-the-rope",        card: "tool-rope",       approaches: ["act"],             modalities: ["ACT: willingness & acceptance"],              concerns: ["avoidance", "emotions"],   mins: 6,  summary: true,  format: "individual" },
+    { id: "self-compassion-break", card: "tool-compassion", approaches: ["parts"],           modalities: ["Self-compassion (Neff)", "Compassion-focused"], concerns: ["critic", "emotions"],     mins: 4,  summary: true,  format: "individual" },
+    { id: "worry-time",           card: "tool-worry",      approaches: ["cbt", "act"],      modalities: ["Worry postponement", "Defusion"],           concerns: ["anxiety", "thoughts"],     mins: 15, summary: true,  format: "individual" },
     { id: "roots-and-messages",   card: "tool-roots",      approaches: ["systems"],         modalities: ["Genogram", "Family systems"],                 concerns: ["family", "identity"],      mins: 12, summary: true,  format: "individual" }
   ];
 
